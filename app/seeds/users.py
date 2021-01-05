@@ -1,0 +1,40 @@
+from werkzeug.security import generate_password_hash
+from app.models import db, User
+
+# Adds a demo user, you can add other users here if you want
+def seed_users():
+
+    demo = User(username="Demo User", email="demo@user.com", password="password",
+                address="21 Jump St", city="Panama City",
+                state="Florida", zipcode=32459, phone="(850) 586 25 20",
+                about="Life is a boat, it takes you where ever the wind blows, just go with the flows"
+                )
+
+    zoro = User(username="Zoro Roronoa", email="zoro@roronoa.com", password="password",
+                address="321 Heaven St", city="Seattle",
+                state="Washington", zipcode=98105, phone="(206) 333 7768",
+                about="I eat meat, I eat no rice, I eat a lot"
+                )
+
+    chunli = User(username="Chun Li", email="chun@li.com", password="password",
+                address="7778 Main St", city="Riverdale",
+                state="Chicago", zipcode=60176, phone="(773) 825 34 21",
+                about="Always love Chinese Food"
+                )
+
+
+
+    db.session.add(demo)
+    db.session.add(zoro)
+    db.session.add(chunli)
+
+
+    db.session.commit()
+
+# Uses a raw SQL query to TRUNCATE the users table.
+# SQLAlchemy doesn't have a built in function to do this
+# TRUNCATE Removes all the data from the table, and resets
+# the auto incrementing primary key
+def undo_users():
+    db.session.execute('TRUNCATE users;')
+    db.session.commit()
