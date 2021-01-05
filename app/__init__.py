@@ -25,8 +25,6 @@ login.login_view = 'auth.unauthorized'
 def load_user(id):
     return User.query.get(int(id))
 
-
-@login.user_loader
 def load_chef(id):
     return Chef.query.get(int(id))
 
