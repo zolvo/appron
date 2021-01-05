@@ -19,6 +19,7 @@ class Chef(db.Model, UserMixin):
   menu = db.Column(db.String, nullable=False)
   pricing = db.Column(db.String, nullable=False)
   available = db.Column(db.Boolean, nullable=False)
+  date_created = db.Column(db.Date, nullable=False)
 
 
 
@@ -50,5 +51,6 @@ class Chef(db.Model, UserMixin):
       "service": self.service,
       "menu": self.menu,
       "pricing": self.pricing,
-      "available": self.available
+      "available": self.available,
+      "date_created": self.date_created
     }

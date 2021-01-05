@@ -11,7 +11,8 @@ def seed_chefs():
                 service="Thai Food",
                 menu="Pad Thai, Drunken Noodles, Fried Rice, Red Curry, Green Curry, Yellw Curry",
                 pricing="$20/hr + $20/person",
-                available=True
+                available=True,
+                date_created="Feb 14, 2017"
                 )
 
     goku = Chef(username="Sun Goku", email="sun@goku.com", password="password",
@@ -21,7 +22,8 @@ def seed_chefs():
                 service="Shushi Roll",
                 menu="Special Roll (Surf and Turf, Sakura Blossom, Green River), Regular Roll (California, Phily, Ocean, Spicy Tuna, etc) and Sushi Nigiri",
                 pricing="$20/hr + $25/person",
-                available=True
+                available=True,
+                date_created="Jan 30, 2020"
                 )
 
     mario = Chef(username="Mario Bros", email="mario@bros.com", password="password",
@@ -31,7 +33,8 @@ def seed_chefs():
                 service="Italian Food",
                 menu="Pasta, Pizza, Risotto, Lasagne, Gelato, Tiramisu",
                 pricing="$20/hr + $30/person",
-                available=False
+                available=False,
+                date_craeted="Nov 21, 2019"
                 )
 
 

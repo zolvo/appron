@@ -15,6 +15,7 @@ class User(db.Model, UserMixin):
   zipcode = db.Column(db.Integer, nullable=False)
   phone = db.Column(db.String(50), nullable=False)
   about = db.Column(db.Text, nullable=False)
+  date_created = db.Column(db.Date, nullable=False)
 
 
 
@@ -42,5 +43,6 @@ class User(db.Model, UserMixin):
       "state": self.state,
       "zipcode": self.zipcode,
       "phone": self.phone,
-      "about": self.about
+      "about": self.about,
+      "date_created": self.date_created
     }
