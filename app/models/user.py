@@ -19,6 +19,7 @@ class User(db.Model, UserMixin):
 
   chef = db.relationship('Chef', back_populates='user', uselist=False, cascade='all, delete-orphan')
   comment = db.relationship('Comment', back_populates='user', cascade='all, delete-orphan')
+  appointment = db.relationship('Appointment', back_populates='user', cascade='all, delete-orphan')
 
 
   @property
