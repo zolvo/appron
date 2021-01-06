@@ -57,7 +57,7 @@ function App() {
           authenticated={authenticated}
         ></ProtectedRoute>
         <Route path="/" exact={true} authenticated={authenticated}>
-          <h1>My Home Page</h1>
+          {/* <h1>My Home Page</h1> */}
           <Home authenticated={authenticated} />
           {authenticated ? <Main /> : ""}
         </Route>

@@ -1,12 +1,13 @@
 """user table
 
 Revision ID: 71aaecb998ae
-Revises: 
+Revises:
 Create Date: 2021-01-05 15:16:43.279318
 
 """
 from alembic import op
 import sqlalchemy as sa
+import datetime
 
 
 # revision identifiers, used by Alembic.
@@ -29,6 +30,7 @@ def upgrade():
     sa.Column('zipcode', sa.Integer(), nullable=False),
     sa.Column('phone', sa.String(length=50), nullable=False),
     sa.Column('is_a_chef', sa.Boolean(), nullable=False),
+    sa.Column('createdAt', sa.DateTime(), nullable=False),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')

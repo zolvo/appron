@@ -13,6 +13,7 @@ class Chef(db.Model):
   available = db.Column(db.Boolean, nullable=False)
 
   user = db.relationship('User', back_populates='chef')
+  comment = db.relationship('Comment', back_populates='chef')
 
 
   def __init__(self, user_id, about, service, menu, pricing, available):

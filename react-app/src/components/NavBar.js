@@ -2,40 +2,40 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import LogoutButton from "./auth/LogoutButton";
 import styled from "styled-components";
+import logo from "../image/logo00.png";
 
 const NavBar = ({ setAuthenticated }) => {
   return (
     <Container>
       <SubContainer1>
         <SubContainer2>
-          <NavLink to="/" exact={true} activeClassName="active">
-            Home
-          </NavLink>
+          <SubContainer2a>
+            <a href="/">
+              <img src={logo} alt={logo} />
+            </a>
+          </SubContainer2a>
+          <SubContainer2b>
+            <div>
+              <NavLink to="/" exact={true} activeClassName="active">
+                <div>Home</div>
+              </NavLink>
+            </div>
+            <NavLink to="/users" exact={true} activeClassName="active">
+              <div>Users</div>
+            </NavLink>
+            <NavLink to="/chefs" exact={true} activeClassName="active">
+              <div>Chefs</div>
+            </NavLink>
+          </SubContainer2b>
         </SubContainer2>
-        <li>
-          <NavLink to="/users" exact={true} activeClassName="active">
-            Users
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/chefs" exact={true} activeClassName="active">
-            Chefs
-          </NavLink>
-        </li>
         <SubContainer3>
-          <li>
-            <NavLink to="/login" exact={true} activeClassName="active">
-              Login
-            </NavLink>
-          </li>
-          <li>
-            <NavLink to="/sign-up" exact={true} activeClassName="active">
-              <div>Sign Up</div>
-            </NavLink>
-          </li>
-          <li>
-            <LogoutButton setAuthenticated={setAuthenticated} />
-          </li>
+          <NavLink to="/login" exact={true} activeClassName="active">
+            <div>Login</div>
+          </NavLink>
+          <NavLink to="/sign-up" exact={true} activeClassName="active">
+            <div>Sign Up</div>
+          </NavLink>
+          <LogoutButton setAuthenticated={setAuthenticated} />
         </SubContainer3>
       </SubContainer1>
     </Container>
@@ -45,12 +45,9 @@ const NavBar = ({ setAuthenticated }) => {
 const Container = styled.div`
   font-family: "Monserrat";
   min-width: 200px;
-  backdrop-filter: blur(5px);
-  // background-color: transparent;
-  background-color: rgba(255, 255, 255, 0.7);
-  // background: #292721;
+  background-color: transparent;
   width: 100%;
-  height: 110px;
+  height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -58,8 +55,7 @@ const Container = styled.div`
   text-decoration: none;
   list-style: none;
   position: fixed;
-  // padding-top: 50px;
-  opacity: 0.6;
+  border: 1px solid yellow;
 `;
 
 const MiniSearch = styled.div`
@@ -98,24 +94,48 @@ const SubContainer1 = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
+
+  border: 1px solid red;
 `;
 
 const SubContainer2 = styled.div`
-width: 35%;
-font-family: 'Montserrat';
-display: flex;
-justify-content: space-between;
-align-items: center;
-flex-direction: row;
+  font-family: "Montserrat";
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  width: 30em;
 
-div {
-  margin-right: 3em
-  box-sizing: border-box;
-};
+  border: 1px solid blue;
 
-NavLink: {
-  color: white;
-}
+  img {
+    box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    height: 50px;
+    width: 50px;
+    box-sizing: border-box;
+    background: white;
+    opacity: 0.8;
+    border-radius: 30px;
+  }
+
+  div {
+    // margin-left: 3em;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    color: white;
+  }
+`;
+
+const SubContainer2a = styled.div`
+  border: 1px solid white;
+`;
+
+const SubContainer2b = styled.div`
+  border: 1px solid white;
+  display: flex;
+  width: 10
+  // justify-content: space-between;
 `;
 
 const SubContainer3 = styled.div`
@@ -125,8 +145,11 @@ const SubContainer3 = styled.div`
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
+
+  border: 1px solid yellow;
+
   div {
-    margin-right: 2em;
+    // margin-right: 2em;
     box-sizing: border-box;
   }
 `;

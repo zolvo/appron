@@ -15,8 +15,10 @@ class User(db.Model, UserMixin):
   zipcode = db.Column(db.Integer, nullable=False)
   phone = db.Column(db.String(50), nullable=False)
   is_a_chef = db.Column(db.Boolean, nullable=False)
+  createdAt = db.Column(db.DateTime, nullable=False)
 
   chef = db.relationship('Chef', back_populates='user', uselist=False, cascade='all, delete-orphan')
+  comment = db.relationship('Comment', back_populates='user', cascade='all, delete-orphan')
 
 
   @property
@@ -43,5 +45,6 @@ class User(db.Model, UserMixin):
       "state": self.state,
       "zipcode": self.zipcode,
       "phone": self.phone,
-      "is_a_chef": self.is_a_chef
+      "is_a_chef": self.is_a_chef,
+      "createdAt": self.createdAt
     }
