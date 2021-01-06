@@ -8,7 +8,7 @@ user_routes = Blueprint('users', __name__)
 @user_routes.route('/')
 @login_required
 def users():
-    users = User.query.all()
+    users = User.query.filter(User.is_a_chef == False)
     return {"users": [user.to_dict() for user in users]}
 
 

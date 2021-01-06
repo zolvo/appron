@@ -1,47 +1,37 @@
-from werkzeug.security import generate_password_hash
 from app.models import db, Chef
 
 # Adds a demo user, you can add other users here if you want
 def seed_chefs():
 
-    demo_chef = Chef(username="Demo Chef", email="demo@chef.com", password="password",
-                address="107 Enchanted Way", city="Santa Rosa Beach",
-                state="Florida", zipcode=32459, phone="(850) 586 55 11",
+    demo1 = Chef(user_id=4,
                 about="I'm a Thai Chef for years, I made Thai and Asian cuisine, such as Pad Thai, Drunken Noodles, and Fried Rice and all the Curry series as well(Red, Green, & Yellow)",
                 service="Thai Food",
                 menu="Pad Thai, Drunken Noodles, Fried Rice, Red Curry, Green Curry, Yellw Curry",
                 pricing="$20/hr + $20/person",
                 available=True,
-                date_created="Feb 14, 2017"
                 )
 
-    goku = Chef(username="Sun Goku", email="sun@goku.com", password="password",
-                address="4345 Main St", city="Philadelphia",
-                state="PA", zipcode=19127, phone="(267) 786 2388",
+    demo2 = Chef(user_id=5,
                 about="I'm a Japanese Sushi Chef for 6 years, I made some custom sushi roll such as 'Surf and Turf', 'Sakura Blossom', and 'Green River' as well as all the regular sushi roll",
                 service="Shushi Roll",
                 menu="Special Roll (Surf and Turf, Sakura Blossom, Green River), Regular Roll (California, Phily, Ocean, Spicy Tuna, etc) and Sushi Nigiri",
                 pricing="$20/hr + $25/person",
                 available=True,
-                date_created="Jan 30, 2020"
                 )
 
-    mario = Chef(username="Mario Bros", email="mario@bros.com", password="password",
-                address="18th Street", city="New York City",
-                state="New York", zipcode=10011, phone="(212) 656 63 29",
+    demo3 = Chef(user_id=6,
                 about="I'm a dedicated Italian Chef for 18 years, I'm famous with Pasta, Pizza, Risotto, Lasagne, and other special sweets on Italian cuisine such as Gelato and Tiramisu",
                 service="Italian Food",
                 menu="Pasta, Pizza, Risotto, Lasagne, Gelato, Tiramisu",
                 pricing="$20/hr + $30/person",
                 available=False,
-                date_craeted="Nov 21, 2019"
                 )
 
 
 
-    db.session.add(demo_chef)
-    db.session.add(goku)
-    db.session.add(mario)
+    db.session.add(demo1)
+    db.session.add(demo2)
+    db.session.add(demo3)
 
 
     db.session.commit()

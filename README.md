@@ -30,7 +30,7 @@ APPRON is a web app that allows user to find chef on demand to cook in your hous
 
 <h1>Database Schema</h1>
 
- <img src="documentation/database-schema.png" alt="database-schema">
+ <img src="documentation/database-diagram.png" alt="database-diagram">
 
 ---
 
@@ -40,9 +40,10 @@ APPRON is a web app that allows user to find chef on demand to cook in your hous
 
 - Login
 - Search for Chef
-- Comment
-- Like
-- Rating
+- Make an Appointment
+- Comment ( Chef )
+- Like ( Comment )
+- Rating ( Chef )
 
 </h3>
 

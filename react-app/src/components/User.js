@@ -48,9 +48,6 @@ function User() {
       <li>
         <strong>Phone</strong> {user.phone}
       </li>
-      <li>
-        <strong>About</strong> {user.about}
-      </li>
     </ul>
   );
 }
