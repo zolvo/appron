@@ -15,6 +15,7 @@ class Chef(db.Model):
   user = db.relationship('User', back_populates='chef')
   comment = db.relationship('Comment', back_populates='chef')
   appointment = db.relationship('Appointment', back_populates='chef')
+  rating = db.relationship('Rating', back_populates='chef')
 
 
   def __init__(self, user_id, about, service, menu, pricing, available):

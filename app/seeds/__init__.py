@@ -3,6 +3,7 @@ from .users import seed_users, undo_users
 from .chefs import seed_chefs, undo_chefs
 from .comments import seed_comments, undo_comments
 from .appointments import seed_appointments, undo_appointments
+from .ratings import seed_ratings, undo_ratings
 
 # Creates a seed group to hold our commands
 # So we can type `flask seed --help`
@@ -15,6 +16,7 @@ def seed():
     seed_chefs()
     seed_comments()
     seed_appointments()
+    seed_ratings()
     # Add other seed functions here
 
 # Creates the `flask seed undo` command
@@ -22,6 +24,7 @@ def seed():
 def undo():
     undo_users()
     undo_chefs()
-    seed_comments()
-    seed_appointments()
+    undo_comments()
+    undo_appointments()
+    undo_ratings()
     # Add other undo functions here
