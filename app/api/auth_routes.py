@@ -28,11 +28,6 @@ def authenticate():
     return {'errors': ['Unauthorized']}, 401
 
 
-    if current_chef.is_authenticated:
-        return current_chef.to_dict()
-    return {'errors': ['Unauthorized']}, 401
-
-
 @auth_routes.route('/login', methods=['POST'])
 def login():
     """
@@ -51,14 +46,6 @@ def login():
     return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
-    if form.validate_on_submit():
-        # Add the user to the session, we are logged in!
-        chef = Chef.query.filter(User.email == form.data['email']).first()
-        login_user(chef)
-        return chef.to_dict()
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
-
-
 @auth_routes.route('/logout')
 def logout():
     """
@@ -66,10 +53,6 @@ def logout():
     """
     logout_user()
     return {'message': 'User logged out'}
-
-
-    logout_chef()
-    return {'message': 'Chef logged out'}
 
 
 @auth_routes.route('/signup', methods=['POST'])
@@ -89,21 +72,6 @@ def sign_up():
         db.session.commit()
         login_user(user)
         return user.to_dict()
-    return {'errors': validation_errors_to_error_messages(form.errors)}
-
-
-    form = SignUpChefForm()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
-        chef = Chef(
-            username=form.data['username'],
-            email=form.data['email'],
-            password=form.data['password']
-        )
-        db.session.add(chef)
-        db.session.commit()
-        login_chef(chef)
-        return chef.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}
 
 

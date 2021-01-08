@@ -9,12 +9,15 @@ import User from "./components/User";
 import { authenticate } from "./services/auth";
 import Home from "./components/Home";
 import Main from "./components/Main";
+import Nopage from "./components/auth/Nopage";
+import Appointment from "./components/Appointment";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
+    document.title = "Appron: Home";
     (async () => {
       const user = await authenticate();
       if (!user.errors) {
@@ -56,10 +59,15 @@ function App() {
           exact={true}
           authenticated={authenticated}
         ></ProtectedRoute>
+        <Route path="/appointment" exact={true} authenticated={authenticated}>
+          <Appointment />
+        </Route>
         <Route path="/" exact={true} authenticated={authenticated}>
-          {/* <h1>My Home Page</h1> */}
           <Home authenticated={authenticated} />
           {authenticated ? <Main /> : ""}
+        </Route>
+        <Route path="/*" exact={true} authenticated={authenticated}>
+          <Nopage />
         </Route>
       </Switch>
     </BrowserRouter>

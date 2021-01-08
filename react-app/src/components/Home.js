@@ -10,15 +10,20 @@ const Home = ({ setAuthenticated, authenticated }) => {
   ) : (
     <Container>
       <SubContainer1>
-        <h1> this is home</h1>
+        <div className="title">Appron</div>
+        <div className="subtitle">Chef on demand</div>
       </SubContainer1>
-      <SubContainer2 />
-      <SubContainer3></SubContainer3>
+      {/* <SubContainer2 /> */}
+      {/* <SubContainer3 /> */}
     </Container>
   );
 };
 
-const Container = styled.div``;
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+`;
 
 const SubContainer1 = styled.div`
   box-sizing: border-box;
@@ -28,6 +33,33 @@ const SubContainer1 = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 40% center;
+
+  .title {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: dancing script;
+    text-shadow: rgba(0, 0, 0, 0.75) 0px 5px 15px;
+    color: white;
+    font-size: 9em;
+    font-weight: bold;
+    // border: 1px solid red;
+  }
+
+  .subtitle {
+    dispaly: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: dancing script;
+    text-shadow: rgba(0, 0, 0, 0.75) 0px 5px 15px;
+    color: white;
+    font-size: 4em;
+    font-weight: bold;
+    // border: 1px solid red;
+  }
 `;
 
 const SubContainer2 = styled.div`

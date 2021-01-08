@@ -2,7 +2,12 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import LogoutButton from "./auth/LogoutButton";
 import styled from "styled-components";
-import logo from "../image/logo00.png";
+import logo from "../image/logo01.png";
+import appronwhite from "../image/appronwhite.png";
+
+const search = async (e) => {
+  e.preventDefault();
+};
 
 const NavBar = ({ setAuthenticated }) => {
   return (
@@ -11,7 +16,8 @@ const NavBar = ({ setAuthenticated }) => {
         <SubContainer2>
           <SubContainer2a>
             <a href="/">
-              <img src={logo} alt={logo} />
+              <img className="img1" src={logo} alt={logo} />
+              <img className="img2" src={appronwhite} alt={appronwhite} />
             </a>
           </SubContainer2a>
           <SubContainer2b>
@@ -28,6 +34,13 @@ const NavBar = ({ setAuthenticated }) => {
             </NavLink>
           </SubContainer2b>
         </SubContainer2>
+        <MiniSearch>
+          <i className="fas fa-search"></i>
+          <SearchInput
+            type="text"
+            placeholder="Find: chef, menu, food"
+          ></SearchInput>
+        </MiniSearch>
         <SubContainer3>
           <NavLink to="/login" exact={true} activeClassName="active">
             <div>Login</div>
@@ -44,18 +57,19 @@ const NavBar = ({ setAuthenticated }) => {
 
 const Container = styled.div`
   font-family: "Monserrat";
-  min-width: 200px;
+  // min-width: 200px;
   background-color: transparent;
-  width: 100%;
+  min-width: 100%;
   height: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
   text-decoration: none;
-  list-style: none;
+  // list-style: none;
   position: fixed;
-  border: 1px solid yellow;
+  // border: 1px solid yellow;
+  z-index: 1;
 `;
 
 const MiniSearch = styled.div`
@@ -63,7 +77,6 @@ const MiniSearch = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  margin-left: 5px;
   padding-left: 5px;
   box-sizing: border-box;
   height: 30px;
@@ -83,11 +96,12 @@ const SearchInput = styled.input`
   height: 30px;
   border-radius: 20px;
   text-decoration: none;
-  border: 3px solid #fefefe;
+  border: none;
+  outline: none;
 `;
 
 const SubContainer1 = styled.div`
-  width: 60%;
+  width: 65%;
   height: 55px;
   font-family: "Montserrat";
   display: flex;
@@ -95,7 +109,7 @@ const SubContainer1 = styled.div`
   align-items: center;
   flex-direction: row;
 
-  border: 1px solid red;
+  // border: 1px solid red;
 `;
 
 const SubContainer2 = styled.div`
@@ -106,21 +120,24 @@ const SubContainer2 = styled.div`
   flex-direction: row;
   width: 30em;
 
-  border: 1px solid blue;
+  // border: 1px solid blue;
 
-  img {
+  .img1 {
     box-sizing: border-box;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     height: 50px;
-    width: 50px;
     box-sizing: border-box;
-    background: white;
-    opacity: 0.8;
     border-radius: 30px;
   }
 
+  .img2 {
+    box-sizing: border-box;
+    height: 40px;
+    width: 150px;
+    box-sizing: border-box;
+  }
+
   div {
-    // margin-left: 3em;
     letter-spacing: 0.05em;
     font-weight: 600;
     color: white;
@@ -128,29 +145,39 @@ const SubContainer2 = styled.div`
 `;
 
 const SubContainer2a = styled.div`
-  border: 1px solid white;
+  display: flex;
+  flex-direction: rows;
+  justify-content: center;
+  align-content: center;
+  box-sizing: border-box;
+  width: 20em;
+  // border: 1px solid white;
 `;
 
 const SubContainer2b = styled.div`
-  border: 1px solid white;
+  // border: 1px solid white;
   display: flex;
-  width: 10
-  // justify-content: space-between;
+  justify-content: space-evenly;
+  width: 15em;
 `;
 
 const SubContainer3 = styled.div`
-  width: 15%;
+  box-sizing: border-box;
+  margin-left: 10px;
+  width: 20em;
   font-family: "Montserrat";
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
   flex-direction: row;
 
-  border: 1px solid yellow;
+  // border: 1px solid yellow;
 
   div {
-    // margin-right: 2em;
-    box-sizing: border-box;
+    width: 5em;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    color: white;
   }
 `;
 
