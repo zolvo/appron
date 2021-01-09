@@ -23,7 +23,7 @@ APPRON is a web app that allows user to find chef on demand to cook in your hous
  <img src="documentation/appronlogo.jpg" alt="appron-home" width="300">
 </h1>
 
-<h4 align="center">'APPRON' is a web app inspired by a chef friend who want to get a valuable income and flexible time, as well to help people who need a safe, certified, and experienced chef to make their home event. And I found couple web to be a reference such as 'MeetAChef' and 'ChefOnDemand' that allows users to look for their chef. A logged in users have the ability to search for their chef, make an appointment, give a like and rating, and share their comments & thoughs.
+<h4 align="center">'APPRON' is a web app inspired by a chef friend who want to get a valuable income and flexible time, as well to help people who need a safe, certified, and experienced chef to make their home event. And I found couple web to be a reference such as 'MeetAChef' and 'ChefOnDemand' that allows users to look for their chef. A logged in users have the ability to search for their chef, make an appointment, give a like and rating, and share their reviews & thoughs.
 <pFirst_draft is built with React, Flask, Python and PostgreSQL, SQLAlchemy</h4>
 
 ---
@@ -41,8 +41,8 @@ APPRON is a web app that allows user to find chef on demand to cook in your hous
 - Login
 - Search for Chef
 - Make an Appointment
-- Comment ( Chef )
-- Like ( Comment )
+- Review ( Chef )
+- Like ( Review )
 - Rating ( Chef )
 
 </h3>

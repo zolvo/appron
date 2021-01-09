@@ -1,19 +1,30 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { NavLink, Redirect, useHistory, useParams } from "react-router-dom";
+import styled from "styled-components";
 
 function Chef() {
-  const [chef, setChef] = useState({});
+  const [chef, setChef] = useState("");
+  const [userId, setUserId] = useState("");
+  const [currentUser, setCurrentUser] = useState("");
+  const [reviews, setReviews] = useState([]);
+  const [showReviews, setShowReviews] = useState(false);
+  const [Likes, setLikes] = useState([]);
+  const [rating, setRating] = useState([]);
+  const history = useHistory();
+
   // Notice we use useParams here instead of getting the params
   // From props.
   const { chefId } = useParams();
 
   useEffect(() => {
+    document.title = "Appron: Chef";
     if (!chefId) {
       return;
     }
     (async () => {
-      const response = await fetch(`/api/chefs/${chefId}`);
-      const user = await response.json();
+      const res = await fetch(`/api/chefs/${chefId}`);
+      const chef = await res.json();
+
       setChef(chef);
     })();
   }, [chefId]);
@@ -22,48 +33,158 @@ function Chef() {
     return null;
   }
 
+  const handleClick = () => {
+    history.push("/chefs/{id}/appointment");
+  };
+
+  const toggleReview = () => {
+    if (!currentUser) history.push("/login");
+    setShowReviews(!showReviews);
+    const hideMe = () => {
+      let text = document.getElementById("review-chef");
+      text.classList.toggle("hide");
+    };
+  };
+
   return (
-    <ul>
-      <li>
-        <strong>Chef Id</strong> {chefId}
-      </li>
-      <li>
-        <strong>Username</strong> {chef.username}
-      </li>
-      <li>
-        <strong>Email</strong> {chef.email}
-      </li>
-      <li>
-        <strong>Address</strong> {chef.address}
-      </li>
-      <li>
-        <strong>City</strong> {chef.city}
-      </li>
-      <li>
-        <strong>State</strong> {chef.state}
-      </li>
-      <li>
-        <strong>ZipCode</strong> {chef.zipcode}
-      </li>
-      <li>
-        <strong>Phone</strong> {chef.phone}
-      </li>
-      <li>
-        <strong>About</strong> {chef.about}
-      </li>
-      <li>
-        <strong>Service</strong> {chef.service}
-      </li>
-      <li>
-        <strong>Menu</strong> {chef.menu}
-      </li>
-      <li>
-        <strong>Pricing</strong> {chef.pricing}
-      </li>
-      <li>
-        <strong>Available</strong> {chef.available}
-      </li>
-    </ul>
+    <Container>
+      <ul>
+        <li>
+          <strong>Chef Name: </strong> {chef.user.username}
+        </li>
+        <li>
+          <strong>Email</strong> {chef.user.email}
+        </li>
+        <li>
+          <strong>Address</strong> {chef.user.address}
+        </li>
+        <li>
+          <strong>City</strong> {chef.user.city}
+        </li>
+        <li>
+          <strong>State</strong> {chef.user.state}
+        </li>
+        <li>
+          <strong>ZipCode</strong> {chef.user.zipcode}
+        </li>
+        <li>
+          <strong>Phone</strong> {chef.user.phone}
+        </li>
+        <li>
+          <strong>About</strong> {chef.about}
+        </li>
+        <li>
+          <strong>Service</strong> {chef.service}
+        </li>
+        <li>
+          <strong>Menu</strong> {chef.menu}
+        </li>
+        <li>
+          <strong>Pricing</strong> {chef.pricing}
+        </li>
+        <li>
+          <strong>Available</strong> {chef.available}
+        </li>
+      </ul>
+      <Box1>
+        <RatingIcon>
+          <i className="fa fa-star"></i>
+          <i className="fa fa-star"></i>
+          <i className="fa  fa-star"></i>
+          <i className="far fa-star"></i>
+          <i className="far fa-star"></i>
+        </RatingIcon>
+        <TotalLikeIcon>
+          <i className="far fa-heart"></i>
+          <span>{reviews.length}</span>
+        </TotalLikeIcon>
+      </Box1>
+      <button className="appointment" onClick={handleClick}>
+        Make an Appointment
+      </button>
+      <Box2>
+        <LikeIcon>
+          <i className="far fa-heart"></i>
+          <span>{reviews.length}</span>
+        </LikeIcon>
+        <ReviewIcon>
+          <i className="far fa-comments" onClick={toggleReview}>
+            <span>{reviews.length}</span>
+          </i>
+        </ReviewIcon>
+      </Box2>
+    </Container>
   );
 }
+
+const Container = styled.div`
+  background-color: #d81159;
+  color: white;
+
+  li {
+    list-style: none;
+  }
+
+  .list {
+    color: white;
+  }
+  padding-top: 5em;
+  min-height: 100vh;
+
+  .appointment{
+    box-sizing:border-box;
+    margin-top: 3em;
+    margin-left: 4em;
+    background-color: #ffbc42;
+    font-weight: 700;
+    width: 18em;
+    height: 3em;
+    border-radius: 2em;
+    box-shadow:0px 14px 9px -15px rgba(0,0,0,0.25);
+    outline:none;
+    border:none;
+
+    transition: all 0.2x ease-in;
+    &:hover{
+    transform: translateY(-3px);
+    }
+
+`;
+
+const Box1 = styled.div`
+  margin-top: 2em;
+  margin-left: 5em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-item: center;
+  // border: 1px solid white;
+  width: 10em;
+
+  span {
+    margin-left: 0.5em;
+  }
+`;
+
+const Box2 = styled.div`
+  margin-top: 2em;
+  margin-left: 5em;
+  display: flex;
+  justify-content: space-between;
+  align-item: center;
+  // border: 1px solid white;
+  width: 10em;
+
+  span {
+    margin-left: 0.5em;
+  }
+`;
+const RatingIcon = styled.div``;
+
+const TotalLikeIcon = styled.div``;
+
+const LikeIcon = styled.div``;
+
+const ReviewIcon = styled.div``;
+
 export default Chef;

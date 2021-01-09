@@ -11,6 +11,8 @@ import Home from "./components/Home";
 import Main from "./components/Main";
 import Nopage from "./components/auth/Nopage";
 import Appointment from "./components/Appointment";
+import ChefsList from "./components/ChefsList";
+import Chef from "./components/Chef";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -41,12 +43,13 @@ function App() {
             setAuthenticated={setAuthenticated}
           />
         </Route>
-        <Route path="/sign-up" exact={true}>
+        <Route path="/signup" exact={true}>
           <SignUpForm
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
           />
         </Route>
+
         <ProtectedRoute
           path="/users"
           exact={true}
@@ -54,12 +57,29 @@ function App() {
         >
           <UsersList />
         </ProtectedRoute>
+
+        <ProtectedRoute
+          path="/chefs"
+          exact={true}
+          authenticated={authenticated}
+        >
+          <ChefsList />
+        </ProtectedRoute>
         <ProtectedRoute
           path="/users/:userId"
           exact={true}
           authenticated={authenticated}
-        ></ProtectedRoute>
-        <Route path="/appointment" exact={true} authenticated={authenticated}>
+        >
+          <User />
+        </ProtectedRoute>
+        <ProtectedRoute
+          path="/chefs/:chefId"
+          exact={true}
+          authenticated={authenticated}
+        >
+          <Chef />
+        </ProtectedRoute>
+        <Route path="/chefs/:chefId/appointment" exact={true} authenticated={authenticated}>
           <Appointment />
         </Route>
         <Route path="/" exact={true} authenticated={authenticated}>
