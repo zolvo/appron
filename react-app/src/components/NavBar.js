@@ -2,7 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import LogoutButton from "./auth/LogoutButton";
 import styled from "styled-components";
-import logo from "../image/logo01.png";
+import logo01 from "../image/logo01.png";
 import appronwhite from "../image/appronwhite.png";
 
 const search = async (e) => {
@@ -16,7 +16,7 @@ const NavBar = ({ setAuthenticated }) => {
         <SubContainer2>
           <SubContainer2a>
             <a href="/">
-              <img className="img1" src={logo} alt={logo} />
+              <img className="img1" src={logo01} alt={logo01} />
               <img className="img2" src={appronwhite} alt={appronwhite} />
             </a>
           </SubContainer2a>
@@ -101,13 +101,14 @@ const SearchInput = styled.input`
 `;
 
 const SubContainer1 = styled.div`
-  width: 65%;
+  width: 60em;
   height: 55px;
   font-family: "Montserrat";
   display: flex;
-  justify-content: space-between;
+
+  // justify-content: space-between;
   align-items: center;
-  flex-direction: row;
+  // flex-direction: row;
 
   // border: 1px solid red;
 `;
