@@ -90,22 +90,22 @@ const Container = styled.div`
   font-size: 20px;
   color: white;
   background-color: #d81159;
-  padding-top: 5em;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-`;
+  `;
 
-const LoginHeader = styled.div`
+  const LoginHeader = styled.div`
+  margin-top: 5em;
   height: 4em;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`;
+  `;
 
-const LoginFormWrapper = styled.div`
+  const LoginFormWrapper = styled.div`
   background-color: #f4f3f2;
   display: flex;
   flex-direction: column;
@@ -146,6 +146,7 @@ const LoginFormWrapper = styled.div`
     outline: none;
     width: 18em;
     height: 3em;
+    cursor:pointer;
     border-radius: 2em;
     box-shadow:0px 14px 9px -15px rgba(0,0,0,0.25);
 

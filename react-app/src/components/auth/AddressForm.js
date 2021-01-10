@@ -3,12 +3,7 @@ import { NavLink, Redirect, useHistory } from "react-router-dom";
 import { signUp } from "../../services/auth";
 import styled from "styled-components";
 
-const SignUpForm = ({ authenticated, setAuthenticated }) => {
-  const [errors, setErrors] = useState([]);
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [repeatPassword, setRepeatPassword] = useState("");
+const AddressForm = ({ authenticated, setAuthenticated }) => {
   const [address, setAddress] = useState("");
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
@@ -182,15 +177,14 @@ const Container = styled.div`
   font-size: 20px;
   color: white;
   background-color: #d81159;
+  padding-top: 5em;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 100vh;
-  padding-bottom: 3em;
-  `;
+`;
 
-  const SignupHeader = styled.div`
-  margin-top: 5em;
+const SignupHeader = styled.div`
   height: 4em;
   display: flex;
   flex-direction: column;
@@ -237,7 +231,6 @@ const SignupFormWrapper = styled.div`
     border: none;
     width: 18em;
     height: 3em;
-    cursor: pointer;
     border-radius: 2em;
     box-shadow:0px 14px 9px -15px rgba(0,0,0,0.25);
     outline:none;
@@ -307,4 +300,4 @@ const Error = styled.div`
   }
 `;
 
-export default SignUpForm;
+export default AddressForm;

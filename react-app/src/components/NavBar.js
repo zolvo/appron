@@ -1,15 +1,21 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { NavLink, useParams } from "react-router-dom";
 import LogoutButton from "./auth/LogoutButton";
 import styled from "styled-components";
 import logo01 from "../image/logo01.png";
 import appronwhite from "../image/appronwhite.png";
 
-const search = async (e) => {
-  e.preventDefault();
-};
+const NavBar = ({ setAuthenticated, authenticated, authenticate }) => {
+  const [currentUser, setCurrentUser] = useState();
 
-const NavBar = ({ setAuthenticated }) => {
+  useEffect(() => {
+    (async () => {
+      const res = await authenticate();
+      const id = res.id;
+      setCurrentUser(id);
+    })();
+  });
+
   return (
     <Container>
       <SubContainer1>
@@ -26,9 +32,9 @@ const NavBar = ({ setAuthenticated }) => {
                 <div>Home</div>
               </NavLink>
             </div>
-            <NavLink to="/users" exact={true} activeClassName="active">
+            {/* <NavLink to="/users" exact={true} activeClassName="active">
               <div>Users</div>
-            </NavLink>
+            </NavLink> */}
             <NavLink to="/chefs" exact={true} activeClassName="active">
               <div>Chefs</div>
             </NavLink>
@@ -42,13 +48,54 @@ const NavBar = ({ setAuthenticated }) => {
           ></SearchInput>
         </MiniSearch>
         <SubContainer3>
-          <NavLink to="/login" exact={true} activeClassName="active">
-            <div>Login</div>
-          </NavLink>
-          <NavLink to="/signup" exact={true} activeClassName="active">
-            <div>Sign Up</div>
-          </NavLink>
-          <LogoutButton setAuthenticated={setAuthenticated} />
+          {authenticated ? (
+            ""
+          ) : (
+            <NavLink to="/login" exact={true} activeClassName="active">
+              <div>Login</div>
+            </NavLink>
+          )}
+          {authenticated ? (
+            ""
+          ) : (
+            <NavLink to="/signup" exact={true} activeClassName="active">
+              <div>Sign Up</div>
+            </NavLink>
+          )}
+          {authenticated ? (
+            <NavLink to="/users" exact={true} activeClassName="active">
+              <UserDropdown>
+                <i className="far fa-user-circle fa-2x">
+                  <div className="dropdown-content">
+                    <li>
+                      <NavLink
+                        to={`/users/${currentUser}`}
+                        exact={true}
+                        activeClassName="active"
+                      >
+                        <button className="button">
+                          <i class="fas fa-house-user"></i>
+                          Profile
+                        </button>
+                      </NavLink>
+                    </li>
+                    <li>
+                      <LogoutButton
+                        setAuthenticated={setAuthenticated}
+                        authenticated={authenticated}
+                      />
+                    </li>
+                  </div>
+                </i>
+              </UserDropdown>
+            </NavLink>
+          ) : (
+            ""
+          )}
+          {/* <LogoutButton
+            setAuthenticated={setAuthenticated}
+            authenticated={authenticated}
+          /> */}
         </SubContainer3>
       </SubContainer1>
     </Container>
@@ -101,7 +148,7 @@ const SearchInput = styled.input`
 `;
 
 const SubContainer1 = styled.div`
-  width: 60em;
+  width: 55em;
   height: 55px;
   font-family: "Montserrat";
   display: flex;
@@ -164,8 +211,8 @@ const SubContainer2b = styled.div`
 
 const SubContainer3 = styled.div`
   box-sizing: border-box;
-  margin-left: 10px;
-  width: 20em;
+  margin-left: 14px;
+  width: 10em;
   font-family: "Montserrat";
   display: flex;
   justify-content: space-evenly;
@@ -175,11 +222,52 @@ const SubContainer3 = styled.div`
   // border: 1px solid yellow;
 
   div {
+    text-align: center;
     width: 5em;
     letter-spacing: 0.05em;
     font-weight: 600;
     color: white;
   }
+`;
+
+const UserDropdown = styled.div`
+  .dropdown-content {
+    display: none;
+    list-style: none;
+    position: absolute;
+    min-width: 16px;
+    z-index: 1;
+  }
+
+  li {
+    display: flex;
+    justify-items: flex-start;
+    font-family: dosis;
+    font-size: 16px;
+    color: white;
+  }
+
+  :hover .dropdown-content {
+    display: block;
+  }
+
+  :hover {
+    // color: #ffbc42;
+    text-shadow: rgba(0, 0, 0, 0.75) 0px 5px 15px;
+  }
+
+  .button {
+    cursor: pointer;
+    letter-spacing: 0.05em;
+    // font-weight: 600;
+    color: white;
+    font-size: 17px;
+    font-family: dosis;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: white;
+
 `;
 
 export default NavBar;

@@ -48,6 +48,10 @@ function Chef() {
 
   return (
     <Container>
+      <ChefWrapper>
+        <Title>
+          Chef Profile
+      </Title>
       <ul>
         <li>
           <strong>Chef Name: </strong> {chef.user.username}
@@ -113,47 +117,74 @@ function Chef() {
           </i>
         </ReviewIcon>
       </Box2>
+      </ChefWrapper>
     </Container>
   );
 }
 
 const Container = styled.div`
-  background-color: #d81159;
+background-color: #d81159;
+color: white;
+min-height: 100vh;
+display:flex;
+justify-content:center;
+
+li {
+  list-style: none;
+}
+
+.list {
   color: white;
+}
 
-  li {
-    list-style: none;
-  }
+.appointment{
+  box-sizing:border-box;
+  margin-top: 3em;
+  // margin-left: 4em;
+  background-color: #ffbc42;
+  font-weight: 700;
+  width: 18em;
+  height: 3em;
+  border-radius: 2em;
+  box-shadow:0px 14px 9px -15px rgba(0,0,0,0.25);
+  outline:none;
+  border:none;
 
-  .list {
-    color: white;
-  }
-  padding-top: 5em;
-  min-height: 100vh;
-
-  .appointment{
-    box-sizing:border-box;
-    margin-top: 3em;
-    margin-left: 4em;
-    background-color: #ffbc42;
-    font-weight: 700;
-    width: 18em;
-    height: 3em;
-    border-radius: 2em;
-    box-shadow:0px 14px 9px -15px rgba(0,0,0,0.25);
-    outline:none;
-    border:none;
-
-    transition: all 0.2x ease-in;
-    &:hover{
+  transition: all 0.2x ease-in;
+  &:hover{
     transform: translateY(-3px);
-    }
+  }
 
+  `;
+
+  const ChefWrapper = styled.div`
+  margin-top: 10em;
+  box-sizing: border-box;
+  border: 1px solid white;
+  // background-color: #f4f3f2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  // justify-content: center;
+  width: 500px;
+  height: 600px;
+  border-radius: 25px;
 `;
+
+const Title = styled.div`
+  margin-bottom: 2em;
+  padding-top: 2em;
+  text-align: center;
+  font-family: monserrat;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+`;
+
 
 const Box1 = styled.div`
   margin-top: 2em;
-  margin-left: 5em;
+  // margin-left: 5em;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -168,7 +199,7 @@ const Box1 = styled.div`
 
 const Box2 = styled.div`
   margin-top: 2em;
-  margin-left: 5em;
+  // margin-left: 5em;
   display: flex;
   justify-content: space-between;
   align-item: center;
