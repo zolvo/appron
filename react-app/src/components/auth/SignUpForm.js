@@ -9,12 +9,12 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
-  const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [state, setState] = useState("");
-  const [zipcode, setZipcode] = useState("");
-  const [phone, setPhone] = useState("");
-  const [isChef, setIsChef] = useState(true);
+  // const [address, setAddress] = useState("");
+  // const [city, setCity] = useState("");
+  // const [state, setState] = useState("");
+  // const [zipcode, setZipcode] = useState("");
+  // const [phone, setPhone] = useState("");
+  // const [isChef, setIsChef] = useState(true);
   const history = useHistory();
 
   useEffect(() => {
@@ -28,19 +28,19 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
         username,
         email,
         password,
-        address,
-        city,
-        state,
-        zipcode,
-        phone,
-        isChef
+        // address,
+        // city,
+        // state,
+        // zipcode,
+        // phone,
+        // isChef
       );
 
       if (!user.errors) {
         setAuthenticated(true);
-        if (isChef) {
-          history.push("/chefform");
-        }
+        // if (isChef) {
+        //   history.push("/chefform");
+        // }
       } else {
         setErrors(user.errors);
       }
@@ -100,7 +100,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
               required={true}
             />
           </div>
-          <div>
+          {/* <div>
             <input
               type="text"
               name="address"
@@ -149,8 +149,8 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
               value={phone}
               required={true}
             />
-          </div>
-          <AChef>
+          </div> */}
+          {/* <AChef>
             <input
               type="checkbox"
               onChange={(e) => setIsChef(e.target.checked)}
@@ -158,7 +158,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
               className="isChef"
             />
             <span>ARE YOU A CHEF?</span>
-          </AChef>
+          </AChef> */}
           <div>
             <button type="submit">Sign Up</button>
           </div>

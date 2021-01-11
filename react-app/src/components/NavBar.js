@@ -58,7 +58,7 @@ const NavBar = ({ setAuthenticated, authenticated, authenticate }) => {
           {authenticated ? (
             ""
           ) : (
-            <NavLink to="/signup" exact={true} activeClassName="active">
+            <NavLink to="/sign-up" exact={true} activeClassName="active">
               <div>Sign Up</div>
             </NavLink>
           )}

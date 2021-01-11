@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+// import { NavLink } from "react-router-dom";
 import styled from "styled-components";
 import background from "../image/bg01.jpg";
 import background2 from "../image/02.jpg";

@@ -13,10 +13,12 @@ import Nopage from "./components/auth/Nopage";
 import Appointment from "./components/Appointment";
 import ChefsList from "./components/ChefsList";
 import Chef from "./components/Chef";
+import moment from 'moment';
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
+  const [createdAt, setCreatedAt] = useState("")
 
   useEffect(() => {
     document.title = "Appron: Home";
@@ -47,7 +49,7 @@ function App() {
             setAuthenticated={setAuthenticated}
           />
         </Route>
-        <Route path="/signup" exact={true}>
+        <Route path="/sign-up" exact={true}>
           <SignUpForm
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}

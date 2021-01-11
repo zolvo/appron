@@ -73,7 +73,7 @@ const LoginForm = ({ authenticated, setAuthenticated }) => {
           <Footer>
             <div>
               don't have any account?
-              <NavLink exact to="/signup">
+              <NavLink exact to="/sigpn-up">
                 <span>Signup</span>
               </NavLink>
             </div>
