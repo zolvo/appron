@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
+import bg from "../image/bg.jpg";
 
 function UsersList() {
   const [users, setUsers] = useState([]);
@@ -35,13 +36,17 @@ function UsersList() {
 }
 
 const Container = styled.div`
-  background-color: #d81159;
-  color: white;
+  // background-color: #d81159;
+  color: gray;
   display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
   min-height: 100vh;
+  background-image: url(${bg});
+  background-repeat: no-repeat;
+  background-size: center;
+  background-position: 40% bottom;
 
   li {
     list-style: none;
@@ -49,10 +54,11 @@ const Container = styled.div`
   }
 
   .list {
+    color: black;
     font-family: monserrat;
     font-size: 15px;
     letter-spacing: 0.05em;
-    color: white;
+    text-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
   }
 `;
 
@@ -60,7 +66,7 @@ const UserListWrapper = styled.div`
   margin-top: 4em;
   box-sizing: border-box;
   border: 1px solid white;
-  // background-color: #f4f3f2;
+  background-color: #f4f3f2;
   display: flex;
   flex-direction: column;
   // align-items: center;

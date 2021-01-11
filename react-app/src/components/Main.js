@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import background from "../image/test01.webp";
+import background from "../image/bg01.jpg";
 import background2 from "../image/02.jpg";
 import background3 from "../image/food00.png";
 import img00 from "../image/00.png";
@@ -26,8 +26,9 @@ const Home = ({ setAuthenticated, authenticated }) => {
         <div className="subtitle">Chef on your door</div>
       </SubContainer2>
       <SubContainer3>
-        This apps is designed to help you to <span>find chef for your event</span>.
-        Created for all the chef who want to <span>serve with passion</span>.
+        This apps is designed to help you to{" "}
+        <span>find chef for your event</span>. Created for all the chef who want
+        to <span>serve with passion</span>.
       </SubContainer3>
       <About />
     </Container>
@@ -38,7 +39,11 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #d81159;
+  // background-color: #d81159;
+  background-image: url(${background});
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right bottom;
 `;
 
 const SubContainer1 = styled.div`
@@ -86,11 +91,7 @@ const SubContainer2 = styled.div`
   height: 30em;
   background-color: white;
   // background-image: linear-gradient(360deg, white, grey, white);
-  background-image: linear-gradient(
-    to top,
-    rgba(255, 0, 0, 0),
-    grey
-  );
+  background-image: linear-gradient(to top, rgba(255, 0, 0, 0), grey);
 
   display: flex;
   flex-direction: column;
@@ -166,8 +167,8 @@ const SubContainer3 = styled.div`
   background-size: 300%;
   background-position: 10% top;
 
-  background-color: #EFF1F2;
-  color: #20303C;
+  background-color: #eff1f2;
+  color: #20303c;
   height: 50px;
   display: flex;
   align-items: center;
@@ -179,11 +180,10 @@ const SubContainer3 = styled.div`
   z-index: 10;
 
   span {
-    color: #20303C;
+    color: #20303c;
     font-weight: 900;
     margin-left: 5px;
   }
-
 `;
 
 export default Home;
