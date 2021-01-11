@@ -44,8 +44,6 @@ const SubContainer1 = styled.div`
 const Title = styled.div`
   // border: 1px solid red;
   box-sizing: border-box;
-  // drop-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  // height: 100%;
   margin-top: 1.6em;
   text-align: center;
   // display: flex;
