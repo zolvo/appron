@@ -44,7 +44,18 @@ export const logout = async () => {
   return await response.json();
 };
 
-export const signUp = async (username, email, password) => {
+export const signUp = async (
+  username,
+  email,
+  password,
+  address,
+  city,
+  state,
+  zipcode,
+  phone,
+  is_a_chef,
+  createdAt
+) => {
   const response = await fetch("/api/auth/signup", {
     method: "POST",
     headers: {
@@ -54,7 +65,39 @@ export const signUp = async (username, email, password) => {
       username,
       email,
       password,
+      address,
+      city,
+      state,
+      zipcode,
+      phone,
+      is_a_chef,
+      createdAt,
     }),
   });
   return await response.json();
+};
+
+export const chefform = async (
+  user_id,
+  about,
+  service,
+  menu,
+  pricing,
+  available
+) => {
+  const res = await fetch("/api/auth/chefform", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      user_id,
+      about,
+      service,
+      menu,
+      pricing,
+      available,
+    })
+  })
+  return await res.json()
 };

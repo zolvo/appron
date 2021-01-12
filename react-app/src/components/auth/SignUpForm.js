@@ -3,18 +3,18 @@ import { NavLink, Redirect, useHistory } from "react-router-dom";
 import { signUp } from "../../services/auth";
 import styled from "styled-components";
 
-const SignUpForm = ({ authenticated, setAuthenticated }) => {
+const SignUpForm = ({ authenticated, setAuthenticated, setUser }) => {
   const [errors, setErrors] = useState([]);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [repeatPassword, setRepeatPassword] = useState("");
-  // const [address, setAddress] = useState("");
-  // const [city, setCity] = useState("");
-  // const [state, setState] = useState("");
-  // const [zipcode, setZipcode] = useState("");
-  // const [phone, setPhone] = useState("");
-  // const [isChef, setIsChef] = useState(true);
+  const [address, setAddress] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [zipcode, setZipcode] = useState("");
+  const [phone, setPhone] = useState("");
+  const [isChef, setIsChef] = useState(true);
   const history = useHistory();
 
   useEffect(() => {
@@ -28,19 +28,21 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
         username,
         email,
         password,
-        // address,
-        // city,
-        // state,
-        // zipcode,
-        // phone,
-        // isChef
+        address,
+        city,
+        state,
+        zipcode,
+        phone,
+        isChef,
+
       );
 
       if (!user.errors) {
         setAuthenticated(true);
-        // if (isChef) {
-        //   history.push("/chefform");
-        // }
+        setUser(user);
+        if (isChef) {
+          history.push("/chefform");
+        }
       } else {
         setErrors(user.errors);
       }
@@ -100,7 +102,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
               required={true}
             />
           </div>
-          {/* <div>
+          <div>
             <input
               type="text"
               name="address"
@@ -149,8 +151,8 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
               value={phone}
               required={true}
             />
-          </div> */}
-          {/* <AChef>
+          </div>
+          <AChef>
             <input
               type="checkbox"
               onChange={(e) => setIsChef(e.target.checked)}
@@ -158,7 +160,7 @@ const SignUpForm = ({ authenticated, setAuthenticated }) => {
               className="isChef"
             />
             <span>ARE YOU A CHEF?</span>
-          </AChef> */}
+          </AChef>
           <div>
             <button type="submit">Sign Up</button>
           </div>
@@ -187,9 +189,9 @@ const Container = styled.div`
   align-items: center;
   min-height: 100vh;
   padding-bottom: 3em;
-  `;
+`;
 
-  const SignupHeader = styled.div`
+const SignupHeader = styled.div`
   margin-top: 5em;
   height: 4em;
   display: flex;
@@ -199,6 +201,7 @@ const Container = styled.div`
 `;
 
 const SignupFormWrapper = styled.div`
+  padding-top: 1em;
   background-color: #f4f3f2;
   display: flex;
   flex-direction: column;
@@ -209,7 +212,7 @@ const SignupFormWrapper = styled.div`
   border-radius: 25px;
 
   div {
-    margin-bottom:30px;
+    margin-bottom:10px;
     text-decoration: none;
     box-shadow:0px 14px 9px -15px rgba(0,0,0,0.25);
   }
@@ -296,6 +299,7 @@ const Footer = styled.div`
 const Error = styled.div`
   div {
     box-sizing: border-box;
+    margin-top: 1em;
     margin-bottom: 5em;
     display: flex;
     flex-direction: column;

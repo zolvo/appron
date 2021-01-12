@@ -1,6 +1,7 @@
 from .db import db
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import UserMixin
+from datetime import datetime
 
 class User(db.Model, UserMixin):
   __tablename__ = 'users'
@@ -15,7 +16,7 @@ class User(db.Model, UserMixin):
   zipcode = db.Column(db.Integer, nullable=False)
   phone = db.Column(db.String(50), nullable=False)
   is_a_chef = db.Column(db.Boolean, nullable=False)
-  createdAt = db.Column(db.DateTime, nullable=False)
+  createdAt = db.Column(db.DateTime)
 
   chef = db.relationship('Chef', back_populates='user', uselist=False, cascade='all, delete-orphan')
   comment = db.relationship('Comment', back_populates='user', cascade='all, delete-orphan')

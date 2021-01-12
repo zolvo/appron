@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import LoginForm from "./components/auth/LoginForm";
 import SignUpForm from "./components/auth/SignUpForm";
+import ChefForm from "./components/auth/ChefForm";
 import NavBar from "./components/NavBar";
 import ProtectedRoute from "./components/auth/ProtectedRoute";
 import UsersList from "./components/UsersList";
@@ -13,12 +14,11 @@ import Nopage from "./components/auth/Nopage";
 import Appointment from "./components/Appointment";
 import ChefsList from "./components/ChefsList";
 import Chef from "./components/Chef";
-import moment from 'moment';
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
-  const [createdAt, setCreatedAt] = useState("")
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     document.title = "Appron: Home";
@@ -26,6 +26,8 @@ function App() {
       const user = await authenticate();
       if (!user.errors) {
         setAuthenticated(true);
+        setUser(user);
+        console.log("******************* :", user);
       }
       setLoaded(true);
     })();
@@ -40,19 +42,28 @@ function App() {
       <NavBar
         setAuthenticated={setAuthenticated}
         authenticated={authenticated}
-        authenticate={authenticate}
+        user={user}
       />
       <Switch>
         <Route path="/login" exact={true}>
           <LoginForm
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
+            setUser={setUser}
           />
         </Route>
         <Route path="/sign-up" exact={true}>
           <SignUpForm
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
+            setUser={setUser}
+          />
+        </Route>
+        <Route path="/chefform" exact={true}>
+          <ChefForm
+            authenticated={authenticated}
+            setAuthenticated={setAuthenticated}
+            user={user}
           />
         </Route>
 

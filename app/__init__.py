@@ -25,8 +25,8 @@ login.login_view = 'auth.unauthorized'
 def load_user(id):
     return User.query.get(int(id))
 
-def load_chef(id):
-    return Chef.query.get(int(id))
+# def load_chef(id):
+#     return Chef.query.get(int(id))
 
 
 # Tell flask about our seed commands

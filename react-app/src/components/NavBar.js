@@ -5,16 +5,16 @@ import styled from "styled-components";
 import logo01 from "../image/logo01.png";
 import appronwhite from "../image/appronwhite.png";
 
-const NavBar = ({ setAuthenticated, authenticated, authenticate }) => {
-  const [currentUser, setCurrentUser] = useState();
+const NavBar = ({ setAuthenticated, authenticated, user }) => {
+  // const [currentUser, setCurrentUser] = useState();
 
-  useEffect(() => {
-    (async () => {
-      const res = await authenticate();
-      const id = res.id;
-      setCurrentUser(id);
-    })();
-  });
+  // useEffect(() => {
+  //   (async () => {
+  //     const res = await authenticate();
+  //     const id = res.id;
+  //     setCurrentUser(id);
+  //   })();
+  // });
 
   return (
     <Container>
@@ -41,7 +41,7 @@ const NavBar = ({ setAuthenticated, authenticated, authenticate }) => {
           </SubContainer2b>
         </SubContainer2>
         <MiniSearch>
-          <i className="fas fa-search"></i>
+          <i className="fas fa-search" />
           <SearchInput
             type="text"
             placeholder="Find: chef, menu, food"
@@ -65,16 +65,16 @@ const NavBar = ({ setAuthenticated, authenticated, authenticate }) => {
           {authenticated ? (
             <NavLink to="/users" exact={true} activeClassName="active">
               <UserDropdown>
-                <i className="far fa-user-circle fa-2x">
+                <i className="far fa-user-circle fa-2x" />
                   <div className="dropdown-content">
                     <li>
                       <NavLink
-                        to={`/users/${currentUser}`}
+                        to={`/users/${user}`}
                         exact={true}
                         activeClassName="active"
                       >
                         <button className="button">
-                          <i class="fas fa-house-user"></i>
+                          <i className="fas fa-house-user" />
                           Profile
                         </button>
                       </NavLink>
@@ -86,7 +86,6 @@ const NavBar = ({ setAuthenticated, authenticated, authenticate }) => {
                       />
                     </li>
                   </div>
-                </i>
               </UserDropdown>
             </NavLink>
           ) : (

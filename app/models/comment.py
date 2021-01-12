@@ -1,5 +1,6 @@
 from .db import db
 from app.models import User, Chef
+from datetime import datetime
 
 class Comment(db.Model):
     __tablename__ = 'comments'
@@ -8,7 +9,7 @@ class Comment(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     chef_id = db.Column(db.Integer, db.ForeignKey('chefs.id'), nullable=False)
     text = db.Column(db.Text, nullable=False)
-    createdAt = db.Column(db.DateTime, nullable=False)
+    createdAt = db.Column(db.DateTime)
 
     user = db.relationship('User', back_populates='comment')
     chef = db.relationship('Chef', back_populates='comment')

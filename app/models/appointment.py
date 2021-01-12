@@ -1,5 +1,6 @@
 from .db import db
 from app.models import User, Chef
+from datetime import datetime
 
 class Appointment(db.Model):
     __tablename__ = 'appointments'
@@ -9,7 +10,7 @@ class Appointment(db.Model):
     chef_id = db.Column(db.Integer, db.ForeignKey('chefs.id'), nullable=False)
     notes = db.Column(db.String(255))
     date = db.Column(db.DateTime, nullable=False)
-    createdAt = db.Column(db.DateTime, nullable=False)
+    createdAt = db.Column(db.DateTime)
 
     user = db.relationship('User', back_populates='appointment')
     chef = db.relationship('Chef', back_populates='appointment')

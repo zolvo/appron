@@ -9,8 +9,8 @@ function Chef() {
   const [currentUser, setCurrentUser] = useState("");
   const [reviews, setReviews] = useState([]);
   const [showReviews, setShowReviews] = useState(false);
-  const [Likes, setLikes] = useState([]);
-  const [rating, setRating] = useState([]);
+  // const [Likes, setLikes] = useState([]);
+  // const [rating, setRating] = useState([]);
   const history = useHistory();
 
   // Notice we use useParams here instead of getting the params
