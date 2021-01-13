@@ -34,7 +34,6 @@ const SignUpForm = ({ authenticated, setAuthenticated, setUser }) => {
         zipcode,
         phone,
         isChef,
-
       );
 
       if (!user.errors) {

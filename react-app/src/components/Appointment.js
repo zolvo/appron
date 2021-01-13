@@ -3,25 +3,45 @@ import DatePicker from "react-datepicker";
 import styled from "styled-components";
 
 import "react-datepicker/dist/react-datepicker.css";
+import { appointmentForm } from "../services/auth";
 
-function Appointment(user) {
-  const [startDate, setStartDate] = useState(new Date());
+function Appointment({ user }) {
+  const [user_id, setUser_id] = useState({});
+  const [chef_id, setChef_id] = useState({});
+  const [notes, setNotes] = useState({});
+  const [date, setDate] = useState(new Date());
+
+
+  const onAppointment = async (e) => {
+    e.preventDefault();
+    const appointment = await appointmentForm(
+      user_id,
+      chef_id,
+      notes,
+      date,
+    );
+    if (!appointment.errors) {
+    }
+  };
+
   return (
     <Container>
       <AppointmentHeader>Appointment</AppointmentHeader>
       <MakeAppointment>
-        <form>
+        <form onSubmit={onAppointment}>
           <div>Chef Name: </div>
-          <div>User Name: </div>
+          <div>User Name: {user.username}</div>
           <div className="subtitle">Pick a Date</div>
           <DatePicker
-            selected={startDate}
-            onChange={(date) => setStartDate(date)}
+            selected={date}
+            onChange={(date) => setDate(date)}
           />
           <div>
             <textarea className="notes" />
           </div>
-          <button className="appointment">Make an appointment</button>
+          <button type="submit" className="appointment">
+            Make an appointment
+          </button>
         </form>
       </MakeAppointment>
     </Container>
@@ -62,6 +82,7 @@ const MakeAppointment = styled.div`
   }
 
   .appointment{
+    cursor: pointer;
     background-color: #ffbc42;
     font-weight: 700;
     width: 18em;

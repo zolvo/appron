@@ -97,7 +97,30 @@ export const chefform = async (
       menu,
       pricing,
       available,
-    })
-  })
-  return await res.json()
+    }),
+  });
+  return await res.json();
+};
+
+export const appointmentForm = async (
+  user_id,
+  chef_id,
+  notes,
+  date,
+  createdAt
+  ) => {
+    const res = await fetch("api/auth/appointmentform", {
+      method: "POST",
+      headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      user_id,
+      chef_id,
+      notes,
+      date,
+      createdAt,
+    }),
+  });
+  return await res.json();
 };
