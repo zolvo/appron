@@ -26,13 +26,13 @@ def chef(id):
 def review(id):
     chef_id = Chef.query.get(id).id
     user_id = User.query.get(id).id
-    text = request.json['text']
+    comment = request.json['comment']
 
-    new_text = Review(user_id, chef_id, text)
-    db.session.add(new_text)
+    new_comment = Review(user_id, chef_id, comment)
+    db.session.add(new_comment)
     db.session.commit()
 
-    return new_text.to_dict()
+    return new_comment.to_dict()
 
 
 #Post an appointment Route

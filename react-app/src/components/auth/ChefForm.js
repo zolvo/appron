@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { chefform, authenticate } from "../../services/auth";
+import { chefform } from "../../services/auth";
 import styled from "styled-components";
-import { NavLink, Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const ChefForm = ({ authenticated, setAuthenticated, user }) => {
   const [errors, setErrors] = useState([]);
@@ -56,7 +56,7 @@ const ChefForm = ({ authenticated, setAuthenticated, user }) => {
               ))}
             </div>
           </Error>
-         
+
           <About>
             <textarea
               className="about"
@@ -120,9 +120,6 @@ const ChefForm = ({ authenticated, setAuthenticated, user }) => {
   );
 };
 
-const Hidden = styled.div`
-  display: none;
-`;
 
 const Container = styled.div`
   font-family: monserrat;

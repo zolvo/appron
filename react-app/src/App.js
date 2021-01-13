@@ -27,11 +27,12 @@ function App() {
       if (!user.errors) {
         setAuthenticated(true);
         setUser(user);
-        console.log("******************* :", user);
+        // console.log("******************* :", user);
       }
       setLoaded(true);
     })();
   }, []);
+
 
   if (!loaded) {
     return null;
@@ -67,41 +68,21 @@ function App() {
           />
         </Route>
 
-        <ProtectedRoute
-          path="/users"
-          exact={true}
-          authenticated={authenticated}
-        >
-          <UsersList />
+        <ProtectedRoute path="/users" exact={true}>
+          <UsersList authenticated={authenticated} />
         </ProtectedRoute>
 
-        <ProtectedRoute
-          path="/chefs"
-          exact={true}
-          authenticated={authenticated}
-        >
-          <ChefsList />
+        <ProtectedRoute path="/chefs" exact={true}>
+          <ChefsList authenticated={authenticated} />
         </ProtectedRoute>
-        <ProtectedRoute
-          path="/users/:userId"
-          exact={true}
-          authenticated={authenticated}
-        >
-          <User />
+        <ProtectedRoute path="/users/:userId" exact={true}>
+          <User authenticated={authenticated} />
         </ProtectedRoute>
-        <ProtectedRoute
-          path="/chefs/:chefId"
-          exact={true}
-          authenticated={authenticated}
-        >
-          <Chef />
+        <ProtectedRoute path="/chefs/:chefId" exact={true}>
+          <Chef authenticated={authenticated} />
         </ProtectedRoute>
-        <Route
-          path="/chefs/:chefId/appointment"
-          exact={true}
-          authenticated={authenticated}
-        >
-          <Appointment />
+        <Route path="/chefs/:chefId/appointment" exact={true}>
+          <Appointment authenticated={authenticated} user={user} />
         </Route>
         <Route path="/" exact={true} authenticated={authenticated}>
           <Home authenticated={authenticated} />

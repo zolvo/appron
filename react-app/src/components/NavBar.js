@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import React from "react";
+import { NavLink} from "react-router-dom";
 import LogoutButton from "./auth/LogoutButton";
 import styled from "styled-components";
 import logo01 from "../image/logo01.png";

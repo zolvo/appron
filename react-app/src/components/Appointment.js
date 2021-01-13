@@ -4,15 +4,15 @@ import styled from "styled-components";
 
 import "react-datepicker/dist/react-datepicker.css";
 
-function Appointment() {
+function Appointment(user) {
   const [startDate, setStartDate] = useState(new Date());
-
   return (
     <Container>
       <AppointmentHeader>Appointment</AppointmentHeader>
       <MakeAppointment>
         <form>
           <div>Chef Name: </div>
+          <div>User Name: </div>
           <div className="subtitle">Pick a Date</div>
           <DatePicker
             selected={startDate}

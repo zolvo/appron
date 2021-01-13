@@ -74,17 +74,17 @@ const Subtitle = styled.div`
   filter: drop-shadow(0 0 30px #fff);
 `;
 
-const SubContainer2 = styled.div`
-  box-sizing: border-box;
-  // border: 1px solid red;
-  height: 30em;
-  background-color: #ffbc42;
-`;
+// const SubContainer2 = styled.div`
+//   box-sizing: border-box;
+//   // border: 1px solid red;
+//   height: 30em;
+//   background-color: #ffbc42;
+// `;
 
-const SubContainer3 = styled.div`
-  box-sizing: border-box;
-  // border: 1px solid red;
-  height: 40em;
-  background-color: brokenwhite;
-`;
+// const SubContainer3 = styled.div`
+//   box-sizing: border-box;
+//   // border: 1px solid red;
+//   height: 40em;
+//   background-color: brokenwhite;
+// `;
 export default Home;
