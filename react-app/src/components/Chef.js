@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import styled from "styled-components";
 import bg from "../image/bg.jpg";
+import Comment from "./Comment";
 
-function Chef() {
+function Chef(user) {
   const [chef, setChef] = useState("");
   // const [userId, setUserId] = useState("");
   const [currentUser, setCurrentUser] = useState("");
@@ -26,6 +27,7 @@ function Chef() {
       const res = await fetch(`/api/chefs/${chefId}`);
       const chef = await res.json();
       setChef(chef);
+      setCurrentUser(user);
     })();
   }, [chefId]);
 
@@ -40,10 +42,6 @@ function Chef() {
   const toggleReview = () => {
     if (!currentUser) history.push("/login");
     setShowReviews(!showReviews);
-    const hideMe = () => {
-      let text = document.getElementById("review-chef");
-      text.classList.toggle("hide");
-    };
   };
 
   return (
@@ -90,14 +88,14 @@ function Chef() {
         </ul>
         <Box1>
           <RatingIcon>
-            <i className="fa fa-star"></i>
-            <i className="fa fa-star"></i>
-            <i className="fa  fa-star"></i>
-            <i className="far fa-star"></i>
-            <i className="far fa-star"></i>
+            <i className="fa fa-star" />
+            <i className="fa fa-star" />
+            <i className="fa  fa-star" />
+            <i className="far fa-star" />
+            <i className="far fa-star" />
           </RatingIcon>
           <TotalLikeIcon>
-            <i className="far fa-heart"></i>
+            <i className="far fa-heart icon" />
             <span>{reviews.length}</span>
           </TotalLikeIcon>
         </Box1>
@@ -106,15 +104,20 @@ function Chef() {
         </button>
         <Box2>
           <LikeIcon>
-            <i className="far fa-heart"></i>
+            <i className="far fa-heart icon" />
             <span>{reviews.length}</span>
           </LikeIcon>
           <ReviewIcon>
-            <i className="far fa-comments" onClick={toggleReview}>
-              <span>{reviews.length}</span>
-            </i>
+            <i className="far fa-comments icon" onClick={toggleReview} />
+            <span>{reviews.length}</span>
           </ReviewIcon>
         </Box2>
+        <Box3>
+          {/* <Comment comments={comments} user={user}/> */}
+          {showReviews && (
+            <textarea className="text" placeholder="leave a review"></textarea>
+          )}
+        </Box3>
       </ChefWrapper>
     </Container>
   );
@@ -142,6 +145,7 @@ li {
 }
 
 .appointment{
+  cursor: pointer;
   box-sizing:border-box;
   margin-top: 3em;
   // margin-left: 4em;
@@ -150,7 +154,7 @@ li {
   width: 18em;
   height: 3em;
   border-radius: 2em;
-  box-shadow:0px 14px 9px -15px rgba(0,0,0,0.25);
+
   outline:none;
   border:none;
 
@@ -158,7 +162,6 @@ li {
   &:hover{
     transform: translateY(-3px);
   }
-
   `;
 
 const ChefWrapper = styled.div`
@@ -172,14 +175,14 @@ const ChefWrapper = styled.div`
   // justify-content: center;
   width: 500px;
   // height: 600px;
-  margin-bottom: 1em;
+  margin-bottom: 3em;
   padding-right: 1em;
   border-radius: 25px;
 `;
 
 const Title = styled.div`
   margin-bottom: 2em;
-  padding-top: 2em;
+  margin-top: 3em;
   text-align: center;
   font-family: monserrat;
   font-size: 20px;
@@ -214,6 +217,15 @@ const Box2 = styled.div`
   span {
     margin-left: 0.5em;
   }
+
+  .icon {
+    cursor: pointer;
+
+    transition: all 0.2x ease-in;
+    &:hover {
+      transform: translateY(-3px);
+    }
+  }
 `;
 const RatingIcon = styled.div`
   color: #ef9d55;
@@ -232,5 +244,28 @@ const LikeIcon = styled.div`
 `;
 
 const ReviewIcon = styled.div``;
+
+const Box3 = styled.div`
+  // margin-top: 3em;
+  margin-bottom: 3em;
+  transition: all 0.2x ease-in;
+  cursor: pointer;
+
+  .text {
+    outline: none;
+    font-family: dosis;
+    letter-spacing: 0.5px;
+    box-sizing: border-box;
+    // border: 1px solid red;
+    margin-top: 2em;
+    background-color: lightgrey;
+    height: 10em;
+    width: 30em;
+    padding: 0.8em;
+    border-radius: 1em;
+    margin-bottom: 2em;
+    margin-left: 1.5em;
+  }
+`;
 
 export default Chef;

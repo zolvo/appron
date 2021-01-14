@@ -91,10 +91,6 @@ const NavBar = ({ setAuthenticated, authenticated, user }) => {
           ) : (
             ""
           )}
-          {/* <LogoutButton
-            setAuthenticated={setAuthenticated}
-            authenticated={authenticated}
-          /> */}
         </SubContainer3>
       </SubContainer1>
     </Container>
