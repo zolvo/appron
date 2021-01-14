@@ -33,7 +33,7 @@ def chef(id):
 @chef_routes.route('/<int:id>/review', methods=['POST'])
 def review(id):
     chef_id = Chef.query.get(id).id
-    user_id = User.query.get(id).id
+    user_id = User.query.filter(username=request.json['username']).first().id
     comment = request.json['comment']
 
     new_comment = Comment(user_id, chef_id, comment)
