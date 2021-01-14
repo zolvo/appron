@@ -2,15 +2,15 @@ import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import styled from "styled-components";
 import bg from "../image/bg.jpg";
+import CommentForm from "./auth/CommentForm";
 import Comment from "./Comment";
 
 function Chef(user) {
   const [chef, setChef] = useState("");
-  // const [userId, setUserId] = useState("");
   const [currentUser, setCurrentUser] = useState("");
-  const [reviews, setReviews] = useState([]);
+  const [reviews, setReviews] = useState("");
   const [showReviews, setShowReviews] = useState(false);
-  // const [Likes, setLikes] = useState([]);
+  const [likes, setLikes] = useState([]);
   // const [rating, setRating] = useState([]);
   const history = useHistory();
 
@@ -96,7 +96,7 @@ function Chef(user) {
           </RatingIcon>
           <TotalLikeIcon>
             <i className="far fa-heart icon" />
-            <span>{reviews.length}</span>
+            <span>{likes.length}</span>
           </TotalLikeIcon>
         </Box1>
         <button className="appointment" onClick={handleClick}>
@@ -105,19 +105,37 @@ function Chef(user) {
         <Box2>
           <LikeIcon>
             <i className="far fa-heart icon" />
-            <span>{reviews.length}</span>
+            <span>{likes.length}</span>
           </LikeIcon>
           <ReviewIcon>
             <i className="far fa-comments icon" onClick={toggleReview} />
-            <span>{reviews.length}</span>
+            <span>{showReviews.length}</span>
           </ReviewIcon>
         </Box2>
         <Box3>
-          {/* <Comment comments={comments} user={user}/> */}
+
           {showReviews && (
-            <textarea className="text" placeholder="leave a review"></textarea>
+            // <textarea
+            //   className="text"
+            //   placeholder="leave a review"
+            //   onClick={(e) => setReviews(e.target.value)}
+            // />
+            <CommentForm />
           )}
         </Box3>
+
+        {/* <div className="star-widget">
+        <input type="radio" name="rate" id="rate-5">
+        <label htmlFor="rate-5" className="fas fa-star"></label>
+        <input type="radio" name="rate" id="rate-4">
+        <label htmlFor="rate-4" className="fas fa-star"></label>
+        <input type="radio" name="rate" id="rate-3">
+        <label htmlFor="rate-3" className="fas fa-star"></label>
+        <input type="radio" name="rate" id="rate-2">
+        <label htmlFor="rate-2" className="fas fa-star"></label>
+        <input type="radio" name="rate" id="rate-1">
+        <label htmlFor="rate-1" className="fas fa-star"></label>
+        <form action="#"> */}
       </ChefWrapper>
     </Container>
   );

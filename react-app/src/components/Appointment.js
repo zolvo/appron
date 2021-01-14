@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from "react";
 import DatePicker from "react-datepicker";
 import styled from "styled-components";
-
+import ChefAppointment from "./ChefAppointment";
 import "react-datepicker/dist/react-datepicker.css";
 import { appointmentForm } from "../services/auth";
 import { useHistory, useParams } from "react-router-dom";
 
-function Appointment({ user }) {
-  const [user_id, setUser_id] = useState({});
-  const [chef_id, setChef_id] = useState({});
+function Appointment({ user, setAppointments }) {
+  const [chef, setChef] = useState({});
   const [notes, setNotes] = useState({});
   const [date, setDate] = useState(new Date());
 
+  const history = useHistory();
+
   const { chefId } = useParams();
+
   useEffect(() => {
     document.title = "Appron: Appointment";
     if (!chefId) {
@@ -21,17 +23,24 @@ function Appointment({ user }) {
     (async () => {
       const res = await fetch(`/api/chefs/${chefId}`);
       const chef_id = await res.json();
-      setChef_id(chef_id);
+      setChef(chef_id);
     })();
-    setUser_id(user.id);
-    setChef_id(chef_id);
   }, []);
 
   const onAppointment = async (e) => {
     e.preventDefault();
-    const appointment = await appointmentForm(user_id, chef_id, notes, date);
-    if (!appointment.errors) {
+    const res = await fetch(`/api/chef/${chef.id}/appointment`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(user.id, chef.id, notes, date),
+    });
+
+    if (res.ok) {
+      const data = await res.json();
+      const chefId = data.chef_id;
+      history.push(`/chef/${chefId}`);
     }
+    // const data = await fetch(`api/chef/${chefId}/appointment`)
   };
 
   return (
@@ -40,17 +49,18 @@ function Appointment({ user }) {
       <MakeAppointment>
         <form onSubmit={onAppointment}>
           <div>
-            Chef Name:{" "}
-            {/* {chef_id.user.username.length > 0 && chef_id.user.username} */}
+            Chef Name:
+            {chef.user && chef.user.username}
           </div>
           <div>User Name: {user.username}</div>
+          <ChefAppointment />
           <div className="subtitle">Pick a Date</div>
           <DatePicker selected={date} onChange={(date) => setDate(date)} />
           <div>
             <textarea
               className="notes"
               placeholder="Notes: "
-              onClick={(e) => setNotes(e.target.value)}
+              onChange={(e) => setNotes(e.target.value)}
             />
           </div>
           <button type="submit" className="appointment">
@@ -112,5 +122,6 @@ const MakeAppointment = styled.div`
     transform: translateY(-3px);
   }
 `;
+
 
 export default Appointment;

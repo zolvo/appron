@@ -109,7 +109,7 @@ export const appointmentForm = async (
   date,
   createdAt
   ) => {
-    const res = await fetch("api/auth/appointmentform", {
+    const res = await fetch("api/chef/<int:id>/appointmentForm", {
       method: "POST",
       headers: {
       "Content-Type": "application/json",
