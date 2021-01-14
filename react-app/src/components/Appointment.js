@@ -4,6 +4,7 @@ import styled from "styled-components";
 
 import "react-datepicker/dist/react-datepicker.css";
 import { appointmentForm } from "../services/auth";
+import { useHistory, useParams } from "react-router-dom";
 
 function Appointment({ user }) {
   const [user_id, setUser_id] = useState({});
@@ -11,15 +12,24 @@ function Appointment({ user }) {
   const [notes, setNotes] = useState({});
   const [date, setDate] = useState(new Date());
 
+  const { chefId } = useParams();
+  useEffect(() => {
+    document.title = "Appron: Appointment";
+    if (!chefId) {
+      return;
+    }
+    (async () => {
+      const res = await fetch(`/api/chefs/${chefId}`);
+      const chef_id = await res.json();
+      setChef_id(chef_id);
+    })();
+    setUser_id(user.id);
+    setChef_id(chef_id);
+  }, []);
 
   const onAppointment = async (e) => {
     e.preventDefault();
-    const appointment = await appointmentForm(
-      user_id,
-      chef_id,
-      notes,
-      date,
-    );
+    const appointment = await appointmentForm(user_id, chef_id, notes, date);
     if (!appointment.errors) {
     }
   };
@@ -29,15 +39,19 @@ function Appointment({ user }) {
       <AppointmentHeader>Appointment</AppointmentHeader>
       <MakeAppointment>
         <form onSubmit={onAppointment}>
-          <div>Chef Name: </div>
+          <div>
+            Chef Name:{" "}
+            {/* {chef_id.user.username.length > 0 && chef_id.user.username} */}
+          </div>
           <div>User Name: {user.username}</div>
           <div className="subtitle">Pick a Date</div>
-          <DatePicker
-            selected={date}
-            onChange={(date) => setDate(date)}
-          />
+          <DatePicker selected={date} onChange={(date) => setDate(date)} />
           <div>
-            <textarea className="notes" />
+            <textarea
+              className="notes"
+              placeholder="Notes: "
+              onClick={(e) => setNotes(e.target.value)}
+            />
           </div>
           <button type="submit" className="appointment">
             Make an appointment
@@ -75,10 +89,11 @@ const MakeAppointment = styled.div`
 
   .notes {
     box-sizing: border-box;
-    height: 8em;
+    height: 6em;
     width: 30em;
     outline: none;
     border-radius: 8px;
+    padding-left: 0.5em;
   }
 
   .appointment{

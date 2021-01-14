@@ -19,6 +19,7 @@ function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [user, setUser] = useState({});
+  const [chef, setChef] = useState({});
 
   useEffect(() => {
     document.title = "Appron: Home";

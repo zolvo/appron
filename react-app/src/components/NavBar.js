@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import LogoutButton from "./auth/LogoutButton";
 import styled from "styled-components";
 import logo01 from "../image/logo01.png";
@@ -66,26 +66,26 @@ const NavBar = ({ setAuthenticated, authenticated, user }) => {
             <NavLink to="/users" exact={true} activeClassName="active">
               <UserDropdown>
                 <i className="far fa-user-circle fa-2x" />
-                  <div className="dropdown-content">
-                    <li>
-                      <NavLink
-                        to={`/users/${user}`}
-                        exact={true}
-                        activeClassName="active"
-                      >
-                        <button className="button">
-                          <i className="fas fa-house-user" />
-                          Profile
-                        </button>
-                      </NavLink>
-                    </li>
-                    <li>
-                      <LogoutButton
-                        setAuthenticated={setAuthenticated}
-                        authenticated={authenticated}
-                      />
-                    </li>
-                  </div>
+                <div className="dropdown-content">
+                  <li>
+                    <NavLink
+                      to={`/users/${user.id}`}
+                      exact={true}
+                      activeClassName="active"
+                    >
+                      <button className="button">
+                        <i className="fas fa-house-user" />
+                        Profile
+                      </button>
+                    </NavLink>
+                  </li>
+                  <li>
+                    <LogoutButton
+                      setAuthenticated={setAuthenticated}
+                      authenticated={authenticated}
+                    />
+                  </li>
+                </div>
               </UserDropdown>
             </NavLink>
           ) : (

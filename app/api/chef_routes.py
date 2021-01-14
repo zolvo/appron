@@ -20,14 +20,14 @@ def chef(id):
     chef = Chef.query.get(id)
     return chef.to_dict()
 
-# @chef_routes.route('/<int:id>/appointment')
-# # @login_required
-# def appointment(id):
-#     chef_id = Chef.query.get(id)
-#     user_id = User.query.get(id)
-#     notes = Appointment.query.get(notes)
-#     date = Appointment.query.get(id)
-#     return appointment.to_dict()
+@chef_routes.route('/<int:id>/appointment')
+# @login_required
+def appointment(id):
+    chef_id = Chef.query.get(id)
+    user_id = User.query.get(id)
+    notes = Appointment.query.get(notes)
+    date = Appointment.query.get(id)
+    return appointment.to_dict()
 
 #Post a Review Route
 @chef_routes.route('/<int:id>/review', methods=['POST'])

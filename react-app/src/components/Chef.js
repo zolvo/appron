@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, Redirect, useHistory, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import styled from "styled-components";
 import bg from "../image/bg.jpg";
 
 function Chef() {
   const [chef, setChef] = useState("");
-  const [userId, setUserId] = useState("");
+  // const [userId, setUserId] = useState("");
   const [currentUser, setCurrentUser] = useState("");
   const [reviews, setReviews] = useState([]);
   const [showReviews, setShowReviews] = useState(false);
@@ -25,7 +25,6 @@ function Chef() {
     (async () => {
       const res = await fetch(`/api/chefs/${chefId}`);
       const chef = await res.json();
-
       setChef(chef);
     })();
   }, [chefId]);
@@ -35,7 +34,7 @@ function Chef() {
   }
 
   const handleClick = () => {
-    history.push("/chefs/{id}/appointment");
+    history.push(`/chefs/${chefId}/appointment`);
   };
 
   const toggleReview = () => {

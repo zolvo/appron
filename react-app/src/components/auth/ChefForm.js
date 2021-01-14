@@ -3,7 +3,7 @@ import { chefform } from "../../services/auth";
 import styled from "styled-components";
 import { useHistory } from "react-router-dom";
 
-const ChefForm = ({ authenticated, setAuthenticated, user }) => {
+const ChefForm = ({ user }) => {
   const [errors, setErrors] = useState([]);
   const [about, setAbout] = useState("");
   const [service, setService] = useState("");
@@ -40,9 +40,6 @@ const ChefForm = ({ authenticated, setAuthenticated, user }) => {
     } else setErrors(chef.errors);
   };
 
-  // if () {
-  //   return <Redirect to="/" />;
-  // }
 
   return (
     <Container>
