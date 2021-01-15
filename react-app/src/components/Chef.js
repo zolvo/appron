@@ -46,7 +46,12 @@ function Chef(user) {
   };
 
   const handleLike = () => {
-    // setCount(count += 1)
+    if (!count) {
+      setCount(count + 1);
+    } else {
+      setCount(count - 1);
+    }
+
     setLikes(!likes);
   };
 
@@ -110,14 +115,14 @@ function Chef(user) {
         </button>
         <Box2>
           <LikeIcon>
-            <div onClick={handleLike}>
+            <span className="red" onClick={handleLike}>
               {likes ? (
                 <i className="fas fa-heart" />
               ) : (
                 <i className="far fa-heart icon" />
               )}
-            </div>
-            <span>{likes.length}</span>
+            </span>
+            <span>{count}</span>
           </LikeIcon>
           <ReviewIcon>
             <i className="far fa-comments icon" onClick={toggleReview} />
@@ -258,7 +263,9 @@ const Box2 = styled.div`
 `;
 
 const LikeIcon = styled.div`
-  color: red;
+  .red {
+    color: red;
+  }
 `;
 
 const ReviewIcon = styled.div``;

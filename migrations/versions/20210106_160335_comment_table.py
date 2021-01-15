@@ -22,6 +22,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('chef_id', sa.Integer(), nullable=False),
+    sa.Column('stars', sa.Integer()),
     sa.Column('comment', sa.Text(), nullable=False),
     sa.Column('createdAt', sa.DateTime(), nullable=False),
     sa.ForeignKeyConstraint(['chef_id'], ['chefs.id'], ),
