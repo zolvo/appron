@@ -93,11 +93,10 @@ function App() {
           exact={true}
           authenticated={authenticated}
         >
-          <Chef authenticate={authenticate} />
+          <Chef authenticate={authenticate} user={user} chef={chef} />
         </ProtectedRoute>
         <ProtectedRoute
           path="/chefs/:chefId/appointment"
-          exact={true}
           authenticated={authenticated}
         >
           <Appointment authenticate={authenticate} user={user} />
@@ -106,7 +105,7 @@ function App() {
           <Home authenticated={authenticated} />
           {authenticated ? <Main /> : ""}
         </Route>
-        <Route path="/*" exact={true} authenticated={authenticated}>
+        <Route path="/*">
           <Nopage />
         </Route>
       </Switch>

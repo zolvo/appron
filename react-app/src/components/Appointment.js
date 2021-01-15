@@ -42,7 +42,7 @@ function Appointment({ user, setAppointments }) {
     }
     // const data = await fetch(`api/chef/${chefId}/appointment`)
   };
-
+  // console.log(chef)
   return (
     <Container>
       <AppointmentHeader>Appointment</AppointmentHeader>
@@ -50,7 +50,7 @@ function Appointment({ user, setAppointments }) {
         <form onSubmit={onAppointment}>
           <div>
             Chef Name:
-            {chef.chef.user && chef.chef.user.username}
+            {chef.chef && chef.chef.user.username}
           </div>
           <div>User Name: {user.username}</div>
           <ChefAppointment />

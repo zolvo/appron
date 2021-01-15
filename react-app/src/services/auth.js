@@ -124,3 +124,27 @@ export const appointmentForm = async (
   });
   return await res.json();
 };
+
+
+// export const comment = async (
+//   user_id,
+//   chef_id,
+//   comment,
+//   stars,
+//   createdAt
+// ) => {
+//   const res = await fetch("api/chef/<int:id>/comment", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({
+//       user_id,
+//       chef_id,
+//       comment,
+//       stars,
+//       createdAt,
+//     }),
+//   });
+//   return await res.json();
+// };

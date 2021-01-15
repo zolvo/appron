@@ -3,18 +3,17 @@ import { useHistory, useParams } from "react-router-dom";
 import styled from "styled-components";
 import bg from "../image/bg.jpg";
 import CommentForm from "./auth/CommentForm";
-import Comment from "./Comment";
+// import Comment from "./Comment";
 
 function Chef(user) {
   const [chef, setChef] = useState("");
-  const [currentUser, setCurrentUser] = useState("");
+  // const [currentUser, setCurrentUser] = useState("");
   const [comment, setComment] = useState("");
   const [showReviews, setShowReviews] = useState(false);
   const [likes, setLikes] = useState(false);
   const [count, setCount] = useState(0);
   // const [rating, setRating] = useState([]);
   const history = useHistory();
-
   // Notice we use useParams here instead of getting the params
   // From props.
   const { chefId } = useParams();
@@ -28,7 +27,7 @@ function Chef(user) {
       const res = await fetch(`/api/chefs/${chefId}`);
       const chef = await res.json();
       setChef(chef);
-      setCurrentUser(user);
+      // setCurrentUser(user);
     })();
   }, [chefId]);
 
@@ -41,7 +40,7 @@ function Chef(user) {
   };
 
   const toggleReview = () => {
-    if (!currentUser) history.push("/login");
+    if (!user) history.push("/login");
     setShowReviews(!showReviews);
   };
 
@@ -54,7 +53,7 @@ function Chef(user) {
 
     setLikes(!likes);
   };
-
+// console.log(chef)
   return (
     <Container>
       <ChefWrapper>
@@ -136,22 +135,9 @@ function Chef(user) {
             //   placeholder="leave a review"
             //   onClick={(e) => setReviews(e.target.value)}
             // />
-            <CommentForm />
+            <CommentForm user={user} chef={chef}/>
           )}
         </Box3>
-
-        {/* <div className="star-widget">
-        <input type="radio" name="rate" id="rate-5">
-        <label htmlFor="rate-5" className="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-4">
-        <label htmlFor="rate-4" className="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-3">
-        <label htmlFor="rate-3" className="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-2">
-        <label htmlFor="rate-2" className="fas fa-star"></label>
-        <input type="radio" name="rate" id="rate-1">
-        <label htmlFor="rate-1" className="fas fa-star"></label>
-        <form action="#"> */}
       </ChefWrapper>
     </Container>
   );

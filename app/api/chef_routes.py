@@ -18,7 +18,8 @@ def chefs():
 # @login_required
 def chef(id):
     chef = Chef.query.get(id)
-    return {"chef": chef.to_dict()}
+    comments = Comment.query.filter(Comment.chef_id == id)
+    return {"chef": chef.to_dict(), "comment": [a.to_dict() for a in comments]}
 
 
 @chef_routes.route('/<int:id>/appointment')
@@ -28,13 +29,6 @@ def appointment(id):
     return {"appointment": [a.to_dict() for a in appointments]}
 
 
-@chef_routes.route('/<int:id>/comment')
-# @login_required
-def comment(id):
-    comments = Comment.query.filter(Comment.chef_id == id)
-    return {"comment": [a.to_dict() for a in comments]}
-
-
 @chef_routes.route('/<int:id>/rating')
 # @login_required
 def rating(id):
@@ -42,17 +36,19 @@ def rating(id):
     return {"rating": [a.to_dict() for a in ratings]}
 
 #Post a Review Route
-@chef_routes.route('/<int:id>/comment', methods=['POST'])
+@chef_routes.route('/<int:id>', methods=['POST'])
 def review(id):
     chef_id = Chef.query.get(id).id
     user_id = User.query.filter(username=request.json['username']).first().id
+    stars = request.json['stars']
     comment = request.json['comment']
+    createdAt=form.data['createdAt']
 
-    new_comment = Comment(user_id, chef_id, comment)
+    new_comment = Comment(user_id, chef_id, stars, comment, createdAt)
     db.session.add(new_comment)
     db.session.commit()
 
-    return new_comment.to_dict()
+    return {"comment": new_comment.to_dict()}
 
 
 #Post an appointment Route
