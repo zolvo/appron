@@ -8,9 +8,10 @@ import Comment from "./Comment";
 function Chef(user) {
   const [chef, setChef] = useState("");
   const [currentUser, setCurrentUser] = useState("");
-  const [reviews, setReviews] = useState("");
+  const [comment, setComment] = useState("");
   const [showReviews, setShowReviews] = useState(false);
-  const [likes, setLikes] = useState([]);
+  const [likes, setLikes] = useState(false);
+  const [count, setCount] = useState(0);
   // const [rating, setRating] = useState([]);
   const history = useHistory();
 
@@ -42,6 +43,11 @@ function Chef(user) {
   const toggleReview = () => {
     if (!currentUser) history.push("/login");
     setShowReviews(!showReviews);
+  };
+
+  const handleLike = () => {
+    // setCount(count += 1)
+    setLikes(!likes);
   };
 
   return (
@@ -83,10 +89,10 @@ function Chef(user) {
             <strong>Pricing:</strong> {chef.pricing}
           </li>
           <li>
-            <strong>Available:</strong> {chef.available}
+            <strong>Available:</strong> {chef.available ? "Yes" : "No"}
           </li>
         </ul>
-        <Box1>
+        {/* <Box1>
           <RatingIcon>
             <i className="fa fa-star" />
             <i className="fa fa-star" />
@@ -98,22 +104,27 @@ function Chef(user) {
             <i className="far fa-heart icon" />
             <span>{likes.length}</span>
           </TotalLikeIcon>
-        </Box1>
+        </Box1> */}
         <button className="appointment" onClick={handleClick}>
           Make an Appointment
         </button>
         <Box2>
           <LikeIcon>
-            <i className="far fa-heart icon" />
+            <div onClick={handleLike}>
+              {likes ? (
+                <i className="fas fa-heart" />
+              ) : (
+                <i className="far fa-heart icon" />
+              )}
+            </div>
             <span>{likes.length}</span>
           </LikeIcon>
           <ReviewIcon>
             <i className="far fa-comments icon" onClick={toggleReview} />
-            <span>{showReviews.length}</span>
+            <span>{comment.length}</span>
           </ReviewIcon>
         </Box2>
         <Box3>
-
           {showReviews && (
             // <textarea
             //   className="text"
@@ -245,20 +256,9 @@ const Box2 = styled.div`
     }
   }
 `;
-const RatingIcon = styled.div`
-  color: #ef9d55;
-`;
-
-const TotalLikeIcon = styled.div`
-  .far {
-    color: red;
-  }
-`;
 
 const LikeIcon = styled.div`
-  .far {
-    color: red;
-  }
+  color: red;
 `;
 
 const ReviewIcon = styled.div``;
