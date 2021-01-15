@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import Comment from "../Comment";
 import "./CommentForm.css";
 
 const CommentForm = (user) => {
@@ -29,6 +30,7 @@ const CommentForm = (user) => {
 
   return (
     <Container>
+      <Comment/>
       <RatingIcon>
         <div className="star-widget">
           <input type="radio" name="rate" id="rate-5" />

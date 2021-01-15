@@ -50,7 +50,7 @@ function Appointment({ user, setAppointments }) {
         <form onSubmit={onAppointment}>
           <div>
             Chef Name:
-            {chef.user && chef.user.username}
+            {chef.chef.user && chef.chef.user.username}
           </div>
           <div>User Name: {user.username}</div>
           <ChefAppointment />

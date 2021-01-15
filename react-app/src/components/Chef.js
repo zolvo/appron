@@ -56,40 +56,40 @@ function Chef(user) {
         <Title>Chef Profile</Title>
         <ul className="body">
           <li>
-            <strong>Chef Name: </strong> {chef.user.username}
+            <strong>Chef Name: </strong> {chef.chef.user.username}
           </li>
           <li>
-            <strong>Email:</strong> {chef.user.email}
+            <strong>Email:</strong> {chef.chef.user.email}
           </li>
           <li>
-            <strong>Address:</strong> {chef.user.address}
+            <strong>Address:</strong> {chef.chef.user.address}
           </li>
           <li>
-            <strong>City:</strong> {chef.user.city}
+            <strong>City:</strong> {chef.chef.user.city}
           </li>
           <li>
-            <strong>State:</strong> {chef.user.state}
+            <strong>State:</strong> {chef.chef.user.state}
           </li>
           <li>
-            <strong>ZipCode:</strong> {chef.user.zipcode}
+            <strong>ZipCode:</strong> {chef.chef.user.zipcode}
           </li>
           <li>
-            <strong>Phone:</strong> {chef.user.phone}
+            <strong>Phone:</strong> {chef.chef.user.phone}
           </li>
           <li>
-            <strong>About:</strong> {chef.about}
+            <strong>About:</strong> {chef.chef.about}
           </li>
           <li>
-            <strong>Service:</strong> {chef.service}
+            <strong>Service:</strong> {chef.chef.service}
           </li>
           <li>
-            <strong>Menu:</strong> {chef.menu}
+            <strong>Menu:</strong> {chef.chef.menu}
           </li>
           <li>
-            <strong>Pricing:</strong> {chef.pricing}
+            <strong>Pricing:</strong> {chef.chef.pricing}
           </li>
           <li>
-            <strong>Available:</strong> {chef.available ? "Yes" : "No"}
+            <strong>Available:</strong> {chef.chef.available ? "Yes" : "No"}
           </li>
         </ul>
         {/* <Box1>
