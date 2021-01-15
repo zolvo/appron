@@ -23,11 +23,8 @@ def chef(id):
 @chef_routes.route('/<int:id>/appointment')
 # @login_required
 def appointment(id):
-    chef_id = Chef.query.get(id)
-    user_id = User.query.get(id)
-    notes = Appointment.query.get(notes)
-    date = Appointment.query.get(id)
-    return appointment.to_dict()
+    appointments = Appointment.query.filter(Appointment.chef_id == id)
+    return {"appointment": [a.to_dict() for a in appointments]}
 
 #Post a Review Route
 @chef_routes.route('/<int:id>/review', methods=['POST'])
@@ -50,9 +47,11 @@ def post_appointment(id):
     chef_id = Chef.query.get(id).id
     notes = request.json['notes']
     date = request.json['date']
+    createdAt = form.data['createdAt']
 
-    new_notes = Comment(user_id, chef_id, notes, date)
-    db.session.add(new_notes)
+    new_appointment = Appointment(user_id, chef_id, notes, date, createdAt)
+
+    db.session.add(new_appointment)
     db.session.commit()
 
-    return new_notes.to_dict()
+    return new_appointment.to_dict()

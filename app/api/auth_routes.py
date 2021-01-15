@@ -98,10 +98,9 @@ def chef_form():
         )
         db.session.add(chef)
         db.session.commit()
-        
+
         return chef.to_dict()
     return {'errors': validation_errors_to_error_messages(form.errors)}
-
 
 
 @auth_routes.route('/unauthorized')
