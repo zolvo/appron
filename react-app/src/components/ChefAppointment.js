@@ -2,11 +2,11 @@ import React, { useEffect } from "react";
 import { useState } from "react";
 import styled from "styled-components";
 
-const ChefAppointment = () => {
+const ChefAppointment = (user) => {
   const [appointment, setAppontment] = useState({});
   const [chefId, setChefId] = useState("");
 
-  
+
 
   return <Container>This is Appointment</Container>;
 };

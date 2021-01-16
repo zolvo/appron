@@ -21,10 +21,10 @@ const NavBar = ({ setAuthenticated, authenticated, user }) => {
       <SubContainer1>
         <SubContainer2>
           <SubContainer2a>
-            <a href="/">
+            <NavLink to="/">
               <img className="img1" src={logo01} alt={logo01} />
               <img className="img2" src={appronwhite} alt={appronwhite} />
-            </a>
+            </NavLink>
           </SubContainer2a>
           <SubContainer2b>
             <div>

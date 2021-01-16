@@ -1,7 +1,8 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import User, Chef, Comment, Appointment, Rating
 from sqlalchemy.orm import joinedload
+import json;
 
 chef_routes = Blueprint('chefs', __name__)
 
@@ -26,10 +27,11 @@ def chef(id):
 # @login_required
 def appointment(id):
     appointments = Appointment.query.filter(Appointment.chef_id == id)
-    return {"appointment": [a.to_dict() for a in appointments]}
+    user = User.query.filter(User.id == id)
+    return {"appointment": [a.to_dict() for a in appointments], "user": user.to_dict()}
 
 
-@chef_routes.route('/<int:id>/rating')
+@chef_routes.route('/<int:id>')
 # @login_required
 def rating(id):
     ratings = Rating.query.filter(Rating.chef_id == id)

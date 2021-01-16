@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import styled from "styled-components";
 import bg from "../image/bg.jpg";
-import CommentForm from "./auth/CommentForm";
+import CommentForm from "./CommentForm";
 // import Comment from "./Comment";
 
 function Chef(user) {

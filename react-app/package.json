@@ -11,10 +11,10 @@
     "react": "^16.13.1",
     "react-datepicker": "^3.3.0",
     "react-dom": "^16.13.1",
+    "react-icons": "^4.1.0",
     "react-modal": "^3.12.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.1",
-    "react-step-wizard": "^5.3.5",
     "styled-components": "^5.2.1"
   },
   "scripts": {

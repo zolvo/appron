@@ -9,6 +9,7 @@ import { useHistory, useParams } from "react-router-dom";
 function Appointment({ user, setAppointments }) {
   const [chef, setChef] = useState({});
   const [notes, setNotes] = useState({});
+  const [appointment, setAppointment] =useState({})
   const [date, setDate] = useState(new Date());
 
   const history = useHistory();
@@ -26,6 +27,8 @@ function Appointment({ user, setAppointments }) {
       setChef(chef_id);
     })();
   }, []);
+  // console.log(chefId)
+
 
   const onAppointment = async (e) => {
     e.preventDefault();
