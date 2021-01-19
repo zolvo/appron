@@ -10,6 +10,7 @@ import img01 from "../image/01.jpg";
 import About from "./About";
 
 const Home = ({ setAuthenticated, authenticated }) => {
+
   return authenticated ? (
     <div></div>
   ) : (

@@ -2,6 +2,7 @@ import React from "react";
 import { useHistory } from "react-router-dom";
 import { logout } from "../../services/auth";
 import styled from "styled-components";
+import { FaSignOutAlt } from "react-icons/fa";
 
 const LogoutButton = ({ setAuthenticated, authenticated }) => {
   const history = useHistory();
@@ -17,7 +18,7 @@ const LogoutButton = ({ setAuthenticated, authenticated }) => {
     <Container>
       <button className="button" onClick={onLogout}>
         {" "}
-        <i className="fas fa-sign-out-alt"></i>
+        <FaSignOutAlt/>
         Logout
       </button>
     </Container>

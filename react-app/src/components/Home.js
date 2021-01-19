@@ -33,6 +33,7 @@ const SubContainer1 = styled.div`
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+  // animation: animate 1.5s linear infinite;
 
   .img1 {
     height: 50px;

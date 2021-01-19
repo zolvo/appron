@@ -4,6 +4,7 @@ import LogoutButton from "./auth/LogoutButton";
 import styled from "styled-components";
 import logo01 from "../image/logo01.png";
 import appronwhite from "../image/appronwhite.png";
+import { FaSearch } from "react-icons/fa";
 
 const NavBar = ({ setAuthenticated, authenticated, user }) => {
   // const [currentUser, setCurrentUser] = useState();
@@ -41,7 +42,7 @@ const NavBar = ({ setAuthenticated, authenticated, user }) => {
           </SubContainer2b>
         </SubContainer2>
         <MiniSearch>
-          <i className="fas fa-search" />
+          <FaSearch />
           <SearchInput
             type="text"
             placeholder="Find: chef, menu, food"
@@ -226,32 +227,33 @@ const SubContainer3 = styled.div`
 `;
 
 const UserDropdown = styled.div`
-  .dropdown-content {
-    display: none;
-    list-style: none;
-    position: absolute;
-    min-width: 16px;
-    z-index: 1;
-  }
+.dropdown-content {
+  display: none;
+  list-style: none;
+  position: absolute;
+  min-width: 16px;
+  z-index: 1;
+}
 
-  li {
-    display: flex;
-    justify-items: flex-start;
-    font-family: dosis;
-    font-size: 16px;
-    color: white;
-  }
+li {
+  display: flex;
+  justify-items: flex-start;
+  font-family: dosis;
+  font-size: 16px;
+  color: white;
+}
 
-  :hover .dropdown-content {
-    display: block;
-  }
+:hover .dropdown-content {
+  display: block;
+}
 
-  :hover {
-    // color: #ffbc42;
-    text-shadow: rgba(0, 0, 0, 0.75) 0px 5px 15px;
-  }
+:hover {
+  // color: #ffbc42;
+  text-shadow: rgba(0, 0, 0, 0.75) 0px 5px 15px;
+}
 
-  .button {
+.button {
+    // transition: all 3s ease;
     cursor: pointer;
     letter-spacing: 0.05em;
     // font-weight: 600;
