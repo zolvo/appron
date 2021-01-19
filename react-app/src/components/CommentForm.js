@@ -37,20 +37,18 @@ const CommentForm = ({ user, chef }) => {
   return (
     <Container>
       <CommentBox>
-        <Box1>
-          <User>{user.user.username} says:</User>
-          <Stars>
-            {stars}
-            <FaStar size={15} color={"fd4 "} /> rating
-          </Stars>
-          <Date>date</Date>
-        </Box1>
         <Body>
           {chef.comment.map((comm) => (
             <div>
-              {comm.user_id} says:
-              {comm.comment}
-              {comm.stars}
+              <Box1>
+                <User>UserId {comm.user_id} says:</User>
+                <Stars>
+                  {comm.stars}
+                  <FaStar size={15} color={"fd4 "} /> rating
+                </Stars>
+                <Date>{comm.createdAt}</Date>
+              </Box1>
+              <Review>{comm.comment}</Review>
             </div>
           ))}
         </Body>
@@ -157,17 +155,24 @@ const Box1 = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-bottom: -10px;
 `;
 
 const User = styled.div`
   margin-bottom: 1em;
 `;
 const Body = styled.div``;
-const Date = styled.div``;
+const Date = styled.div`
+  margin-bottom: 1em;
+`;
 const Stars = styled.div`
   margin-bottom: 1em;
   display: flex;
   align-items: center;
+`;
+
+const Review = styled.div`
+  padding-bottom: 3em;
 `;
 
 export default CommentForm;

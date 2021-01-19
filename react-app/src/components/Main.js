@@ -8,9 +8,9 @@ import img00 from "../image/00.png";
 import img02 from "../image/00a.png";
 import img01 from "../image/01.jpg";
 import About from "./About";
+import { motion } from "framer-motion";
 
 const Home = ({ setAuthenticated, authenticated }) => {
-
   return authenticated ? (
     <div></div>
   ) : (

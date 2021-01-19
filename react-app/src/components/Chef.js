@@ -80,7 +80,7 @@ function Chef(user) {
           <li>
             <strong>Phone:</strong> {chef.chef.user.phone}
           </li>
-          <li>
+          <li style={{ marginTop: "2em", marginBottom: "2em" }}>
             <strong>About:</strong> {chef.chef.about}
           </li>
           <li>
@@ -89,7 +89,7 @@ function Chef(user) {
           <li>
             <strong>Menu:</strong> {chef.chef.menu}
           </li>
-          <li>
+          <li style={{ marginTop: "2em" }}>
             <strong>Pricing:</strong> {chef.chef.pricing}
           </li>
           <li>
@@ -135,7 +135,7 @@ function Chef(user) {
             //   placeholder="leave a review"
             //   onClick={(e) => setReviews(e.target.value)}
             // />
-            <CommentForm user={user} chef={chef}/>
+            <CommentForm user={user} chef={chef} />
           )}
         </Box3>
       </ChefWrapper>
@@ -157,6 +157,7 @@ background-position: 90% 50%;
 li {
   list-style: none;
   padding: 0.1em;
+  margin-bottom:3px;
 }
 
 .body {
