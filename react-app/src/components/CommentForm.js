@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { FaStar } from "react-icons/fa";
 
 // import "./CommentForm.css";
-import { useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 
 const CommentForm = ({ user, chef }) => {
   const [comment, setComments] = useState("");
@@ -12,11 +12,12 @@ const CommentForm = ({ user, chef }) => {
   const [rating, setRating] = useState(null);
 
   const { chefId } = useParams();
-  console.log("************************** :", chefId )
+  const history = useHistory();
+  // console.log("************************** :", chefId )
 
   const createComment = async (e) => {
     e.preventDefault();
-    console.log("HERE *****************: ", user.id);
+    // console.log("HERE *****************: ", user.id);
     const res = await fetch(`/api/chefs/${chefId}`, {
       method: "POST",
       headers: {
@@ -30,8 +31,8 @@ const CommentForm = ({ user, chef }) => {
       }),
     });
     if (res.ok) {
-      const data = await res.json();
-      // history.push(`/chef/${chef.id}`)
+      // const data = await res.json();
+      history.push(`/chefs/${chefId}`)
     }
   };
   // console.log(chef)

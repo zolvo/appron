@@ -1,7 +1,5 @@
 import React from "react";
-// import { NavLink } from "react-router-dom";
 import styled from "styled-components";
-import background from "../image/bg01.jpg";
 import background2 from "../image/02.jpg";
 import background3 from "../image/food00.png";
 import img00 from "../image/00.png";
@@ -9,9 +7,8 @@ import img02 from "../image/00a.png";
 import img01 from "../image/01.jpg";
 import About from "./About";
 import gold from "../video/gold.mp4";
-import { motion } from "framer-motion";
 
-const Home = ({ setAuthenticated, authenticated }) => {
+const Home = ({ authenticated }) => {
   return authenticated ? (
     <div></div>
   ) : (

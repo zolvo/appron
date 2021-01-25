@@ -1,7 +1,7 @@
 from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import db, User, Chef, Comment, Appointment, Rating
-from app.forms import CommentForm
+from app.forms import CommentForm, AppointmentForm
 from sqlalchemy.orm import joinedload
 import json;
 
@@ -11,8 +11,7 @@ chef_routes = Blueprint('chefs', __name__)
 @chef_routes.route('/')
 def chefs():
     chefs = Chef.query.options(joinedload(Chef.user)).filter(User.is_a_chef == True)
-    return {"chefs": [chef.to_dict() for chef in chefs],
-            }
+    return {"chefs": [chef.to_dict() for chef in chefs]}
 
 
 @chef_routes.route('/<int:id>')
@@ -41,7 +40,6 @@ def rating(id):
 def review(id):
     form = CommentForm()
     data = request.get_json()
-    print(f'***********************')
     new_comment = Comment(
         user_id = data['user_id'],
         chef_id = data['chef_id'],
@@ -55,13 +53,13 @@ def review(id):
 #Post an appointment Route
 @chef_routes.route('/<int:id>/appointment', methods=['POST'])
 def post_appointment(id):
-    user_id = User.query.get(id).id
-    chef_id = Chef.query.get(id).id
-    notes = request.json['notes']
-    date = request.json['date']
-    createdAt = form.data['createdAt']
-
-    new_appointment = Appointment(user_id, chef_id, notes, date, createdAt)
+    form = AppointmentForm()
+    data = request.get_json()
+    new_appointment = Appointment(
+        user_id = data["user_id"],
+        chef_id = data["chef_id"],
+        notes= form.data['notes'],
+        date= form.date['date'])
 
     db.session.add(new_appointment)
     db.session.commit()

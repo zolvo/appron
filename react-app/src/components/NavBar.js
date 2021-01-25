@@ -64,7 +64,7 @@ const NavBar = ({ setAuthenticated, authenticated, user }) => {
             </NavLink>
           )}
           {authenticated ? (
-            <NavLink to="/users" exact={true} activeClassName="active">
+            // <NavLink to="/users" exact={true} activeClassName="active">
               <UserDropdown>
                 <i className="far fa-user-circle fa-2x" />
                 <div className="dropdown-content">
@@ -88,7 +88,7 @@ const NavBar = ({ setAuthenticated, authenticated, user }) => {
                   </li>
                 </div>
               </UserDropdown>
-            </NavLink>
+            // </NavLink>
           ) : (
             ""
           )}
@@ -208,9 +208,10 @@ const SubContainer2b = styled.div`
 const SubContainer3 = styled.div`
   box-sizing: border-box;
   margin-left: 14px;
-  width: 10em;
+  width: 8em;
   font-family: "Montserrat";
   display: flex;
+  flex-direction: row;
   justify-content: space-evenly;
   align-items: center;
   flex-direction: row;
@@ -227,7 +228,13 @@ const SubContainer3 = styled.div`
 `;
 
 const UserDropdown = styled.div`
+display: flex;
+box-sizing: border-box;
+// width: 23em;
+justify-content: space-evently;
+
 .dropdown-content {
+  margin-left: 3em;
   display: none;
   list-style: none;
   position: absolute;

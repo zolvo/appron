@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, IntegerField, DateField
 from wtforms.validators import DataRequired, ValidationError
 from app.models import Appointment
-from datetime import datetime
+from datetime import date
 
 
 def date_exists(form, field):
@@ -16,4 +16,3 @@ class AppointmentForm(FlaskForm):
     chef_id = IntegerField('chef_id', validators=[DataRequired()])
     notes = StringField('notes', validators=[DataRequired()])
     date = DateField('date', validators=[DataRequired(), date_exists])
-    createdAt = DateField('createdAt', format='%Y-%m-%dT%H:%M:%S',default=datetime.today, validators=[DataRequired()])

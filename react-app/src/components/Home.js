@@ -1,11 +1,8 @@
 import React from "react";
-// import { NavLink } from "react-router-dom";
-// import LogoutButton from "./auth/LogoutButton";
 import styled from "styled-components";
 import background from "../image/background.webp";
-// import logo01 from "../image/logo01.png";
 
-const Home = ({ setAuthenticated, authenticated }) => {
+const Home = ({ authenticated }) => {
   return authenticated ? (
     <div></div>
   ) : (

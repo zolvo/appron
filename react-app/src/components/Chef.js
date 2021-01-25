@@ -3,19 +3,15 @@ import { useHistory, useParams } from "react-router-dom";
 import styled from "styled-components";
 import bg from "../image/bg.jpg";
 import CommentForm from "./CommentForm";
-// import Comment from "./Comment";
 
 function Chef({user}) {
   const [chef, setChef] = useState("");
-  // const [currentUser, setCurrentUser] = useState("");
   const [comment, setComment] = useState("");
   const [showReviews, setShowReviews] = useState(false);
   const [likes, setLikes] = useState(false);
   const [count, setCount] = useState(0);
   // const [rating, setRating] = useState([]);
   const history = useHistory();
-  // Notice we use useParams here instead of getting the params
-  // From props.
   const { chefId } = useParams();
 
   useEffect(() => {
@@ -27,7 +23,6 @@ function Chef({user}) {
       const res = await fetch(`/api/chefs/${chefId}`);
       const chef = await res.json();
       setChef(chef);
-      // setCurrentUser(user);
     })();
   }, [chefId]);
 
@@ -80,7 +75,7 @@ function Chef({user}) {
           <li>
             <strong>Phone:</strong> {chef.chef.user.phone}
           </li>
-          <li style={{ marginTop: "2em", marginBottom: "2em" }}>
+          <li style={{ marginTop: "1em", marginBottom: "1em" }}>
             <strong>About:</strong> {chef.chef.about}
           </li>
           <li>
@@ -89,26 +84,13 @@ function Chef({user}) {
           <li>
             <strong>Menu:</strong> {chef.chef.menu}
           </li>
-          <li style={{ marginTop: "2em" }}>
+          <li style={{ marginTop: "1em" }}>
             <strong>Pricing:</strong> {chef.chef.pricing}
           </li>
           <li>
             <strong>Available:</strong> {chef.chef.available ? "Yes" : "No"}
           </li>
         </ul>
-        {/* <Box1>
-          <RatingIcon>
-            <i className="fa fa-star" />
-            <i className="fa fa-star" />
-            <i className="fa  fa-star" />
-            <i className="far fa-star" />
-            <i className="far fa-star" />
-          </RatingIcon>
-          <TotalLikeIcon>
-            <i className="far fa-heart icon" />
-            <span>{likes.length}</span>
-          </TotalLikeIcon>
-        </Box1> */}
         <button className="appointment" onClick={handleClick}>
           Make an Appointment
         </button>
@@ -202,8 +184,8 @@ const ChefWrapper = styled.div`
 `;
 
 const Title = styled.div`
-  margin-bottom: 2em;
-  margin-top: 3em;
+  margin-bottom: 1.8em;
+  margin-top: 2em;
   text-align: center;
   font-family: monserrat;
   font-size: 20px;
