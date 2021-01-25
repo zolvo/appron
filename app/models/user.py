@@ -19,7 +19,7 @@ class User(db.Model, UserMixin):
   createdAt = db.Column(db.DateTime)
 
   chef = db.relationship('Chef', back_populates='user', uselist=False, cascade='all, delete-orphan')
-  comment = db.relationship('Comment', back_populates='user', cascade='all, delete-orphan')
+  comment = db.relationship('Comment', back_populates='user', uselist=False, cascade='all, delete-orphan')
   appointment = db.relationship('Appointment', back_populates='user', cascade='all, delete-orphan')
 
 

@@ -5,7 +5,7 @@ import bg from "../image/bg.jpg";
 import CommentForm from "./CommentForm";
 // import Comment from "./Comment";
 
-function Chef(user) {
+function Chef({user}) {
   const [chef, setChef] = useState("");
   // const [currentUser, setCurrentUser] = useState("");
   const [comment, setComment] = useState("");

@@ -7,24 +7,25 @@ import { useParams } from "react-router-dom";
 
 const CommentForm = ({ user, chef }) => {
   const [comment, setComments] = useState("");
-  const [stars, setStars] = useState();
+  // const [stars, setStars] = useState();
   const [hover, setHover] = useState(null);
   const [rating, setRating] = useState(null);
 
-  const { id } = useParams();
+  const { chefId } = useParams();
+  console.log("************************** :", chefId )
 
-  // console.log(chef);
   const createComment = async (e) => {
     e.preventDefault();
-    const res = await fetch(`api/chef/${id}`, {
+    console.log("HERE *****************: ", user.id);
+    const res = await fetch(`/api/chefs/${chefId}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         user_id: user.id,
-        chef_id: id,
-        stars,
+        chef_id: chefId,
+        stars: rating,
         comment,
       }),
     });
@@ -34,6 +35,10 @@ const CommentForm = ({ user, chef }) => {
     }
   };
   // console.log(chef)
+  if (!user && !chef) {
+    return null;
+  }
+
   return (
     <Container>
       <CommentBox>
@@ -82,6 +87,7 @@ const CommentForm = ({ user, chef }) => {
       </RatingIcon>
       <form onSubmit={createComment}>
         <textarea
+          name="comment"
           className="text"
           placeholder="leave a review"
           onChange={(e) => setComments(e.target.value)}

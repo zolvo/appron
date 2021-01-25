@@ -95,6 +95,7 @@ function App() {
         >
           <Chef authenticate={authenticate} user={user} chef={chef} />
         </ProtectedRoute>
+
         <ProtectedRoute
           path="/chefs/:chefId/appointment"
           authenticated={authenticated}

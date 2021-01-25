@@ -8,6 +8,7 @@ import img00 from "../image/00.png";
 import img02 from "../image/00a.png";
 import img01 from "../image/01.jpg";
 import About from "./About";
+import gold from "../video/gold.mp4";
 import { motion } from "framer-motion";
 
 const Home = ({ setAuthenticated, authenticated }) => {
@@ -16,6 +17,9 @@ const Home = ({ setAuthenticated, authenticated }) => {
   ) : (
     <Container>
       <SubContainer1>
+        <video autoPlay loop muted className="video">
+          <source src={gold} type="video/mp4" />
+        </video>
         <Title>Appron</Title>
         <Subtitle>Chef on demand</Subtitle>
       </SubContainer1>
@@ -37,14 +41,22 @@ const Home = ({ setAuthenticated, authenticated }) => {
 };
 
 const Container = styled.div`
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  // background-color: #d81159;
-  background-image: url(${background});
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: right bottom;
+  object-fit: cover;
+
+  .video {
+    box-sizing: border-box;
+    margin-top: -25px;
+    height: 51em;
+    width: 100%;
+    object-fit: cover;
+    position: absolute;
+    z-index: -1;
+  }
 `;
 
 const SubContainer1 = styled.div`
@@ -55,12 +67,6 @@ const SubContainer1 = styled.div`
   background-size: 55em;
   background-position: center;
   margin-top: 1.5em;
-
-  .img1 {
-    height: 50px;
-    box-sizing: border-box;
-    border-radius: 30px;
-  }
 `;
 
 const Title = styled.div`

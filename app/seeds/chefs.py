@@ -6,7 +6,7 @@ def seed_chefs():
     demo1 = Chef(user_id=4,
                 about="I'm a Thai Chef for years, I made Thai and Asian cuisine, such as Pad Thai, Drunken Noodles, and Fried Rice and all the Curry series as well(Red, Green, & Yellow)",
                 service="Thai Food",
-                menu="Pad Thai, Drunken Noodles, Fried Rice, Red Curry, Green Curry, Yellw Curry",
+                menu="Pad Thai, Drunken Noodles, Fried Rice, Red Curry, Green Curry, Yellow Curry",
                 pricing="$20/hr + $20/person",
                 available=True,
                 )

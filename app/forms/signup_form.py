@@ -13,18 +13,22 @@ def user_exists(form, field):
     if user:
         raise ValidationError("User is already registered.")
 
-
+def username_exists(form, field):
+    print('check if username exists', field.data)
+    username = field.data
+    user = User.query.filter(User.username == username).first()
+    if user:
+        raise ValidationError("Username Taken")
 
 
 class SignUpForm(FlaskForm):
-    username = StringField('username', validators=[DataRequired()])
+    username = StringField('username', validators=[DataRequired(), username_exists])
     email = StringField('email', validators=[DataRequired(), user_exists])
     password = StringField('password', validators=[DataRequired()])
     address = StringField('address', validators=[DataRequired()])
-    address = StringField('address', validators=[DataRequired()])
     city = StringField('city', validators=[DataRequired()])
     state = StringField('state', validators=[DataRequired()])
-    zipcode = StringField('zipcode', validators=[DataRequired()])
+    zipcode = IntegerField('zipcode', validators=[DataRequired()])
     phone = StringField('phone', validators=[DataRequired()])
     is_a_chef = BooleanField('is_a_chef')
-    createdAt = DateField('createdAt', format='%Y-%m-%dT%H:%M:%S',default=datetime.today, validators=[DataRequired()])
+    createdAt = DateField('createdAt', format='%Y-%m-%dT%H:%M:%S', default=datetime.today, validators=[DataRequired()])
