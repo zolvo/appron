@@ -19,7 +19,6 @@ function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [user, setUser] = useState({});
-  const [chef, setChef] = useState({});
 
   useEffect(() => {
     document.title = "Appron: Home";
@@ -65,6 +64,7 @@ function App() {
             authenticated={authenticated}
             setAuthenticated={setAuthenticated}
             user={user}
+            // setChef={setChef}
           />
         </Route>
         <ProtectedRoute
@@ -93,14 +93,14 @@ function App() {
           exact={true}
           authenticated={authenticated}
         >
-          <Chef authenticate={authenticate} user={user} chef={chef} />
+          <Chef authenticate={authenticate} user={user} />
         </ProtectedRoute>
 
         <ProtectedRoute
           path="/chefs/:chefId/appointment"
           authenticated={authenticated}
         >
-          <Appointment authenticate={authenticate} user={user} chef={chef} />
+          <Appointment authenticate={authenticate} user={user} />
         </ProtectedRoute>
         <Route path="/" exact={true} authenticated={authenticated}>
           <Home authenticated={authenticated} />

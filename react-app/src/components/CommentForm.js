@@ -1,19 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import { FaStar } from "react-icons/fa";
 
-// import "./CommentForm.css";
 import { useHistory, useParams } from "react-router-dom";
 
 const CommentForm = ({ user, chef }) => {
   const [comment, setComments] = useState("");
-  // const [stars, setStars] = useState();
   const [hover, setHover] = useState(null);
   const [rating, setRating] = useState(null);
 
   const { chefId } = useParams();
   const history = useHistory();
-  // console.log("************************** :", chefId )
+  // console.log("************************** :", chefId)
 
   const createComment = async (e) => {
     e.preventDefault();
@@ -32,7 +30,7 @@ const CommentForm = ({ user, chef }) => {
     });
     if (res.ok) {
       // const data = await res.json();
-      history.push(`/chefs/${chefId}`)
+      // history.push(`/chefs/${chefId}`)
     }
   };
   // console.log(chef)
@@ -44,8 +42,8 @@ const CommentForm = ({ user, chef }) => {
     <Container>
       <CommentBox>
         <Body>
-          {chef.comment.map((comm) => (
-            <div>
+          {chef.comment.map((comm, i) => (
+            <div key={i}>
               <Box1>
                 <User>UserId {comm.user_id} says:</User>
                 <Stars>

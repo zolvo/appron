@@ -14,14 +14,7 @@ const ChefForm = ({ user }) => {
   const history = useHistory();
 
   useEffect(() => {
-
     document.title = "Appron: ChefForm";
-
-  //   (async () => {
-  //     const res = await authenticate();
-  //     const userId = res.id;
-  //     setUserId(userId);
-  //   })();
   }, []);
 
   const chefForm = async (e) => {
@@ -36,6 +29,7 @@ const ChefForm = ({ user }) => {
     );
 
     if (!chef.errors) {
+      // setChef(chef)
       history.push('/')
     } else setErrors(chef.errors);
   };

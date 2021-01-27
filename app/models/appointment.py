@@ -22,5 +22,5 @@ class Appointment(db.Model):
             "chef_id": self.chef_id,
             "notes": self.notes,
             "date": self.date,
-            "createAt": self.createAt
+            "createdAt": self.createdAt,
         }

@@ -14,6 +14,7 @@ function Chef({user}) {
   const history = useHistory();
   const { chefId } = useParams();
 
+  // console.log ("***************", user)
   useEffect(() => {
     document.title = "Appron: Chef";
     if (!chefId) {

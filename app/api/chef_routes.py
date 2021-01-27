@@ -4,6 +4,7 @@ from app.models import db, User, Chef, Comment, Appointment, Rating
 from app.forms import CommentForm, AppointmentForm
 from sqlalchemy.orm import joinedload
 import json;
+import datetime;
 
 chef_routes = Blueprint('chefs', __name__)
 
@@ -55,11 +56,12 @@ def review(id):
 def post_appointment(id):
     form = AppointmentForm()
     data = request.get_json()
+
     new_appointment = Appointment(
         user_id = data["user_id"],
         chef_id = data["chef_id"],
         notes= form.data['notes'],
-        date= form.date['date'])
+        date= form.data['date'])
 
     db.session.add(new_appointment)
     db.session.commit()

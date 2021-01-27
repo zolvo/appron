@@ -3,13 +3,12 @@ import DatePicker from "react-datepicker";
 import styled from "styled-components";
 import ChefAppointment from "./ChefAppointment";
 import "react-datepicker/dist/react-datepicker.css";
-import { appointmentForm } from "../services/auth";
 import { useHistory, useParams } from "react-router-dom";
 
 function Appointment({ user, setAppointments }) {
   const [chef, setChef] = useState({});
   const [notes, setNotes] = useState({});
-  const [appointment, setAppointment] =useState({})
+  const [appointment, setAppointment] = useState({});
   const [date, setDate] = useState(new Date());
 
   const history = useHistory();
@@ -27,11 +26,10 @@ function Appointment({ user, setAppointments }) {
       setChef(chef_id);
     })();
   }, []);
-  // console.log(chefId)
-
 
   const onAppointment = async (e) => {
     e.preventDefault();
+    console.log("HERE *****************: ", user.id);
     const res = await fetch(`/api/chef/${chef.id}/appointment`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -56,9 +54,15 @@ function Appointment({ user, setAppointments }) {
             {chef.chef && chef.chef.user.username}
           </div>
           <div>User Name: {user.username}</div>
-          <ChefAppointment />
+          <ChefAppointment chef={chef}/>
           <div className="subtitle">Pick a Date</div>
-          <DatePicker selected={date} onChange={(date) => setDate(date)} />
+          <DatePicker
+            dateFormat="MMMM d, yyyy h:mm aa"
+            name="datetimefield"
+            selected={date}
+            onChange={(date) => setDate(date)}
+            showTimeSelect
+          />
           <div>
             <textarea
               className="notes"
@@ -125,6 +129,5 @@ const MakeAppointment = styled.div`
     transform: translateY(-3px);
   }
 `;
-
 
 export default Appointment;
