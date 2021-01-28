@@ -3,8 +3,9 @@ import { useHistory, useParams } from "react-router-dom";
 import styled from "styled-components";
 import bg from "../image/bg.jpg";
 import CommentForm from "./CommentForm";
+import Comments from "./Comments";
 
-function Chef({user}) {
+function Chef({ user }) {
   const [chef, setChef] = useState("");
   const [comment, setComment] = useState("");
   const [showReviews, setShowReviews] = useState(false);
@@ -49,7 +50,7 @@ function Chef({user}) {
 
     setLikes(!likes);
   };
-// console.log(chef)
+  // console.log(chef)
   return (
     <Container>
       <ChefWrapper>
@@ -113,14 +114,10 @@ function Chef({user}) {
         </Box2>
         <Box3>
           {showReviews && (
-            // <textarea
-            //   className="text"
-            //   placeholder="leave a review"
-            //   onClick={(e) => setReviews(e.target.value)}
-            // />
             <CommentForm user={user} chef={chef} />
           )}
         </Box3>
+        <Comments user={user} chef={chef} />
       </ChefWrapper>
     </Container>
   );
@@ -194,20 +191,6 @@ const Title = styled.div`
   letter-spacing: 1px;
 `;
 
-const Box1 = styled.div`
-  margin-top: 2em;
-  // margin-left: 5em;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-item: center;
-  // border: 1px solid white;
-  width: 10em;
-
-  span {
-    margin-left: 0.5em;
-  }
-`;
 
 const Box2 = styled.div`
   margin-top: 2em;

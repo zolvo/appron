@@ -14,7 +14,7 @@ const CommentForm = ({ user, chef }) => {
   // console.log("************************** :", chefId)
 
   const createComment = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     // console.log("HERE *****************: ", user.id);
     const res = await fetch(`/api/chefs/${chefId}`, {
       method: "POST",
@@ -29,8 +29,7 @@ const CommentForm = ({ user, chef }) => {
       }),
     });
     if (res.ok) {
-      // const data = await res.json();
-      // history.push(`/chefs/${chefId}`)
+      history.push(`/chefs/${chefId}`);
     }
   };
   // console.log(chef)
@@ -40,23 +39,6 @@ const CommentForm = ({ user, chef }) => {
 
   return (
     <Container>
-      <CommentBox>
-        <Body>
-          {chef.comment.map((comm, i) => (
-            <div key={i}>
-              <Box1>
-                <User>UserId {comm.user_id} says:</User>
-                <Stars>
-                  {comm.stars}
-                  <FaStar size={15} color={"fd4 "} /> rating
-                </Stars>
-                <Date>{comm.createdAt}</Date>
-              </Box1>
-              <Review>{comm.comment}</Review>
-            </div>
-          ))}
-        </Body>
-      </CommentBox>
       <RatingIcon>
         <div>Leave a Rating:</div>
 
@@ -65,7 +47,7 @@ const CommentForm = ({ user, chef }) => {
             const ratingValue = i + 1;
 
             return (
-              <label>
+              <label key={i}>
                 <input
                   type="radio"
                   name="rating"
@@ -125,7 +107,7 @@ const Container = styled.div`
   }
 
   .text {
-    color: red;
+    // color: white;
   }
 `;
 
@@ -146,38 +128,6 @@ const RatingIcon = styled.div`
     padding: 3px;
     margin-top: 0.5em;
   }
-`;
-
-const CommentBox = styled.div`
-  padding: 1em;
-  margin-top: 2em;
-  box-sizing: border-box;
-  width: 27em;
-  display: flex;
-  flex-direction: column;
-`;
-const Box1 = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin-bottom: -10px;
-`;
-
-const User = styled.div`
-  margin-bottom: 1em;
-`;
-const Body = styled.div``;
-const Date = styled.div`
-  margin-bottom: 1em;
-`;
-const Stars = styled.div`
-  margin-bottom: 1em;
-  display: flex;
-  align-items: center;
-`;
-
-const Review = styled.div`
-  padding-bottom: 3em;
 `;
 
 export default CommentForm;

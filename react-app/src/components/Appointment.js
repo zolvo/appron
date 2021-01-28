@@ -14,6 +14,7 @@ function Appointment({ user, setAppointments }) {
   const history = useHistory();
 
   const { chefId } = useParams();
+  // console.log(chefId)
 
   useEffect(() => {
     document.title = "Appron: Appointment";
@@ -22,18 +23,18 @@ function Appointment({ user, setAppointments }) {
     }
     (async () => {
       const res = await fetch(`/api/chefs/${chefId}`);
-      const chef_id = await res.json();
-      setChef(chef_id);
+      const chef = await res.json();
+      setChef(chef);
     })();
   }, []);
+  // console.log(" *****************: ", chef);
 
   const onAppointment = async (e) => {
     e.preventDefault();
-    console.log("HERE *****************: ", user.id);
-    const res = await fetch(`/api/chef/${chef.id}/appointment`, {
+    const res = await fetch(`/api/chef/${chefId}/appointment`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(user.id, chef.id, notes, date),
+      body: JSON.stringify(user.id, chef.chef.id, notes, date),
     });
 
     if (res.ok) {
@@ -43,7 +44,7 @@ function Appointment({ user, setAppointments }) {
     }
     // const data = await fetch(`api/chef/${chefId}/appointment`)
   };
-  // console.log(chef)
+  // console.log(chef.chef.id);
   return (
     <Container>
       <AppointmentHeader>Appointment</AppointmentHeader>
@@ -54,7 +55,7 @@ function Appointment({ user, setAppointments }) {
             {chef.chef && chef.chef.user.username}
           </div>
           <div>User Name: {user.username}</div>
-          <ChefAppointment chef={chef}/>
+          <ChefAppointment chef={chef} />
           <div className="subtitle">Pick a Date</div>
           <DatePicker
             dateFormat="MMMM d, yyyy h:mm aa"

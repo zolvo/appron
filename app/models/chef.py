@@ -18,13 +18,13 @@ class Chef(db.Model):
   rating = db.relationship('Rating', back_populates='chef')
 
 
-  def __init__(self, user_id, about, service, menu, pricing, available):
-    self.user_id = user_id
-    self.about = about
-    self.service = service
-    self.menu = menu
-    self.pricing = pricing
-    self.available = available
+  # def __init__(self, user_id, about, service, menu, pricing, available):
+  #   self.user_id = user_id
+  #   self.about = about
+  #   self.service = service
+  #   self.menu = menu
+  #   self.pricing = pricing
+  #   self.available = available
 
 
   def to_dict(self):

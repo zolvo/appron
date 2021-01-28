@@ -9,6 +9,7 @@ import datetime;
 chef_routes = Blueprint('chefs', __name__)
 
 
+
 @chef_routes.route('/')
 def chefs():
     chefs = Chef.query.options(joinedload(Chef.user)).filter(User.is_a_chef == True)
@@ -19,7 +20,6 @@ def chefs():
 def chef(id):
     chef = Chef.query.get(id)
     comments = Comment.query.filter(Comment.chef_id == id)
-    # users = User.query.filter(User.id == Comment.user_id)
     return {"chef": chef.to_dict(), "comment": [a.to_dict() for a in comments]}
 
 
@@ -30,10 +30,10 @@ def appointment(id):
     return {"appointment": [a.to_dict() for a in appointments], "user": [user.to_dict() for user in users]}
 
 
-@chef_routes.route('/<int:id>')
-def rating(id):
-    ratings = Rating.query.filter(Rating.chef_id == id)
-    return {"rating": [a.to_dict() for a in ratings]}
+# @chef_routes.route('/<int:id>')
+# def rating(id):
+#     ratings = Rating.query.filter(Rating.chef_id == id)
+#     return {"rating": [a.to_dict() for a in ratings]}
 
 #Post a Review Route
 @chef_routes.route('/<int:id>', methods=['POST'])

@@ -18,7 +18,7 @@ def seed_comments():
     demo3 = Comment(user_id=User.query.filter(User.username == 'Zoro Roronoa').first().id,
                     chef_id=Chef.query.get(1).id,
                     stars=3,
-                    comment="He was very profesional in any way, the ingridients, the plating, the falvor, all is what expected from the great chef ",
+                    comment="He was very profesional in any way, the ingridients, the plating, the flavor, all is what expected from the great chef ",
                     )
 
 

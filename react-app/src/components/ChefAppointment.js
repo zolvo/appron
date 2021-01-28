@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { NavLink, useParams } from "react-router-dom";
 import styled from "styled-components";
-
 const ChefAppointment = ({ user, chef }) => {
   const [appointment, setAppointment] = useState({});
 
@@ -19,19 +18,25 @@ const ChefAppointment = ({ user, chef }) => {
     })();
   }, [chefId]);
 
-  // console.log(appointment.appointment);
+  // console.log(chef);
   return (
     <Container>
       <AppointmentList>
         {appointment.appointment &&
-          appointment.appointment.map((app) => (
-            <div>
+          appointment.appointment.map((app, i) => (
+            <div key={i}>
               <div className="title">
-                <div>UserId: {app.user_id}</div>
                 <div>{app.date}</div>
+                <div>
+                  <NavLink to={`/users/${app.user_id}`} className="link">
+                    {app.user}
+                  </NavLink>
+                </div>
               </div>
-              <div className="list">{app.notes} </div>
-              <div>______________________________________________________________________________</div>
+              <div className="list">{app.notes}</div>
+              <div>
+                ______________________________________________________________________________
+              </div>
             </div>
           ))}
       </AppointmentList>
@@ -51,7 +56,7 @@ const Container = styled.div`
 const AppointmentList = styled.div`
   .title {
     padding-top: 1em;
-    padding-bottom: .5em;
+    padding-bottom: 0.5em;
     display: flex;
     justify-content: space-between;
     font-size: 12px;
@@ -63,6 +68,11 @@ const AppointmentList = styled.div`
     font-family: monserrat;
     padding-bottom: 2em;
     font-size: 15px;
+  }
+
+  .link {
+    text-transform: upperCase;
+    color: #ffbc42;
   }
 `;
 

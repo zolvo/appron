@@ -17,7 +17,7 @@ def seed_appointments():
 
     demo3 = Appointment(user_id=User.query.filter(User.username == 'Chun Li').first().id,
                         chef_id=Chef.query.get(1).id,
-                        notes="Downpayment already sent last night, please make sure you recieved it",
+                        notes="Down payment already sent last night, please make sure you recieved it",
                         date=datetime.now(),
                         )
 
