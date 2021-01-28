@@ -3,7 +3,7 @@ import DatePicker from "react-datepicker";
 import styled from "styled-components";
 import ChefAppointment from "./ChefAppointment";
 import "react-datepicker/dist/react-datepicker.css";
-import { useHistory, useParams } from "react-router-dom";
+import { NavLink, useHistory, useParams } from "react-router-dom";
 
 function Appointment({ user, setAppointments }) {
   const [chef, setChef] = useState({});
@@ -37,14 +37,20 @@ function Appointment({ user, setAppointments }) {
       body: JSON.stringify(user.id, chef.chef.id, notes, date),
     });
 
+    console.log(date)
+
     if (res.ok) {
       const data = await res.json();
       const chefId = data.chef_id;
-      history.push(`/chef/${chefId}`);
+      history.push(`/chefs/${chefId}`);
     }
-    // const data = await fetch(`api/chef/${chefId}/appointment`)
+
+    if (!user && !chef) {
+      return null;
+    }
+
   };
-  // console.log(chef.chef.id);
+
   return (
     <Container>
       <AppointmentHeader>Appointment</AppointmentHeader>
@@ -52,9 +58,16 @@ function Appointment({ user, setAppointments }) {
         <form onSubmit={onAppointment}>
           <div>
             Chef Name:
-            {chef.chef && chef.chef.user.username}
+            <NavLink to={`/chefs/${chefId}`}>
+              <Name>{chef.chef && chef.chef.user.username}</Name>
+            </NavLink>
           </div>
-          <div>User Name: {user.username}</div>
+          <div>
+            User Name:
+            <NavLink to={`/users/${user.id}`}>
+              <Name>{user.username}</Name>
+            </NavLink>
+          </div>
           <ChefAppointment chef={chef} />
           <div className="subtitle">Pick a Date</div>
           <DatePicker
@@ -102,33 +115,44 @@ const AppointmentHeader = styled.div`
 `;
 
 const MakeAppointment = styled.div`
-  font-family: dosis;
-  color: white;
+font-family: dosis;
+color: white;
 
-  .notes {
-    box-sizing: border-box;
-    height: 6em;
-    width: 30em;
-    outline: none;
-    border-radius: 8px;
-    padding-left: 0.5em;
-  }
+.notes {
+  box-sizing: border-box;
+  height: 6em;
+  width: 30em;
+  outline: none;
+  border-radius: 8px;
+  padding-left: 0.5em;
+}
 
-  .appointment{
-    cursor: pointer;
-    background-color: #ffbc42;
-    font-weight: 700;
-    width: 18em;
-    height: 3em;
-    border-radius: 2em;
-    box-shadow:0px 14px 9px -15px rgba(0,0,0,0.25);
-    outline:none;
-    border:none;
+.appointment{
+  cursor: pointer;
+  background-color: #ffbc42;
+  font-weight: 700;
+  width: 18em;
+  height: 3em;
+  border-radius: 2em;
+  box-shadow:0px 14px 9px -15px rgba(0,0,0,0.25);
+  outline:none;
+  border:none;
 
-    transition: all 0.2x ease-in;
-    &:hover{
+  transition: all 0.2x ease-in;
+  &:hover{
     transform: translateY(-3px);
   }
-`;
 
-export default Appointment;
+  `;
+  const Name = styled.span`
+    text-transform: upperCase;
+    font-size: 14px;
+    color: #ffbc42;
+    //  font-family: monserrat;
+    // font-weight: 600;
+    letter-spacing: 0.4px;
+    margin-left: 0.5em;
+    text-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+  `;
+
+  export default Appointment;

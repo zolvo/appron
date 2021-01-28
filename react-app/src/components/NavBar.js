@@ -4,7 +4,7 @@ import LogoutButton from "./auth/LogoutButton";
 import styled from "styled-components";
 import logo01 from "../image/logo01.png";
 import appronwhite from "../image/appronwhite.png";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaUserFriends, FaUserCircle } from "react-icons/fa";
 
 const NavBar = ({ setAuthenticated, authenticated, user }) => {
   // const [currentUser, setCurrentUser] = useState();
@@ -65,31 +65,40 @@ const NavBar = ({ setAuthenticated, authenticated, user }) => {
           )}
           {authenticated ? (
             // <NavLink to="/users" exact={true} activeClassName="active">
-              <UserDropdown>
-                <i className="far fa-user-circle fa-2x" />
-                <div className="dropdown-content">
-                  <li>
-                    <NavLink
-                      to={`/users/${user.id}`}
-                      exact={true}
-                      activeClassName="active"
-                    >
-                      <button className="button">
-                        <i className="fas fa-house-user" />
-                        Profile
-                      </button>
-                    </NavLink>
-                  </li>
-                  <li>
-                    <LogoutButton
-                      setAuthenticated={setAuthenticated}
-                      authenticated={authenticated}
-                    />
-                  </li>
-                </div>
-              </UserDropdown>
-            // </NavLink>
+            <UserDropdown>
+              {/* <i className="far fa-user-circle fa-2x" /> */}
+              <FaUserCircle size="30" />
+              <div className="dropdown-content">
+                <li>
+                  <NavLink
+                    to={`/users/${user.id}`}
+                    exact={true}
+                    activeClassName="active"
+                  >
+                    <button className="button">
+                      <i className="fas fa-house-user" />
+                      <span>Profile</span>
+                    </button>
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink to={`/users`} exact={true} activeClassName="active">
+                    <button className="button">
+                      <FaUserFriends />
+                      Users
+                    </button>
+                  </NavLink>
+                </li>
+                <li>
+                  <LogoutButton
+                    setAuthenticated={setAuthenticated}
+                    authenticated={authenticated}
+                  />
+                </li>
+              </div>
+            </UserDropdown>
           ) : (
+            // </NavLink>
             ""
           )}
         </SubContainer3>
@@ -228,38 +237,41 @@ const SubContainer3 = styled.div`
 `;
 
 const UserDropdown = styled.div`
-display: flex;
-box-sizing: border-box;
-// width: 23em;
-justify-content: space-evently;
-
-.dropdown-content {
-  margin-left: 3em;
-  display: none;
-  list-style: none;
-  position: absolute;
-  min-width: 16px;
-  z-index: 1;
-}
-
-li {
   display: flex;
-  justify-items: flex-start;
-  font-family: dosis;
-  font-size: 16px;
-  color: white;
-}
+  box-sizing: border-box;
+  // width: 23em;
+  justify-content: space-evently;
 
-:hover .dropdown-content {
-  display: block;
-}
+  .dropdown-content {
+    margin-left: 2.5em;
+    display: none;
+    list-style: none;
+    position: absolute;
+    min-width: 16px;
+    z-index: 1;
+  }
 
-:hover {
-  // color: #ffbc42;
-  text-shadow: rgba(0, 0, 0, 0.75) 0px 5px 15px;
-}
+  li {
+    display: flex;
+    justify-items: flex-start;
+    font-family: dosis;
+    font-size: 16px;
+    color: white;
+  }
 
-.button {
+  :hover .dropdown-content {
+    display: block;
+    text-shadow: rgba(0, 0, 0, 0.75) 0px 5px 15px;
+    color: yellow;
+  }
+
+  :hover {
+    // color: #ffbc42;
+    text-shadow: rgba(0, 0, 0, 0.75) 0px 5px 15px;
+    // color: blue;
+  }
+
+  .button {
     // transition: all 3s ease;
     cursor: pointer;
     letter-spacing: 0.05em;
@@ -271,7 +283,7 @@ li {
     outline: none;
     background-color: transparent;
     color: white;
-
+  }
 `;
 
 export default NavBar;

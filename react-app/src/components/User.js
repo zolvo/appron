@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import styled from "styled-components";
 import bg from "../image/bg.jpg";
 
@@ -8,6 +8,7 @@ function User() {
   // Notice we use useParams here instead of getting the params
   // From props.
   const { userId } = useParams();
+  const history = useHistory();
 
   useEffect(() => {
     if (!userId) {
@@ -52,10 +53,8 @@ function User() {
           </li>
         </ul>
         <AllUser>
-          <button className="button">
-            <NavLink to="/users" exact={true} activeClassName="active">
-              <div>View All Users</div>
-            </NavLink>
+          <button className="button" onClick={history.goBack}>
+            <div>Go Back</div>
           </button>
         </AllUser>
       </UserWrapper>
@@ -86,9 +85,9 @@ const Container = styled.div`
     list-style: none;
     text-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
   }
-  `;
+`;
 
-  const UserWrapper = styled.div`
+const UserWrapper = styled.div`
   margin-top: 10em;
   box-sizing: border-box;
   border: 1px solid white;
@@ -100,9 +99,9 @@ const Container = styled.div`
   width: 500px;
   height: 550px;
   border-radius: 25px;
-  `;
+`;
 
-  const Title = styled.div`
+const Title = styled.div`
   margin-bottom: 2em;
   padding-top: 2em;
   text-align: center;
@@ -110,9 +109,9 @@ const Container = styled.div`
   font-size: 20px;
   font-weight: bold;
   letter-spacing: 1px;
-  `;
+`;
 
-  const AllUser = styled.div`
+const AllUser = styled.div`
   button{
     // background-color: #EF9D55;
     // margin-left: 14em;
@@ -126,10 +125,11 @@ const Container = styled.div`
     height: 2.5em;
     border-radius: 2em;
     box-shadow:0px 14px 9px -15px rgba(0,0,0,0.25);
+    cursor:pointer;
 
     transition: all 0.2x ease-in;
     &:hover{
       transform: translateY(-3px);
     }`;
 
-    export default User;
+export default User;

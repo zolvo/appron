@@ -7,7 +7,7 @@ import Comments from "./Comments";
 
 function Chef({ user }) {
   const [chef, setChef] = useState("");
-  const [comment, setComment] = useState("");
+  // const [comment, setComment] = useState("");
   const [showReviews, setShowReviews] = useState(false);
   const [likes, setLikes] = useState(false);
   const [count, setCount] = useState(0);
@@ -96,6 +96,9 @@ function Chef({ user }) {
         <button className="appointment" onClick={handleClick}>
           Make an Appointment
         </button>
+        <Goback onClick={history.goBack}>
+          <div>Go Back</div>
+        </Goback>
         <Box2>
           <LikeIcon>
             <span className="red" onClick={handleLike}>
@@ -109,14 +112,10 @@ function Chef({ user }) {
           </LikeIcon>
           <ReviewIcon>
             <i className="far fa-comments icon" onClick={toggleReview} />
-            <span>{comment.length}</span>
+            <span>{chef.comment.length}</span>
           </ReviewIcon>
         </Box2>
-        <Box3>
-          {showReviews && (
-            <CommentForm user={user} chef={chef} />
-          )}
-        </Box3>
+        <Box3>{showReviews && <CommentForm user={user} chef={chef} />}</Box3>
         <Comments user={user} chef={chef} />
       </ChefWrapper>
     </Container>
@@ -163,13 +162,32 @@ li {
   &:hover{
     transform: translateY(-3px);
   }
+
+
   `;
+
+const Goback = styled.button`
+  text-transform: uppercase;
+  margin-top: 0.5em;
+  cursor: pointer;
+  border: none;
+  font-weight: 600;
+  font-size: 15px;
+  font-family: dosis;
+  outline:none;
+
+  transition: all 0.2x ease-in;
+  &:hover {
+    transform: translateY(-3px);
+  }
+`;
 
 const ChefWrapper = styled.div`
   margin-top: 8em;
   box-sizing: border-box;
   border: 1px solid white;
   background-color: #f4f3f2;
+  // background-color: blue;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -190,7 +208,6 @@ const Title = styled.div`
   font-weight: bold;
   letter-spacing: 1px;
 `;
-
 
 const Box2 = styled.div`
   margin-top: 2em;

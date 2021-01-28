@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import bg from "../image/bg.jpg";
 
 function UsersList() {
   const [users, setUsers] = useState([]);
+  const history = useHistory();
 
   useEffect(() => {
     async function fetchData() {
@@ -30,6 +31,9 @@ function UsersList() {
       <UserListWrapper>
         <Title>User List: </Title>
         <ul>{userComponents}</ul>
+        <button className="button" onClick={history.goBack}>
+          <div>Go Back</div>
+        </button>
       </UserListWrapper>
     </Container>
   );
@@ -74,6 +78,28 @@ const UserListWrapper = styled.div`
   width: 500px;
   height: 550px;
   border-radius: 25px;
+
+  button{
+    // background-color: #EF9D55;
+    // margin-left: 14em;
+    margin-left: 30%;
+    margin-top: 8em;
+    background-color: #ffbc42;
+    font-weight: 700;
+    border: none;
+    outline: none;
+    width: 15em;
+    height: 2.5em;
+    border-radius: 2em;
+    box-shadow:0px 14px 9px -15px rgba(0,0,0,0.25);
+    cursor:pointer;
+
+    transition: all 0.2x ease-in;
+    &:hover{
+      transform: translateY(-3px);
+    }
+
+
 `;
 
 const Title = styled.div`
