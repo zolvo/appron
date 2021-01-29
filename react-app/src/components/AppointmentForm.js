@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from "react";
+import DatePicker from "react-datepicker";
 import styled from "styled-components";
-import ChefAppointment from "./ChefAppointment";
 import "react-datepicker/dist/react-datepicker.css";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useHistory, useParams } from "react-router-dom";
 
-function Appointment({ user }) {
+function AppointmentForm({ user }) {
   const [chef, setChef] = useState({});
+  const [notes, setNotes] = useState({});
+  const [date, setDate] = useState(new Date());
 
+  const history = useHistory();
 
   const { chefId } = useParams();
   // console.log(chefId)
@@ -22,39 +25,39 @@ function Appointment({ user }) {
       setChef(chef);
     })();
   }, [chefId]);
-  // console.log(" *****************: ", chef);
+  //   console.log(" *****************: ", chef);
 
-  // const onAppointment = async (e) => {
-  //   // e.preventDefault();
-  //   const res = await fetch(`/api/chefs/${chefId}/appointment`, {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({
-  //       user_id: user.id,
-  //       chef_id: chef.chef.id,
-  //       notes,
-  //       date: date.toUTCString(),
-  //     }),
-  //   });
+  const onAppointment = async (e) => {
+    e.preventDefault();
+    const res = await fetch(`/api/chefs/${chefId}/appointment`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        user_id: user.id,
+        chef_id: chef.chef.id,
+        notes,
+        date: date.toUTCString(),
+      }),
+    });
 
     // console.log(user.id)
 
-  //   if (res.ok) {
-  //     const data = await res.json();
-  //     const chefId = data.chef_id;
-  //     history.push(`/chefs/${chefId}/appointment`);
-  //   }
+    if (res.ok) {
+      const data = await res.json();
+      const chefId = data.chef_id;
+      history.push(`/chefs/${chefId}/appointment`);
+    }
 
-  //   if (!user && !chef) {
-  //     return null;
-  //   }
-  // };
+    if (!user && !chef) {
+      return null;
+    }
+  };
 
   return (
     <Container>
       <AppointmentHeader>Appointment</AppointmentHeader>
       <MakeAppointment>
-        {/* <form onSubmit={onAppointment}> */}
+        <form onSubmit={onAppointment}>
           <div>
             Chef Name:
             <NavLink to={`/chefs/${chefId}`}>
@@ -67,8 +70,7 @@ function Appointment({ user }) {
               <Name>{user.username}</Name>
             </NavLink>
           </div>
-          <ChefAppointment chef={chef} />
-          {/* <div className="subtitle">Pick a Date</div>
+          <div className="subtitle">Pick a Date</div>
           <DatePicker
             dateFormat="MMMM d, yyyy h:mm aa"
             name="datetimefield"
@@ -86,7 +88,7 @@ function Appointment({ user }) {
           <button type="submit" className="appointment">
             Make an appointment
           </button>
-        </form> */}
+        </form>
       </MakeAppointment>
     </Container>
   );
@@ -97,16 +99,17 @@ const Container = styled.div`
   align-items: center;
   flex-direction: column;
   background-color: #d81159;
-  min-height: 100vh;
-  padding-top: 5em;
+  padding: 3em;
+  border-radius: 1em;
+  height: 23.5em;
+  width: ;
 `;
 
 const AppointmentHeader = styled.div`
   font-family: monserrat;
   color: white;
   font-size: 20px;
-
-  height: 4em;
+  letter-spacing: 1px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -114,10 +117,16 @@ const AppointmentHeader = styled.div`
 `;
 
 const MakeAppointment = styled.div`
+margin-top: 2em;
 font-family: dosis;
 color: white;
 
+.subtitle {
+    margin-top: 0.5em;
+}
+
 .notes {
+    // margin-top:1em;
   box-sizing: border-box;
   height: 6em;
   width: 30em;
@@ -127,6 +136,8 @@ color: white;
 }
 
 .appointment{
+    margin-top: 2em;
+    margin-left: 6em;
   cursor: pointer;
   background-color: #ffbc42;
   font-weight: 700;
@@ -142,6 +153,7 @@ color: white;
     transform: translateY(-3px);
   }
 
+
   `;
 const Name = styled.span`
   text-transform: upperCase;
@@ -154,4 +166,4 @@ const Name = styled.span`
   text-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
 `;
 
-export default Appointment;
+export default AppointmentForm;

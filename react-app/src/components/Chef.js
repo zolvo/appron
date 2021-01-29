@@ -4,16 +4,37 @@ import styled from "styled-components";
 import bg from "../image/bg.jpg";
 import CommentForm from "./CommentForm";
 import Comments from "./Comments";
+import AppointmentForm from "./AppointmentForm";
+import Modal from "react-modal";
+
+const customStyles = {
+  content: {
+    width: "31.5em",
+    height: "60%",
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    background: "rgba(255, 0, 0, 0)",
+    border:"none",
+    transform: "translate(-50%, -50%)",
+  },
+};
 
 function Chef({ user }) {
   const [chef, setChef] = useState("");
-  // const [comment, setComment] = useState("");
+  const [showModal, setShowModal] = useState(false);
   const [showReviews, setShowReviews] = useState(false);
   const [likes, setLikes] = useState(false);
   const [count, setCount] = useState(0);
   // const [rating, setRating] = useState([]);
   const history = useHistory();
   const { chefId } = useParams();
+
+  const closeModal = () => {
+    setShowModal(false);
+  };
 
   // console.log ("***************", user)
   useEffect(() => {
@@ -31,10 +52,6 @@ function Chef({ user }) {
   if (!chef) {
     return null;
   }
-
-  const handleClick = () => {
-    history.push(`/chefs/${chefId}/appointment`);
-  };
 
   const toggleReview = () => {
     if (!user) history.push("/login");
@@ -93,9 +110,21 @@ function Chef({ user }) {
             <strong>Available:</strong> {chef.chef.available ? "Yes" : "No"}
           </li>
         </ul>
-        <button className="appointment" onClick={handleClick}>
+        <button
+          className="appointment"
+          onClick={() => setShowModal(!showModal)}
+        >
           Make an Appointment
         </button>
+        <Modal
+          isOpen={showModal}
+          onRequestClose={closeModal}
+          style={customStyles}
+          ariaHideApp={false}
+          contentLabel="EXAMPLE MODAL"
+        >
+          <AppointmentForm user={user} chef={chef} />
+        </Modal>
         <Goback onClick={history.goBack}>
           <div>Go Back</div>
         </Goback>
