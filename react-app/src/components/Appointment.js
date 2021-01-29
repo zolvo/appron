@@ -8,7 +8,7 @@ import { NavLink, useHistory, useParams } from "react-router-dom";
 function Appointment({ user, setAppointments }) {
   const [chef, setChef] = useState({});
   const [notes, setNotes] = useState({});
-  const [appointment, setAppointment] = useState({});
+  // const [appointment, setAppointment] = useState({});
   const [date, setDate] = useState(new Date());
 
   const history = useHistory();
@@ -26,29 +26,33 @@ function Appointment({ user, setAppointments }) {
       const chef = await res.json();
       setChef(chef);
     })();
-  }, []);
+  }, [chefId]);
   // console.log(" *****************: ", chef);
 
   const onAppointment = async (e) => {
     e.preventDefault();
-    const res = await fetch(`/api/chef/${chefId}/appointment`, {
+    const res = await fetch(`/api/chefs/${chefId}/appointment`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(user.id, chef.chef.id, notes, date),
+      body: JSON.stringify({
+        user_id: user.id,
+        chef_id: chef.chef.id,
+        notes,
+        date: date.toUTCString(),
+      }),
     });
 
-    console.log(date)
+    // console.log(user.id)
 
     if (res.ok) {
       const data = await res.json();
       const chefId = data.chef_id;
-      history.push(`/chefs/${chefId}`);
+      history.push(`/chefs/${chefId}/appointment`);
     }
 
     if (!user && !chef) {
       return null;
     }
-
   };
 
   return (
@@ -144,15 +148,15 @@ color: white;
   }
 
   `;
-  const Name = styled.span`
-    text-transform: upperCase;
-    font-size: 14px;
-    color: #ffbc42;
-    //  font-family: monserrat;
-    // font-weight: 600;
-    letter-spacing: 0.4px;
-    margin-left: 0.5em;
-    text-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
-  `;
+const Name = styled.span`
+  text-transform: upperCase;
+  font-size: 14px;
+  color: #ffbc42;
+  //  font-family: monserrat;
+  // font-weight: 600;
+  letter-spacing: 0.4px;
+  margin-left: 0.5em;
+  text-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+`;
 
-  export default Appointment;
+export default Appointment;

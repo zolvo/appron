@@ -57,12 +57,15 @@ def post_appointment(id):
     form = AppointmentForm()
     data = request.get_json()
 
+    # print("********************************* ", data["notes"])
+
     new_appointment = Appointment(
         user_id = data["user_id"],
         chef_id = data["chef_id"],
         notes= form.data['notes'],
-        date= form.data['date'])
+        date= datetime.datetime.strptime(data["date"], "%a, %d %b %Y %H:%M:%S %Z")
 
+    )
     db.session.add(new_appointment)
     db.session.commit()
 

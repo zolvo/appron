@@ -1,31 +1,42 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
 import LogoutButton from "./auth/LogoutButton";
 import styled from "styled-components";
 import logo01 from "../image/logo01.png";
 import appronwhite from "../image/appronwhite.png";
 import { FaSearch, FaUserFriends, FaUserCircle } from "react-icons/fa";
+import { Link } from "react-scroll";
 
 const NavBar = ({ setAuthenticated, authenticated, user }) => {
-  // const [currentUser, setCurrentUser] = useState();
-
-  // useEffect(() => {
-  //   (async () => {
-  //     const res = await authenticate();
-  //     const id = res.id;
-  //     setCurrentUser(id);
-  //   })();
-  // });
-
+  const [home, setHome] = useState("");
+  const location = useLocation();
+  useEffect(() => {
+    const home = location.pathname;
+    setHome(home);
+    // console.log(home);
+  }, [location]);
   return (
     <Container>
       <SubContainer1>
         <SubContainer2>
           <SubContainer2a>
-            <NavLink to="/">
-              <img className="img1" src={logo01} alt={logo01} />
-              <img className="img2" src={appronwhite} alt={appronwhite} />
-            </NavLink>
+            {home === "/" ? (
+              <Link
+                to="top"
+                spy={true}
+                smooth={true}
+                duration={800}
+                className="link"
+              >
+                <img className="img1" src={logo01} alt={logo01} />
+                <img className="img2" src={appronwhite} alt={appronwhite} />
+              </Link>
+            ) : (
+              <NavLink to="/">
+                <img className="img1" src={logo01} alt={logo01} />
+                <img className="img2" src={appronwhite} alt={appronwhite} />
+              </NavLink>
+            )}
           </SubContainer2a>
           <SubContainer2b>
             <div>
@@ -33,12 +44,24 @@ const NavBar = ({ setAuthenticated, authenticated, user }) => {
                 <div>Home</div>
               </NavLink>
             </div>
-            {/* <NavLink to="/users" exact={true} activeClassName="active">
-              <div>Users</div>
-            </NavLink> */}
             <NavLink to="/chefs" exact={true} activeClassName="active">
               <div>Chefs</div>
             </NavLink>
+            {home === "/" ? (
+              <Link
+                to="about"
+                spy={true}
+                smooth={true}
+                duration={800}
+                className="link"
+              >
+                <div>About</div>
+              </Link>
+            ) : (
+              <NavLink to="/">
+                <div>About</div>
+              </NavLink>
+            )}
           </SubContainer2b>
         </SubContainer2>
         <MiniSearch>
@@ -205,6 +228,10 @@ const SubContainer2a = styled.div`
   box-sizing: border-box;
   width: 20em;
   // border: 1px solid white;
+
+  .link {
+    cursor: pointer;
+  }
 `;
 
 const SubContainer2b = styled.div`
@@ -212,6 +239,10 @@ const SubContainer2b = styled.div`
   display: flex;
   justify-content: space-evenly;
   width: 15em;
+
+  .link {
+    cursor: pointer;
+  }
 `;
 
 const SubContainer3 = styled.div`

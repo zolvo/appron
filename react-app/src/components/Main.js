@@ -7,6 +7,7 @@ import img02 from "../image/00a.png";
 import img01 from "../image/01.jpg";
 import About from "./About";
 import gold from "../video/gold.mp4";
+import { Element } from "react-scroll";
 
 const Home = ({ authenticated }) => {
   return authenticated ? (
@@ -14,9 +15,11 @@ const Home = ({ authenticated }) => {
   ) : (
     <Container>
       <SubContainer1>
-        <video autoPlay loop muted className="video">
-          <source src={gold} type="video/mp4" />
-        </video>
+        <Element id="top" name="top">
+          <video autoPlay loop muted className="video">
+            <source src={gold} type="video/mp4" />
+          </video>
+        </Element>
         <Title>Appron</Title>
         <Subtitle>Chef on demand</Subtitle>
       </SubContainer1>
@@ -32,7 +35,9 @@ const Home = ({ authenticated }) => {
         <span>find chef for your event</span>. Created for all the chef who want
         to <span>serve with passion</span>.
       </SubContainer3>
-      <About />
+      <Element id="about" name="about">
+        <About />
+      </Element>
     </Container>
   );
 };
