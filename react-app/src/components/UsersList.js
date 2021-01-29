@@ -28,7 +28,7 @@ function UsersList() {
 
   return (
     <Container>
-      <UserListWrapper>
+      <UserListWrapper className="animate__animated animate__slideInRight">
         <Title>User List: </Title>
         <ul>{userComponents}</ul>
         <button className="button" onClick={history.goBack}>
@@ -59,17 +59,24 @@ const Container = styled.div`
 
   .list {
     color: black;
-    font-family: monserrat;
-    font-size: 15px;
+    font-family: dosis;
+    font-size: 16px;
+    font-weight: 600;
+    opacity: 0.6;
     letter-spacing: 0.05em;
     text-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+    cursor: pointer;
+  }
+
+  .default-component {
+    transform-style: preserve-3d;
   }
 `;
 
 const UserListWrapper = styled.div`
   margin-top: 4em;
   box-sizing: border-box;
-  border: 1px solid white;
+  // border: 1px solid white;
   background-color: #f4f3f2;
   display: flex;
   flex-direction: column;
@@ -78,6 +85,7 @@ const UserListWrapper = styled.div`
   width: 500px;
   height: 550px;
   border-radius: 25px;
+  background-image: linear-gradient(180deg, darkgrey, rgba(255,0,0,0), darkgrey);
 
   button{
     // background-color: #EF9D55;
@@ -99,7 +107,9 @@ const UserListWrapper = styled.div`
       transform: translateY(-3px);
     }
 
-
+    .inner-element {
+    transform: translateZ(150px);
+  }
 `;
 
 const Title = styled.div`
@@ -107,9 +117,12 @@ const Title = styled.div`
   padding-top: 2em;
   text-align: center;
   font-family: monserrat;
+  // text-transform: uppercase;
   font-size: 20px;
   font-weight: bold;
   letter-spacing: 1px;
+  color: black;
+  opacity: 0.8;
 `;
 
 export default UsersList;

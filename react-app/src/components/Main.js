@@ -97,7 +97,8 @@ const Subtitle = styled.div`
 const SubContainer2 = styled.div`
   box-sizing: border-box;
   // border: 1px solid red;
-  height: 30em;
+  height: 35em;
+  padding-top: 5em;
   background-color: white;
   // background-image: linear-gradient(360deg, white, grey, white);
   background-image: linear-gradient(to top, rgba(255, 0, 0, 0), grey);

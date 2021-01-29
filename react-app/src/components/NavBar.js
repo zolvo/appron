@@ -144,7 +144,7 @@ const Container = styled.div`
   // list-style: none;
   position: fixed;
   // border: 1px solid yellow;
-  z-index: 1;
+  z-index: 5;
 `;
 
 const MiniSearch = styled.div`

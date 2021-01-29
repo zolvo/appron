@@ -53,7 +53,7 @@ function Chef({ user }) {
   // console.log(chef)
   return (
     <Container>
-      <ChefWrapper>
+      <ChefWrapper className="animate__animated animate__fadeInDown">
         <Title>Chef Profile</Title>
         <ul className="body">
           <li>
@@ -137,6 +137,10 @@ li {
   list-style: none;
   padding: 0.1em;
   margin-bottom:3px;
+  font-family: dosis;
+  opacity: 0.9;
+  letter-spacing: 0.06em;
+  font-size: 15px;
 }
 
 .body {
@@ -174,7 +178,7 @@ const Goback = styled.button`
   font-weight: 600;
   font-size: 15px;
   font-family: dosis;
-  outline:none;
+  outline: none;
 
   transition: all 0.2x ease-in;
   &:hover {
@@ -185,7 +189,7 @@ const Goback = styled.button`
 const ChefWrapper = styled.div`
   margin-top: 8em;
   box-sizing: border-box;
-  border: 1px solid white;
+  // border: 1px solid white;
   background-color: #f4f3f2;
   // background-color: blue;
   display: flex;
@@ -197,16 +201,25 @@ const ChefWrapper = styled.div`
   margin-bottom: 3em;
   padding-right: 1em;
   border-radius: 25px;
+  // background-image: linear-gradient(
+  //   180deg,
+  //   darkgrey,
+  //   rgba(255, 0, 0, 0),
+  //   darkgrey
+  // );
 `;
 
 const Title = styled.div`
   margin-bottom: 1.8em;
   margin-top: 2em;
   text-align: center;
-  font-family: monserrat;
+  font-family: arial;
   font-size: 20px;
-  font-weight: bold;
-  letter-spacing: 1px;
+  font-weight: 600;
+  // letter-spacing: 0.8px;
+  color: black;
+  opacity: 0.8;
+  text-transform: uppercase;
 `;
 
 const Box2 = styled.div`

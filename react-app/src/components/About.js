@@ -35,7 +35,7 @@ function About() {
 
 const Container = styled.div`
   // background-color: #f4f3f2;
-  height: 608px;
+  height: 560px;
 
   display: flex;
   flex-direction: column;
@@ -93,12 +93,14 @@ const Base = styled.div`
 
   color: #ffffff;
   font-weight: 200;
-  font-family: monserrat;
+  font-family: dosis;
+  text-transform:uppercase;
+  letter-spacing: 0.5px;
   font-size: 13px;
   text-align: center;
-  letter-spacing: 0.05em;
-  padding-top: 2em;
-  padding-bottom: 2em;
+  letter-spacing: 0.08em;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
   height: 100%;
   width: 100%;
 `;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import styled from "styled-components";
 import bg from "../image/bg.jpg";
+import Tilt from "react-parallax-tilt";
 
 function User() {
   const [user, setUser] = useState({});
@@ -27,37 +28,46 @@ function User() {
 
   return (
     <Container>
-      <UserWrapper>
-        <Title>User Profile: </Title>
-        <ul>
-          <li>
-            <strong>Username:</strong> {user.username}
-          </li>
-          <li>
-            <strong>Email:</strong> {user.email}
-          </li>
-          <li>
-            <strong>Address:</strong> {user.address}
-          </li>
-          <li>
-            <strong>City:</strong> {user.city}
-          </li>
-          <li>
-            <strong>State:</strong> {user.state}
-          </li>
-          <li>
-            <strong>ZipCode:</strong> {user.zipcode}
-          </li>
-          <li>
-            <strong>Phone:</strong> {user.phone}
-          </li>
-        </ul>
-        <AllUser>
-          <button className="button" onClick={history.goBack}>
-            <div>Go Back</div>
-          </button>
-        </AllUser>
-      </UserWrapper>
+      <Tilt
+        tiltReverse={true}
+        glareEnable={true}
+        glareMaxOpacity={0.8}
+        perspective={2000}
+        transitionSpeed={3000}
+        className="default-component"
+      >
+        <UserWrapper className="animate__animated animate__zoomInLeft">
+          <Title>User Profile: </Title>
+          <ul>
+            <li>
+              <strong>Username:</strong> {user.username}
+            </li>
+            <li>
+              <strong>Email:</strong> {user.email}
+            </li>
+            <li>
+              <strong>Address:</strong> {user.address}
+            </li>
+            <li>
+              <strong>City:</strong> {user.city}
+            </li>
+            <li>
+              <strong>State:</strong> {user.state}
+            </li>
+            <li>
+              <strong>ZipCode:</strong> {user.zipcode}
+            </li>
+            <li>
+              <strong>Phone:</strong> {user.phone}
+            </li>
+          </ul>
+          <AllUser>
+            <button className="button" onClick={history.goBack}>
+              <div>Go Back</div>
+            </button>
+          </AllUser>
+        </UserWrapper>
+      </Tilt>
     </Container>
   );
 }
@@ -65,7 +75,6 @@ function User() {
 const Container = styled.div`
   // background-color: #d81159;
   color: grey;
-  // padding-top: 8em;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -78,12 +87,18 @@ const Container = styled.div`
 
   li {
     color: black;
-    font-family: monserrat;
-    font-size: 15px;
+    font-family: dosis;
+    font-size: 16px;
+    // font-weight: 600;
+    opacity: 0.8;
     padding-bottom: 1em;
     letter-spacing: 0.05em;
     list-style: none;
     text-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+  }
+
+  .default-component {
+    transform-style: preserve-3d;
   }
 `;
 
@@ -99,6 +114,16 @@ const UserWrapper = styled.div`
   width: 500px;
   height: 550px;
   border-radius: 25px;
+  background-image: linear-gradient(
+    180deg,
+    darkgrey,
+    rgba(255, 0, 0, 0),
+    darkgrey
+  );
+
+  .inner-element {
+    transform: translateZ(150px);
+  }
 `;
 
 const Title = styled.div`
@@ -109,6 +134,8 @@ const Title = styled.div`
   font-size: 20px;
   font-weight: bold;
   letter-spacing: 1px;
+  color: black;
+  opacity: 0.8;
 `;
 
 const AllUser = styled.div`

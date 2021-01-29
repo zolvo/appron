@@ -30,7 +30,7 @@ function Appointment({ user, setAppointments }) {
   // console.log(" *****************: ", chef);
 
   const onAppointment = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     const res = await fetch(`/api/chefs/${chefId}/appointment`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
