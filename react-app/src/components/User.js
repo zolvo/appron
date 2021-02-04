@@ -61,11 +61,11 @@ function User() {
               <strong>Phone:</strong> {user.phone}
             </li>
           </ul>
-          <AllUser>
+          <GoBack>
             <button className="button" onClick={history.goBack}>
-              <div>Go Back</div>
+              <div>USER</div>
             </button>
-          </AllUser>
+          </GoBack>
         </UserWrapper>
       </Tilt>
     </Container>
@@ -75,11 +75,10 @@ function User() {
 const Container = styled.div`
   // background-color: #d81159;
   color: grey;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
+  min-height: 87vh;
   background-image: url(${bg});
   background-repeat: no-repeat;
   background-size: center;
@@ -103,7 +102,7 @@ const Container = styled.div`
 `;
 
 const UserWrapper = styled.div`
-  margin-top: 10em;
+  margin-top: 7em;
   box-sizing: border-box;
   border: 1px solid white;
   background-color: #f4f3f2;
@@ -130,15 +129,16 @@ const Title = styled.div`
   margin-bottom: 2em;
   padding-top: 2em;
   text-align: center;
-  font-family: monserrat;
-  font-size: 20px;
-  font-weight: bold;
+  font-family: montserrat;
+  text-transform:uppercase;
+  font-size: 16px;
+  font-weight: 900;
   letter-spacing: 1px;
   color: black;
   opacity: 0.8;
 `;
 
-const AllUser = styled.div`
+const GoBack = styled.div`
   button{
     // background-color: #EF9D55;
     // margin-left: 14em;

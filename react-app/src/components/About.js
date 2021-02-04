@@ -2,7 +2,6 @@
 import React from "react";
 import styled from "styled-components";
 import test from "../video/test.mp4";
-import Footer from "./Footer"
 // import { FaGithubSquare, FaLinkedin, FaInstagramSquare } from "react-icons/fa";
 
 function About() {
@@ -29,7 +28,6 @@ function About() {
           <FaLinkedin size="25" />
         </a>
       </Social> */}
-      <Footer/>
     </Container>
   );
 }

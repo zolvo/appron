@@ -1,10 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import { FaGithubSquare, FaLinkedin, FaInstagramSquare } from "react-icons/fa";
+import test from "../video/test.mp4";
+import { FaGithubSquare, FaLinkedin } from "react-icons/fa";
 
 function Footer() {
   return (
     <Container>
+      <video autoPlay loop muted className="video">
+        <source src={test} type="video/mp4" />
+      </video>
       <Base>©2021 Appron - App Academy August 2020 Cohort</Base>
       <Social>
         <a href="https://www.linkedin.com/in/ronald-regan-palisuan-833451163/">
@@ -20,24 +24,34 @@ function Footer() {
 }
 
 const Container = styled.div`
-  //   // background-color: #f4f3f2;
-  //   height: 560px;
-  margin-top: 6em;
+  // position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 100vw;
+  width: 100%;
+  height: 8vh;
 
-  //   h2 {
-  //     margin-top: 4em;
-  //     // color: #756f63;
-  //     color: #ffffff;
-  //     font-weight: 200;
-  //     font-family: dancing script;
-  //     font-size: 40px;
-  //     text-align: center;
-  //     margin-bottom: 30px;
+  background-color:inherit;
+
+  // background-image: linear-gradient(
+  //   180deg,
+  //   darkgrey,
+  //   rgba(255, 0, 0, 0),
+  //   darkgrey
+  // );
+
+
+  .video {
+      // padding-top: 2.5em;
+    // box-sizing: border-box;
+    // margin-top: -25px;
+    height: 8vh;
+    width: 100%;
+    object-fit: ;
+    position: absolute;
+    z-index: -1;
+  }
 `;
 
 const Base = styled.div`
@@ -58,9 +72,10 @@ const Base = styled.div`
 `;
 
 const Social = styled.div`
+
   display: flex;
-  box-sizing: border-box;
-  width: 10em;
+  // box-sizing: border-box;
+  // width: 10em;
   margin-bottom: -35px;
   align-items: center;
   justify-content: space-between;
@@ -76,6 +91,8 @@ const Social = styled.div`
   a {
     color: white;
   }
+
+  text-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
 `;
 
 export default Footer;

@@ -14,6 +14,7 @@ import Nopage from "./components/auth/Nopage";
 import Appointment from "./components/Appointment";
 import ChefsList from "./components/ChefsList";
 import Chef from "./components/Chef";
+import Footer from "./components/Footer";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -110,6 +111,7 @@ function App() {
           <Nopage />
         </Route>
       </Switch>
+      <Footer />
     </BrowserRouter>
   );
 }

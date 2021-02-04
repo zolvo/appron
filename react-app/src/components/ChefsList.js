@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import bg from "../image/bg.jpg";
+import Footer from "./Footer";
 
 function ChefsList() {
   const [chefs, setChefs] = useState([]);
@@ -27,6 +28,8 @@ function ChefsList() {
   });
 
   return (
+    <div>
+
     <Container>
       <ChefListWrapper className="animate__animated animate__slideInLeft">
         <div className="inner-element ">
@@ -38,6 +41,7 @@ function ChefsList() {
         </div>
       </ChefListWrapper>
     </Container>
+    </div>
   );
 }
 
