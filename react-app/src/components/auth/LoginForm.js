@@ -87,8 +87,8 @@ const LoginForm = ({ authenticated, setAuthenticated, setUser }) => {
 };
 
 const Container = styled.div`
-  font-family: monserrat;
-  font-size: 20px;
+  font-family: montserrat;
+  font-size: 16px;
   color: white;
   background-color: #d81159;
   display: flex;
@@ -114,13 +114,13 @@ const Container = styled.div`
   justify-content: center;
   width: 500px;
   height: 550px;
-  box-shadow: 0px 14px 9px -15px rgba(0, 0, 0, 0.25);
+
   border-radius: 25px;
 
   div {
     margin-bottom:30px;
     text-decoration: none;
-    box-shadow:0px 14px 9px -15px rgba(0,0,0,0.25);
+    // box-shadow:0px 14px 9px -15px rgba(0,0,0,0.25);
   }
 
   input {
@@ -131,6 +131,7 @@ const Container = styled.div`
     height: 3em;
     padding-left: 1em;
     border-radius: 1em;
+    box-shadow: 0px 14px 9px -15px rgba(0, 0, 0, 0.25);
 
     transition: all 0.2x ease-in;
     &:hover {
@@ -184,8 +185,10 @@ const Error = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: monserrat;
-    font-size: 15px;
+    font-family: montserrat;
+    font-size: 14px;
+    // letter-spacing: 0.5px;
+    font-weight: 600;
     color: red;
     margin: 0;
   }

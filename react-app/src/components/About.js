@@ -2,11 +2,8 @@
 import React from "react";
 import styled from "styled-components";
 import test from "../video/test.mp4";
-import {
-  FaGithubSquare,
-  FaFacebookSquare,
-  FaInstagramSquare,
-} from "react-icons/fa";
+import Footer from "./Footer"
+// import { FaGithubSquare, FaLinkedin, FaInstagramSquare } from "react-icons/fa";
 
 function About() {
   return (
@@ -18,17 +15,21 @@ function About() {
       <Info>INFO@APPRON.COM / TEL: 123-456-7890</Info>
       <Line>_____________</Line>
       <Words>
-        This app is inspired by a chef who got impacted by COVID, and expecting to get
-        a new experience with the online web. "Appron" will let
-        you know more about Chef, how well they assist you. Decide, choose,
-        and create an appointment for your extraordinary dining.
+        This app is inspired by a chef who got impacted by COVID, and expecting
+        to get a new experience with the online web. "Appron" will let you know
+        more about Chef, how well they assist you. Decide, choose, and create an
+        appointment for your extraordinary dining.
       </Words>
-      <Base>©2021 Appron - App Academy August Cohort</Base>
+      {/* <Base>©2021 Appron - App Academy August 2020 Cohort</Base>
       <Social>
-        <FaGithubSquare size="25" />
-        <FaFacebookSquare size="25" />
-        <FaInstagramSquare size="25" />
-      </Social>
+        <a href="https://github.com/zolvo">
+          <FaGithubSquare size="25" />
+        </a>Ronald Regan Palisuan
+        <a href="https://www.linkedin.com/in/ronald-regan-palisuan-833451163/">
+          <FaLinkedin size="25" />
+        </a>
+      </Social> */}
+      <Footer/>
     </Container>
   );
 }
@@ -57,8 +58,8 @@ const Container = styled.div`
 const Info = styled.div`
   // color: #756f63;
   color: #ffffff;
-  font-weight: 200;
-  font-family: monserrat;
+  font-weight: 600;
+  font-family: montserrat;
   font-size: 15px;
   text-align: center;
   letter-spacing: 0.3em;
@@ -69,7 +70,7 @@ const Line = styled.div`
   color: #ffffff;
   margin: 0px 0px;
   text-align: center;
-  font-family: monserrat;
+  font-family: montserrat;
   padding-bottom: 1em;
 `;
 
@@ -81,38 +82,41 @@ const Words = styled.div`
   width: 28em;
   padding-top: 30px;
   text-align: center;
-  font-family: monserrat;
-  font-size: 15px;
+  font-family: montserrat;
+  font-size: 14px;
   letter-spacing: 0.06em;
-  font-weight: 200;
-  padding-bottom: 15em;
+  font-weight: 400;
+  // padding-bottom: 15em;
 `;
 
-const Base = styled.div`
-  background-color: #d81159;
+// const Base = styled.div`
+//   background-color: #d81159;
 
-  color: #ffffff;
-  font-weight: 200;
-  font-family: dosis;
-  text-transform:uppercase;
-  letter-spacing: 0.5px;
-  font-size: 13px;
-  text-align: center;
-  letter-spacing: 0.08em;
-  padding-top: 1.5em;
-  padding-bottom: 1.5em;
-  height: 100%;
-  width: 100%;
-`;
+//   color: #ffffff;
+//   font-weight: 200;
+//   font-family: dosis;
+//   text-transform: uppercase;
+//   letter-spacing: 0.5px;
+//   font-size: 13px;
+//   text-align: center;
+//   letter-spacing: 0.08em;
+//   padding-top: 1.5em;
+//   padding-bottom: 1.5em;
+//   height: 100%;
+//   width: 100%;
+// `;
 
-const Social = styled.div`
-  display: flex;
-  box-sizing: border-box;
-  width: 10em;
-  margin-bottom:-35px;
-  justify-content: space-between;
-  margin-top: 1em;
-  color: white;
-`
+// const Social = styled.div`
+//   display: flex;
+//   box-sizing: border-box;
+//   width: 10em;
+//   margin-bottom: -35px;
+//   justify-content: space-between;
+//   margin-top: 1em;
+//   color:white;
+//   a {
+//     color: white;
+//   }
+// `;
 
 export default About;

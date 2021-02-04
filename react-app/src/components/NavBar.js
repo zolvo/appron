@@ -228,6 +228,8 @@ const SubContainer2a = styled.div`
   box-sizing: border-box;
   width: 20em;
   // border: 1px solid white;
+  // box-shadow: 0px 14px 9px -15px rgba(0, 0, 0, 0.25);
+  text-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
 
   .link {
     cursor: pointer;
@@ -239,6 +241,7 @@ const SubContainer2b = styled.div`
   display: flex;
   justify-content: space-evenly;
   width: 15em;
+  text-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
 
   .link {
     cursor: pointer;
@@ -272,6 +275,7 @@ const UserDropdown = styled.div`
   box-sizing: border-box;
   // width: 23em;
   justify-content: space-evently;
+  text-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
 
   .dropdown-content {
     margin-left: 2.5em;

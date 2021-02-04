@@ -33,7 +33,7 @@ const SignUpForm = ({ authenticated, setAuthenticated, setUser }) => {
         state,
         zipcode,
         phone,
-        isChef,
+        isChef
       );
 
       if (!user.errors) {
@@ -207,13 +207,13 @@ const SignupFormWrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 500px;
-  box-shadow: 0px 14px 9px -15px rgba(0, 0, 0, 0.25);
+
   border-radius: 25px;
 
   div {
     margin-bottom:10px;
     text-decoration: none;
-    box-shadow:0px 14px 9px -15px rgba(0,0,0,0.25);
+    // box-shadow:0px 14px 9px -15px rgba(0,0,0,0.25);
   }
 
   input {
@@ -296,17 +296,19 @@ const Footer = styled.div`
 `;
 
 const Error = styled.div`
+  box-sizing: border-box;
+  padding-top: 0.5em;
+  padding-bottom: 1em;
   div {
-    box-sizing: border-box;
-    margin-top: 1em;
-    margin-bottom: 5em;
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: monserrat;
-    font-size: 15px;
-    color: red;
+    font-family: montserrat;
+    font-size: 14px;
+    // letter-spacing: 0.5px;
+    font-weight: 600;
     margin: 0;
+    color: red;
   }
 `;
 

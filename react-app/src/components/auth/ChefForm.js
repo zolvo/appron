@@ -30,10 +30,9 @@ const ChefForm = ({ user }) => {
 
     if (!chef.errors) {
       // setChef(chef)
-      history.push('/')
+      history.push("/");
     } else setErrors(chef.errors);
   };
-
 
   return (
     <Container>
@@ -84,7 +83,7 @@ const ChefForm = ({ user }) => {
               <textarea
                 className="pricing"
                 name="pricing"
-                placeholder="Pricing"
+                placeholder='Pricing'
                 onChange={(e) => setPricing(e.target.value)}
                 value={pricing}
               />
@@ -111,9 +110,8 @@ const ChefForm = ({ user }) => {
   );
 };
 
-
 const Container = styled.div`
-  font-family: monserrat;
+  font-family: montserrat;
   font-size: 20px;
   color: white;
   background-color: #d81159;
@@ -142,23 +140,31 @@ const SignupFormWrapper = styled.div`
   align-items: center;
   justify-content: center;
   width: 500px;
-  box-shadow: 0px 14px 9px -15px rgba(0, 0, 0, 0.25);
+
   border-radius: 25px;
 
   div {
     margin-bottom:30px;
     text-decoration: none;
-    box-shadow:0px 14px 9px -15px rgba(0,0,0,0.25);
+    // box-shadow:0px 14px 9px -15px rgba(0,0,0,0.25);
   }
 
-  input {
-    color: #292721;
+  textarea {
+    border-radius: 0.8em;
+    padding: 0.5em;
+    box-shadow: 0px 14px 9px -15px rgba(0, 0, 0, 0.25);
     border: none;
     outline: none;
-    width: 18em;
-    height: 3em;
-    padding-left: 1em;
-    border-radius: 1em;
+    color: grey;
+  }
+
+  // input {
+  //   border: none;
+  //   outline: none;
+  //   width: 18em;
+  //   height: 3em;
+  //   padding-left: 1em;
+  //   border-radius: 1em;
 
     // transition: all 0.2x ease-in;
     // &:hover {
@@ -187,11 +193,13 @@ const SignupFormWrapper = styled.div`
 `;
 
 const About = styled.div`
+  // padding-top: 1em;
   .about {
     box-sizing: border-box;
     // border: 1px solid red;
     height: 120px;
     width: 250px;
+
   }
 `;
 
@@ -273,7 +281,7 @@ const Error = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: monserrat;
+    font-family: montserrat;
     font-size: 15px;
     color: red;
     margin: 0;
