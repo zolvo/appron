@@ -29,18 +29,17 @@ function ChefsList() {
 
   return (
     <div>
-
-    <Container>
-      <ChefListWrapper className="animate__animated animate__slideInLeft">
-        <div className="inner-element ">
-          <Title>Chef List: </Title>
-          <ul>{chefComponents}</ul>
-          <button className="button" onClick={history.goBack}>
-            <div>Go Back</div>
-          </button>
-        </div>
-      </ChefListWrapper>
-    </Container>
+      <Container>
+        <ChefListWrapper className="animate__animated animate__slideInLeft">
+          <div className="inner-element ">
+            <Title>Chef List: </Title>
+            <ul>{chefComponents}</ul>
+            <button className="button" onClick={history.goBack}>
+              <div>Go Back</div>
+            </button>
+          </div>
+        </ChefListWrapper>
+      </Container>
     </div>
   );
 }
@@ -51,8 +50,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  min-height: 100vh;
+  min-height: 88.7vh;
   background-image: url(${bg});
   background-repeat: no-repeat;
   background-size: center;

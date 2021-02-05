@@ -45,13 +45,27 @@ const NavBar = ({ setAuthenticated, authenticated, user }) => {
           </SubContainer2a>
           <SubContainer2b>
             <div>
-              <NavLink to="/" exact={true} activeClassName="active">
-                <div>Home</div>
-              </NavLink>
+              {home === "/" ? (
+                <Link
+                  to="top"
+                  spy={true}
+                  smooth={true}
+                  duration={800}
+                  className="link"
+                >
+                  {/* <NavLink to="/" exact={true} activeClassName="active"> */}
+                  <div>Home</div>
+                  {/* </NavLink> */}
+                </Link>
+              ) : (
+                <NavLink to="/" exact={true} activeClassName="active">
+                  <div>Home</div>
+                </NavLink>
+              )}
             </div>
-            <NavLink to="/chefs" exact={true} activeClassName="active">
+            {/* <NavLink to="/chefs" exact={true} activeClassName="active">
               <div>Chefs</div>
-            </NavLink>
+            </NavLink> */}
             {home === "/" ? (
               <Link
                 to="about"

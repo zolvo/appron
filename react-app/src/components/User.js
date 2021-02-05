@@ -36,7 +36,7 @@ function User() {
         transitionSpeed={3000}
         className="default-component"
       >
-        <UserWrapper className="animate__animated animate__zoomInLeft">
+        <UserWrapper className="animate__animated animate__fadeInDown">
           <Title>User Profile: </Title>
           <ul>
             <li>
@@ -78,7 +78,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 88.5vh;
+  min-height: 88.7vh;
   background-image: url(${bg});
   background-repeat: no-repeat;
   background-size: center;
@@ -104,7 +104,7 @@ const Container = styled.div`
 const UserWrapper = styled.div`
   margin-top: 7em;
   box-sizing: border-box;
-  border: 1px solid white;
+  // border: 1px solid white;
   background-color: #f4f3f2;
   display: flex;
   flex-direction: column;
@@ -130,7 +130,7 @@ const Title = styled.div`
   padding-top: 2em;
   text-align: center;
   font-family: montserrat;
-  text-transform:uppercase;
+  text-transform: uppercase;
   font-size: 16px;
   font-weight: 900;
   letter-spacing: 1px;

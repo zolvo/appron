@@ -170,7 +170,7 @@ const SignUpForm = ({ authenticated, setAuthenticated, setUser }) => {
                 <span>Login</span>
               </NavLink>
             </div>
-            <p>@2020 created by: APPRON.</p>
+            <p>@2021 created by: APPRON.</p>
           </Footer>
         </form>
       </SignupFormWrapper>
@@ -179,19 +179,20 @@ const SignUpForm = ({ authenticated, setAuthenticated, setUser }) => {
 };
 
 const Container = styled.div`
-  font-family: monserrat;
-  font-size: 20px;
+  font-family: montserrat;
+  font-size: 16px;
   color: white;
   background-color: #d81159;
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
+  min-height: 88.7vh;
   padding-bottom: 3em;
 `;
 
 const SignupHeader = styled.div`
-  margin-top: 5em;
+  margin-top: 3.8em;
+  font-weight: 600;
   height: 4em;
   display: flex;
   flex-direction: column;
@@ -292,6 +293,8 @@ const Footer = styled.div`
   p {
     font-size: 10px;
     color: #292721;
+    margin-top: 2em;
+    margin-bottom: 5em;
   }
 `;
 

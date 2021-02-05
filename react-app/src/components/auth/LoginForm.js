@@ -94,11 +94,12 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
+  min-height: 88.7vh;
   `;
 
   const LoginHeader = styled.div`
-  margin-top: 5em;
+  margin-top: 3.8em;
+  font-weight: 600;
   height: 4em;
   display: flex;
   flex-direction: column;

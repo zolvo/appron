@@ -18,14 +18,14 @@ const Home = ({ authenticated }) => {
 const Container = styled.div`
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  // min-height: 100vh;
   background-color: #d81159;
 `;
 
 const SubContainer1 = styled.div`
   box-sizing: border-box;
   // border: 1px solid red;
-  height: 790px;
+  height: 702px;
   background-image: url(${background});
   background-repeat: no-repeat;
   background-size: cover;

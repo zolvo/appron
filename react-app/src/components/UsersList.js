@@ -45,8 +45,7 @@ const Container = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
-  min-height: 100vh;
+  min-height: 88.7vh;
   background-image: url(${bg});
   background-repeat: no-repeat;
   background-size: center;

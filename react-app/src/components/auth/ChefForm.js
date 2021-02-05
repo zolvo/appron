@@ -112,19 +112,19 @@ const ChefForm = ({ user }) => {
 
 const Container = styled.div`
   font-family: montserrat;
-  font-size: 20px;
+  font-size: 16px;
   color: white;
   background-color: #d81159;
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 100vh;
+  min-height: 88.7vh;
   padding-bottom: 3em;
 `;
 
 const SignupHeader = styled.div`
-  margin-top: 5em;
-  // margin-bottom: 1em;
+  margin-top: 3.8em;
+  font-weight: 600;
   height: 4em;
   display: flex;
   flex-direction: column;
@@ -271,10 +271,15 @@ const Footer = styled.div`
   p {
     font-size: 10px;
     color: #292721;
+
   }
 `;
 
 const Error = styled.div`
+  box-sizing: border-box;
+  padding-top: 1.5em;
+  // padding-bottom: 1em;
+
   div {
     box-sizing: border-box;
     margin-bottom: 5em;
@@ -282,7 +287,8 @@ const Error = styled.div`
     flex-direction: column;
     align-items: center;
     font-family: montserrat;
-    font-size: 15px;
+    font-size: 14px;
+    font-weight: 600;
     color: red;
     margin: 0;
   }
