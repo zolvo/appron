@@ -4,7 +4,12 @@ import LogoutButton from "./auth/LogoutButton";
 import styled from "styled-components";
 import logo01 from "../image/logo01.png";
 import appronwhite from "../image/appronwhite.png";
-import { FaSearch, FaUserFriends, FaUserCircle } from "react-icons/fa";
+import {
+  FaSearch,
+  FaUserFriends,
+  FaUserCircle,
+  FaGrinBeam,
+} from "react-icons/fa";
 import { Link } from "react-scroll";
 
 const NavBar = ({ setAuthenticated, authenticated, user }) => {
@@ -105,10 +110,18 @@ const NavBar = ({ setAuthenticated, authenticated, user }) => {
                   </NavLink>
                 </li>
                 <li>
+                  <NavLink to={`/chefs`} exact={true} activeClassName="active">
+                    <button className="button">
+                      <FaGrinBeam />
+                      <span>Chefs</span>
+                    </button>
+                  </NavLink>
+                </li>
+                <li>
                   <NavLink to={`/users`} exact={true} activeClassName="active">
                     <button className="button">
                       <FaUserFriends />
-                      Users
+                      <span>Users</span>
                     </button>
                   </NavLink>
                 </li>
@@ -131,11 +144,12 @@ const NavBar = ({ setAuthenticated, authenticated, user }) => {
 };
 
 const Container = styled.div`
-  font-family: "Monserrat";
+  font-family: montserrat;
   // min-width: 200px;
   background-color: transparent;
-  min-width: 100%;
-  height: 100px;
+  // min-width: 100%;
+  width: 100vw;
+  height: 7vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -178,7 +192,7 @@ const SearchInput = styled.input`
 const SubContainer1 = styled.div`
   width: 55em;
   height: 55px;
-  font-family: "Montserrat";
+  font-family: montserrat;
   display: flex;
 
   // justify-content: space-between;
@@ -189,7 +203,7 @@ const SubContainer1 = styled.div`
 `;
 
 const SubContainer2 = styled.div`
-  font-family: "Montserrat";
+  font-family: montserrat;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -252,7 +266,7 @@ const SubContainer3 = styled.div`
   box-sizing: border-box;
   margin-left: 14px;
   width: 8em;
-  font-family: "Montserrat";
+  font-family: montserrat;
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
@@ -291,33 +305,38 @@ const UserDropdown = styled.div`
     justify-items: flex-start;
     font-family: dosis;
     font-size: 16px;
-    color: white;
+
+    a {
+      color: blue;
+    }
   }
 
   :hover .dropdown-content {
     display: block;
-    text-shadow: rgba(0, 0, 0, 0.75) 0px 5px 15px;
-    color: yellow;
-  }
+    margin-top: 0.2em;
 
-  :hover {
-    // color: #ffbc42;
-    text-shadow: rgba(0, 0, 0, 0.75) 0px 5px 15px;
-    // color: blue;
+    // text-shadow: rgba(0, 0, 0, 0.75) 0px 5px 15px;
+    // color: yellow;
   }
 
   .button {
-    // transition: all 3s ease;
     cursor: pointer;
+    width: 6em;
+    display: flex;
+    justify-content: space-between;
     letter-spacing: 0.05em;
-    // font-weight: 600;
-    color: white;
-    font-size: 17px;
-    font-family: dosis;
+    font-size: 13.5px;
+    font-family: montserrat;
+    font-weight: 600;
     border: none;
     outline: none;
     background-color: transparent;
     color: white;
+    padding-bottom: 0.3em;
+  }
+
+  .button :hover {
+    text-shadow: rgba(0, 0, 0, 0.75) 0px 5px 15px;
   }
 `;
 

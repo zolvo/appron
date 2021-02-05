@@ -17,9 +17,8 @@ const LogoutButton = ({ setAuthenticated, authenticated }) => {
   return authenticated ? (
     <Container>
       <button className="button" onClick={onLogout}>
-        {" "}
-        <FaSignOutAlt/>
-        Logout
+        <FaSignOutAlt />
+        <span>Logout</span>
       </button>
     </Container>
   ) : (
@@ -31,14 +30,18 @@ const Container = styled.div`
   .button {
     cursor: pointer;
     letter-spacing: 0.05em;
-    // font-weight: 600;
+    font-weight: 600;
     color: white;
-    font-size: 17px;
-    font-family: dosis;
+    font-size: 13,5px;
+    font-family: montserrat;
     border: none;
     outline: none;
     background-color: transparent;
     color: white;
+  }
+
+  :hover {
+    text-shadow: rgba(0, 0, 0, 0.75) 0px 5px 15px;
   }
 `;
 

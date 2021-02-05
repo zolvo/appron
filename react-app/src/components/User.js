@@ -78,7 +78,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 87vh;
+  min-height: 88.5vh;
   background-image: url(${bg});
   background-repeat: no-repeat;
   background-size: center;

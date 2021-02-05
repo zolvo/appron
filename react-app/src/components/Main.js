@@ -52,8 +52,8 @@ const Container = styled.div`
 
   .video {
     box-sizing: border-box;
-    margin-top: -25px;
-    height: 51em;
+    margin-top: -24px;
+    height: 49em;
     width: 100%;
     object-fit: cover;
     position: absolute;
@@ -63,7 +63,7 @@ const Container = styled.div`
 
 const SubContainer1 = styled.div`
   box-sizing: border-box;
-  height: 790px;
+  height: 760px;
   background-image: url(${background2});
   background-repeat: no-repeat;
   background-size: 55em;
@@ -184,7 +184,10 @@ const SubContainer3 = styled.div`
   align-items: center;
   justify-content: center;
   text-align: center;
-  font-weight: 500;
+  font-family: montserrat;
+  // letter-spacing: 0.5px;
+  font-size: 16px;
+  font-weight: 600;
   // position:fixed;
   width: 100%;
   z-index: 10;
