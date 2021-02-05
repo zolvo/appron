@@ -115,10 +115,10 @@ const Title = styled.div`
   margin-bottom: 2em;
   padding-top: 2em;
   text-align: center;
-  font-family: monserrat;
-  // text-transform: uppercase;
-  font-size: 20px;
-  font-weight: bold;
+  font-family: montserrat;
+  text-transform: uppercase;
+  font-size: 16px;
+  font-weight: 900;
   letter-spacing: 1px;
   color: black;
   opacity: 0.8;

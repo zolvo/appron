@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import test from "../video/test.mp4";
 import { FaGithubSquare, FaLinkedin } from "react-icons/fa";
 
 function Footer() {
@@ -24,11 +23,12 @@ function Footer() {
 }
 
 const Container = styled.div`
+  position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  // width: 100%;
+  width: 100%;
   // height: 8vh;
 
   background-image: linear-gradient(
@@ -42,26 +42,25 @@ const Container = styled.div`
 `;
 
 const Base = styled.div`
-background-color: #d81159;
+  background-color: #d81159;
 
-color: #ffffff;
-font-weight: 200;
-font-family: dosis;
-text-transform: uppercase;
-letter-spacing: 0.5px;
-font-size: 13px;
-text-align: center;
-letter-spacing: 0.08em;
-padding-top: 1.5em;
-padding-bottom: 1.5em;
-// height: 100%;
-width: 100%;
+  color: #ffffff;
+  font-weight: 200;
+  font-family: dosis;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 13px;
+  text-align: center;
+  letter-spacing: 0.08em;
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+  // height: 100%;
+  width: 100%;
 `;
 
 const Social = styled.div`
-
-display: flex;
-// box-sizing: border-box;
+  display: flex;
+  // box-sizing: border-box;
   // width: 10em;
   margin-bottom: -35px;
   align-items: center;
