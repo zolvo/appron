@@ -23,6 +23,7 @@ const customStyles = {
 };
 
 function Chef({ user }) {
+  const [loading, setLoading] = useState("");
   const [chef, setChef] = useState("");
   const [showModal, setShowModal] = useState(false);
   const [showReviews, setShowReviews] = useState(false);

@@ -1,30 +1,20 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { NavLink, useHistory } from "react-router-dom";
 import styled from "styled-components";
 import bg from "../image/bg.jpg";
 
-function ChefsList() {
-  const [chefs, setChefs] = useState([]);
+function ChefsList({ chefs }) {
   const history = useHistory();
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch("/api/chefs/");
-      const responseData = await response.json();
-      setChefs(responseData.chefs);
-    }
-    fetchData();
-  }, []);
-
-  const chefComponents = chefs.map((chef) => {
-    return (
+  const chefList =
+    chefs &&
+    chefs.map((chef) => (
       <li key={chef.id}>
         <NavLink className="list" to={`/chefs/${chef.id}`}>
           {chef.user.username}
         </NavLink>
       </li>
-    );
-  });
+    ));
 
   return (
     <div>
@@ -32,7 +22,7 @@ function ChefsList() {
         <ChefListWrapper className="animate__animated animate__slideInLeft">
           <div className="inner-element ">
             <Title>Chef List: </Title>
-            <ul>{chefComponents}</ul>
+            <ul>{chefList}</ul>
             <button className="button" onClick={history.goBack}>
               <div>Go Back</div>
             </button>
@@ -121,7 +111,7 @@ const Title = styled.div`
   padding-top: 2em;
   text-align: center;
   font-family: montserrat;
-  text-transform:uppercase;
+  text-transform: uppercase;
   font-size: 16px;
   font-weight: 900;
   letter-spacing: 1px;

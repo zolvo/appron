@@ -20,7 +20,7 @@ function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [user, setUser] = useState({});
-  const [chef, setChef] = useState("");
+  const [chefs, setChefs] = useState("");
 
   useEffect(() => {
     document.title = "Appron: Home";
@@ -39,14 +39,11 @@ function App() {
     async function fetchData() {
       const res = await fetch("/api/chefs/");
       const data = await res.json();
-      setChef(data);
+      setChefs(data.chefs);
     }
     fetchData();
-  }, [])
-
-  console.log("******************* :", chef);
-
-
+  }, []);
+  // console.log("******************* :", chef);
 
   if (!loaded) {
     return null;
@@ -94,7 +91,7 @@ function App() {
           exact={true}
           authenticated={authenticated}
         >
-          <ChefsList authenticate={authenticate} />
+          <ChefsList authenticate={authenticate} chefs={chefs} />
         </ProtectedRoute>
         <ProtectedRoute
           path="/users/:userId"
@@ -119,7 +116,7 @@ function App() {
         </ProtectedRoute>
         <Route path="/" exact={true} authenticated={authenticated}>
           <Home authenticated={authenticated} />
-          {authenticated ? <Main /> : ""}
+          {authenticated ? <Main chefs={chefs} /> : ""}
         </Route>
         <Route path="/*">
           <Nopage />

@@ -8,11 +8,20 @@ import img01 from "../image/01.jpg";
 import About from "./About";
 import gold from "../video/gold.mp4";
 import { Element } from "react-scroll";
+import { NavLink } from "react-router-dom";
 // import ChefList from './ChefsList';
 
+const Home = ({ authenticated, chefs }) => {
+  const chefList =
+    chefs &&
+    chefs.map((chef) => (
+      <li key={chef.id}>
+        <NavLink className="list" to={`/chefs/${chef.id}`}>
+          {chef.user.username}
+        </NavLink>
+      </li>
+    ));
 
-
-const Home = ({ authenticated }) => {
   return authenticated ? (
     <div></div>
   ) : (
@@ -32,9 +41,11 @@ const Home = ({ authenticated }) => {
         <img className="img3" src={img02} alt={img02} />
         <div className="title">We Bring You</div>
         <div className="subtitle">Chef on your door</div>
-        </SubContainer2>
-        {/* <ChefList /> */}
-        
+        <ChefList>
+          <div className="head">Our Chefs List:</div>
+          <div>{chefList}</div>
+        </ChefList>
+      </SubContainer2>
       <SubContainer3>
         This apps is designed to help you to{" "}
         <span>find chef for your event</span>. Created for all the chef who want
@@ -99,11 +110,40 @@ const Subtitle = styled.div`
   filter: drop-shadow(0 0 30px #fff);
 `;
 
+const ChefList = styled.div`
+box-sizing: border-box;
+border: 1px solid darkgrey;
+border-radius: 1em;
+margin-top: 22em;
+position: absolute;
+height: 8em;
+width: 20em;
+list-style: none;
+padding: 1em;
+font-family: montserrat;
+box-shadow: 0 10px 20px 10px rgba(0, 0, 0, 0.1);
+text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+
+.head {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 1em;
+  }
+
+  a {
+    font-size: 13px;
+    font-weight: 600;
+    color: grey;
+  }
+`;
+
 const SubContainer2 = styled.div`
   box-sizing: border-box;
   // border: 1px solid red;
   height: 35em;
-  padding-top: 5em;
+  // padding-top: 5em;
   background-color: white;
   // background-image: linear-gradient(360deg, white, grey, white);
   background-image: linear-gradient(to top, rgba(255, 0, 0, 0), grey);
