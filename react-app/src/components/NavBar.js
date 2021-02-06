@@ -66,6 +66,25 @@ const NavBar = ({ setAuthenticated, authenticated, user }) => {
             {/* <NavLink to="/chefs" exact={true} activeClassName="active">
               <div>Chefs</div>
             </NavLink> */}
+            <div>
+              {home === "/" ? (
+                <Link
+                  to="chef"
+                  spy={true}
+                  smooth={true}
+                  duration={800}
+                  className="link"
+                >
+                  {/* <NavLink to="/" exact={true} activeClassName="active"> */}
+                  <div>Chefs</div>
+                  {/* </NavLink> */}
+                </Link>
+              ) : (
+                <NavLink to="/" exact={true} activeClassName="active">
+                  <div>Chefs</div>
+                </NavLink>
+              )}
+            </div>
             {home === "/" ? (
               <Link
                 to="about"

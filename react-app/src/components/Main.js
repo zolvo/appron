@@ -26,8 +26,8 @@ const Home = ({ authenticated, chefs }) => {
     <div></div>
   ) : (
     <Container>
-      <SubContainer1>
-        <Element id="top" name="top">
+      <SubContainer1 id="top" name="top">
+        <Element>
           <video autoPlay loop muted className="video">
             <source src={gold} type="video/mp4" />
           </video>
@@ -35,7 +35,7 @@ const Home = ({ authenticated, chefs }) => {
         <Title>Appron</Title>
         <Subtitle>Chef on demand</Subtitle>
       </SubContainer1>
-      <SubContainer2>
+      <SubContainer2 id="chef" name="chef">
         <img className="img1" src={img00} alt={img00} />
         <img className="img2" src={img01} alt={img01} />
         <img className="img3" src={img02} alt={img02} />
@@ -111,20 +111,21 @@ const Subtitle = styled.div`
 `;
 
 const ChefList = styled.div`
-box-sizing: border-box;
-border: 1px solid darkgrey;
-border-radius: 1em;
-margin-top: 22em;
-position: absolute;
-height: 8em;
-width: 20em;
-list-style: none;
-padding: 1em;
-font-family: montserrat;
-box-shadow: 0 10px 20px 10px rgba(0, 0, 0, 0.1);
-text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+  box-sizing: border-box;
+  border: 1px solid darkgrey;
+  border-radius: 1em;
+  margin-top: 20em;
+  position: absolute;
+  height: 8em;
+  width: 20em;
+  list-style: none;
+  padding: 1em;
+  padding-bottom: 1em;
+  font-family: montserrat;
+  box-shadow: 0 10px 20px 10px rgba(0, 0, 0, 0.1);
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
 
-.head {
+  .head {
     text-align: center;
     text-transform: uppercase;
     font-size: 15px;
@@ -184,7 +185,7 @@ const SubContainer2 = styled.div`
     height: 150px;
     position: absolute;
     z-index: 0;
-    margin-top: -50px;
+    margin-top: -60px;
     margin-left: -250px;
     // border-radius: 30px;
   }
@@ -196,7 +197,7 @@ const SubContainer2 = styled.div`
     width: 200px;
     position: absolute;
     z-index: 0;
-    margin-top: -50px;
+    margin-top: -60px;
     // margin-left: -250px;
     // border-radius: 30px;
   }
@@ -207,7 +208,7 @@ const SubContainer2 = styled.div`
     height: 150px;
     position: absolute;
     z-index: 0;
-    margin-top: -50px;
+    margin-top: -60px;
     margin-left: 250px;
     // border-radius: 30px;
   }

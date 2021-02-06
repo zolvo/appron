@@ -7,9 +7,6 @@ function Footer() {
     <Container>
       <Base>©2021 Appron - App Academy August 2020 Cohort</Base>
       <Social>
-        {/* <video autoPlay loop muted className="video">
-        <source src={test} type="video/mp4" />
-      </video> */}
         <a href="https://www.linkedin.com/in/ronald-regan-palisuan-833451163/">
           <FaLinkedin size="25" />
         </a>
