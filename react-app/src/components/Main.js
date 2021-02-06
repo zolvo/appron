@@ -8,6 +8,9 @@ import img01 from "../image/01.jpg";
 import About from "./About";
 import gold from "../video/gold.mp4";
 import { Element } from "react-scroll";
+// import ChefList from './ChefsList';
+
+
 
 const Home = ({ authenticated }) => {
   return authenticated ? (
@@ -29,7 +32,9 @@ const Home = ({ authenticated }) => {
         <img className="img3" src={img02} alt={img02} />
         <div className="title">We Bring You</div>
         <div className="subtitle">Chef on your door</div>
-      </SubContainer2>
+        </SubContainer2>
+        {/* <ChefList /> */}
+        
       <SubContainer3>
         This apps is designed to help you to{" "}
         <span>find chef for your event</span>. Created for all the chef who want

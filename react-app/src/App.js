@@ -20,6 +20,7 @@ function App() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loaded, setLoaded] = useState(false);
   const [user, setUser] = useState({});
+  const [chef, setChef] = useState("");
 
   useEffect(() => {
     document.title = "Appron: Home";
@@ -33,6 +34,19 @@ function App() {
       setLoaded(true);
     })();
   }, []);
+
+  useEffect(() => {
+    async function fetchData() {
+      const res = await fetch("/api/chefs/");
+      const data = await res.json();
+      setChef(data);
+    }
+    fetchData();
+  }, [])
+
+  console.log("******************* :", chef);
+
+
 
   if (!loaded) {
     return null;

@@ -29,7 +29,6 @@ const ChefForm = ({ user }) => {
     );
 
     if (!chef.errors) {
-      // setChef(chef)
       history.push("/");
     } else setErrors(chef.errors);
   };
@@ -83,7 +82,7 @@ const ChefForm = ({ user }) => {
               <textarea
                 className="pricing"
                 name="pricing"
-                placeholder='Pricing'
+                placeholder="Pricing"
                 onChange={(e) => setPricing(e.target.value)}
                 value={pricing}
               />
@@ -199,7 +198,6 @@ const About = styled.div`
     // border: 1px solid red;
     height: 120px;
     width: 250px;
-
   }
 `;
 
@@ -271,7 +269,6 @@ const Footer = styled.div`
   p {
     font-size: 10px;
     color: #292721;
-
   }
 `;
 

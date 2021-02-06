@@ -39,6 +39,7 @@ const SignUpForm = ({ authenticated, setAuthenticated, setUser }) => {
       if (!user.errors) {
         setAuthenticated(true);
         setUser(user);
+        // console.log(user);
         if (isChef) {
           history.push("/chefform");
         }
