@@ -62,9 +62,9 @@ function User() {
             </li>
           </ul>
           <GoBack>
-            <button className="button" onClick={history.goBack}>
-              <div>USER</div>
-            </button>
+            {/* <button className="button" onClick={history.goBack}> */}
+              {/* <div>USER</div>
+            </button> */}
           </GoBack>
         </UserWrapper>
       </Tilt>

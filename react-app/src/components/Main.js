@@ -116,10 +116,10 @@ const ChefList = styled.div`
   border-radius: 1em;
   margin-top: 20em;
   position: absolute;
-  height: 8em;
+  height: 10em;
   width: 20em;
   list-style: none;
-  padding: 1em;
+  padding: 1em 3em;
   padding-bottom: 1em;
   font-family: montserrat;
   box-shadow: 0 10px 20px 10px rgba(0, 0, 0, 0.1);

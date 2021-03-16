@@ -15,6 +15,7 @@ import Appointment from "./components/Appointment";
 import ChefsList from "./components/ChefsList";
 import Chef from "./components/Chef";
 import Footer from "./components/Footer";
+import Search from "./components/Search";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);
@@ -114,6 +115,9 @@ function App() {
         >
           <Appointment authenticate={authenticate} user={user} />
         </ProtectedRoute>
+        <Route path="/search" exact={true} authenticated={authenticated}>
+          <Search authenticated={authenticated} chefs={chefs} />
+        </Route>
         <Route path="/" exact={true} authenticated={authenticated}>
           <Home authenticated={authenticated} />
           {authenticated ? <Main chefs={chefs} /> : ""}

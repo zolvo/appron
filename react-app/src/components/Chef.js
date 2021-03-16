@@ -257,7 +257,7 @@ const Box2 = styled.div`
   // margin-left: 5em;
   display: flex;
   justify-content: space-between;
-  align-item: center;
+  align-items: center;
   // border: 1px solid white;
   width: 10em;
 
