@@ -54,6 +54,9 @@ const Container = styled.div`
   li {
     list-style: none;
     padding-bottom: 1em;
+    padding: 1em 0;
+    height: 1em;
+    border-sizing: border-box;
   }
 
   .list {
@@ -65,10 +68,14 @@ const Container = styled.div`
     letter-spacing: 0.05em;
     text-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
     cursor: pointer;
-  }
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 
-  .default-component {
-    transform-style: preserve-3d;
+    :hover {
+      font-size: 20px;
+      transition: 1s;
+    }
   }
 `;
 
@@ -105,10 +112,6 @@ const UserListWrapper = styled.div`
     &:hover{
       transform: translateY(-3px);
     }
-
-    .inner-element {
-    transform: translateZ(150px);
-  }
 `;
 
 const Title = styled.div`

@@ -34,7 +34,8 @@ function About() {
 
 const Container = styled.div`
   // background-color: #f4f3f2;
-  height: 560px;
+  // height: 560px;
+  height: 35em;
 
   display: flex;
   flex-direction: column;

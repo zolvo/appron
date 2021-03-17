@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useLocation } from "react-router-dom";
-import LogoutButton from "./auth/LogoutButton";
+import LogoutButton from "../components/auth/LogoutButton";
 import styled from "styled-components";
 import logo01 from "../image/logo01.png";
 import appronwhite from "../image/appronwhite.png";
@@ -159,6 +159,18 @@ const NavBar = ({ setAuthenticated, authenticated, user }) => {
                   </NavLink>
                 </li>
                 <li>
+                  <NavLink
+                    to={`/chefs/${user.id}/appointment`}
+                    exact={true}
+                    activeClassName="active"
+                  >
+                    <button className="button">
+                      <i class="fas fa-calendar-check" />
+                      <span>Appmt</span>
+                    </button>
+                  </NavLink>
+                </li>
+                <li>
                   <LogoutButton
                     setAuthenticated={setAuthenticated}
                     authenticated={authenticated}
@@ -191,7 +203,7 @@ const Container = styled.div`
   // list-style: none;
   position: fixed;
   // border: 1px solid yellow;
-  z-index: 5;
+  z-index: 55;
 `;
 
 const MiniSearch = styled.div`

@@ -29,11 +29,12 @@ function User() {
   return (
     <Container>
       <Tilt
-        tiltReverse={true}
-        glareEnable={true}
-        glareMaxOpacity={0.8}
+        // tiltReverse={true}
+        // glareEnable={true}
+        // glareMaxOpacity={0.8}
+        tiltAxis={"y"}
         perspective={2000}
-        transitionSpeed={3000}
+        transitionSpeed={2000}
         className="default-component"
       >
         <UserWrapper className="animate__animated animate__fadeInDown">
@@ -62,9 +63,9 @@ function User() {
             </li>
           </ul>
           <GoBack>
-            {/* <button className="button" onClick={history.goBack}> */}
-              {/* <div>USER</div>
-            </button> */}
+            <button className="button" onClick={history.goBack}>
+              <div>Go Back</div>
+            </button>
           </GoBack>
         </UserWrapper>
       </Tilt>
@@ -95,10 +96,6 @@ const Container = styled.div`
     list-style: none;
     text-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
   }
-
-  .default-component {
-    transform-style: preserve-3d;
-  }
 `;
 
 const UserWrapper = styled.div`
@@ -119,10 +116,6 @@ const UserWrapper = styled.div`
     rgba(255, 0, 0, 0),
     darkgrey
   );
-
-  .inner-element {
-    transform: translateZ(150px);
-  }
 `;
 
 const Title = styled.div`

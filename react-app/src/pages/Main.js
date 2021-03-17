@@ -5,7 +5,7 @@ import background3 from "../image/food00.png";
 import img00 from "../image/00.png";
 import img02 from "../image/00a.png";
 import img01 from "../image/01.jpg";
-import About from "./About";
+import About from "../components/About";
 import gold from "../video/gold.mp4";
 import { Element } from "react-scroll";
 import { NavLink } from "react-router-dom";
@@ -114,7 +114,7 @@ const ChefList = styled.div`
   box-sizing: border-box;
   border: 1px solid darkgrey;
   border-radius: 1em;
-  margin-top: 20em;
+  margin-top: 25em;
   position: absolute;
   height: 10em;
   width: 20em;
@@ -124,6 +124,10 @@ const ChefList = styled.div`
   font-family: montserrat;
   box-shadow: 0 10px 20px 10px rgba(0, 0, 0, 0.1);
   text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);
+
+  li{
+    padding: 0.1em 0;
+  }
 
   .head {
     text-align: center;
@@ -143,8 +147,7 @@ const ChefList = styled.div`
 const SubContainer2 = styled.div`
   box-sizing: border-box;
   // border: 1px solid red;
-  height: 35em;
-  // padding-top: 5em;
+  height: 47em;
   background-color: white;
   // background-image: linear-gradient(360deg, white, grey, white);
   background-image: linear-gradient(to top, rgba(255, 0, 0, 0), grey);

@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import logo01 from "../../image/logo01.png";
+import logo01 from "../image/logo01.png";
 
 function Nopage() {
   return (
@@ -25,7 +25,7 @@ const Container = styled.div`
   padding-bottom: 6em;
   min-width: 100%;
 
-  div{
+  div {
     padding-bottom: 1em;
   }
 `;
