@@ -15,7 +15,7 @@ import Appointment from "./components/Appointment";
 import ChefsList from "./components/ChefsList";
 import Chef from "./components/Chef";
 import Footer from "./components/Footer";
-import Search from "./components/Search";
+import Search from "./pages/Search";
 
 function App() {
   const [authenticated, setAuthenticated] = useState(false);

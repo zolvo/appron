@@ -1,19 +1,15 @@
-import React from 'react'
-import styled from 'styled-components';
+import React from "react";
+import styled from "styled-components";
 
 function Search({ chefs }) {
+  console.log(chefs);
 
-    console.log(chefs)
-
-    return (
-        <Container>
-            <div className='title'>Search List</div>
-            <div className='main'>
-
-
-            </div>
-        </Container>
-    )
+  return (
+    <Container>
+      <div className="title">Search List</div>
+      <div className="main"></div>
+    </Container>
+  );
 }
 
 const Container = styled.div`
@@ -33,9 +29,9 @@ const Container = styled.div`
     font-size: 16px;
     font-weight: 900;
     letter-spacing: 1px;
-    color: black;
+    background-color: white;
     opacity: 0.8;
   }
 `;
 
-export default Search
+export default Search;
